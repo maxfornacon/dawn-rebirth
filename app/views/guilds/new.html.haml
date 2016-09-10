@@ -1,0 +1,9 @@
+- if current_user.owner? or current_user.guildmember?
+	%h1 Du kannst nur eine Gilde gründen!
+- else
+	= form_for @guild do |f|
+		= f.text_field :name
+		= f.text_area :description
+		= f.select :guildtype, options_for_select([['Chatgilde'], ['Magiergilde'], ['Exorzistengilde'], ['Shinobigilde']])
+		= f.submit "Gründen"
+

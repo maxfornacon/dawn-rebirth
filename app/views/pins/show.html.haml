@@ -1,0 +1,19 @@
+- if @pin.user == current_user or current_user.admin?
+	.pin-show.box
+		- if @pin.image?
+			= image_tag @pin.image.url
+			%p= @pin.description
+			%i
+				vor
+				= time_ago_in_words(@pin.created_at)
+		- else
+			%p= @pin.description
+			%i
+				vor
+				= time_ago_in_words(@pin.created_at)
+		
+		= link_to "Bearbeiten", edit_pin_path
+		= link_to "Löschen", pin_path, method: :delete, data: { confirm: "Bist du sicher, dass du den Pin löschen möchtest?"}
+		= link_to "zurück", current_user
+- else
+	- redirect_to @pin.user

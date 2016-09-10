@@ -1,0 +1,5 @@
+- if current_user.owner? or current_user.admin?
+	= form_for @guild do |f|
+		= f.file_field :image
+		= f.text_area :description
+		= f.submit "speichern"

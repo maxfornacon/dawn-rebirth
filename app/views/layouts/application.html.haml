@@ -1,0 +1,39 @@
+!!!
+%html
+	%head
+		%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+		%title .dawn//Rebirth
+		= csrf_meta_tags
+		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+	%body
+		- if notice
+			#notice_wrapper
+				%p.notice= notice
+		- elsif alert
+			#alert_wrapper
+				%p.alert= alert
+		%nav
+			%p.heading= link_to ".dawn//Rebirth", root_path
+			- if user_signed_in?
+				= form_tag users_path, :method => 'get', :id => 'users_search' do
+					= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
+					= submit_tag "Suchen", :name => nil, class: "btn"
+
+			%ul
+				- if user_signed_in?
+
+					%li
+						= image_tag current_user.avatar.url(:thumb)
+						= link_to current_user.name, current_user
+						= image_tag("arrow_down.png", height: '25',width: '25')
+						%ul.hidden
+							%li= link_to "Einstellungen", edit_user_registration_path
+							%li= link_to "Logout", destroy_user_session_path, method: :delete
+							%li= link_to "Chat", rooms_show_path
+
+				- else
+					%li= link_to "Login", new_user_session_path
+					%li= link_to "Registrieren", new_user_registration_path
+
+		= yield

@@ -1,0 +1,550 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require 'masonry/transitions'
+ *= 'emoticon_fontify/emoticons'
+ *= require_self
+ */
+
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans)
+@font-face
+	font-family: "Old English Text MT"
+	src: url("/assets/old-english-text-mt.ttf")
+
+*
+	margin: 0
+	padding: 0
+	font-family: "Droid Sans"
+
+html, body
+	height: 100%
+
+body
+	background-color: #EBEDEC
+
+	#notice_wrapper
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 999
+		background-color: #69BF8F
+
+		p
+			padding: 1.45rem 0
+			text-align: center
+			margin: 0
+			font-size: 1.25rem
+			font-weight: 700
+			color: #2C503C
+
+	#alert_wrapper
+		position: absolute
+		top: 0
+		width: 100%
+		z-index: 999
+		background-color: #BF6969
+
+		p
+			padding: 1.45rem 0
+			text-align: center
+			margin: 0
+			font-size: 1.25rem
+			font-weight: 700
+			color: #502C2C
+
+a
+	text-decoration: none
+	color: #D36969
+
+hr
+	border: 1px solid #D4D4D4
+
+.btn
+	color: #3D3D3D
+	background-color: #DE6565
+	padding: 10px
+	margin: 2px
+	border: none
+
+
+
+nav
+	background-color: #373F41
+	padding: 5px
+	padding-left: 30px
+	padding-right: 30px
+	height: 40px
+	display: -webkit-flex
+	display: -webkit-box
+	display: -ms-flexbox
+	display: flex
+	vertical-align: super
+
+
+	.heading
+		float: left
+		font-size: 15pt
+		margin: auto 0
+
+		a
+			color: white
+			font-family: "Old English Text MT"
+
+	ul
+		right: 20px
+		position: absolute
+
+		li
+			list-style: none
+			padding: 10px
+
+			a
+				color: #BEBEBE
+				font-size: 13pt
+				margin-top: 10px
+				vertical-align: super
+
+			a:hover
+				color: white
+
+		li:hover ul
+			visibility: visible
+			background-color: #373F41
+			z-index: 99
+
+		ul
+			visibility: hidden
+
+	img
+		border-radius: 100%
+		height: 20px
+
+	form
+		margin: 0 auto
+		input[type=text]
+			background-color: inherit
+			border: 2px solid #656565
+			height: 30px
+			padding-left: 15px
+			color: #A5A5A5
+			margin-top: 3px
+
+		.btn
+			height: 34px
+			margin: 0
+			padding: 0 10px
+
+.darkroom
+	background-color: #4B5658
+	height: 100%
+	background-attachment: scroll
+
+
+
+.container
+	width: 75%
+	margin: 0 auto
+
+.head
+
+	background-color: #373F41
+	display: -webkit-flex
+	display: -webkit-box
+	display: -ms-flexbox
+	display: flex
+	-webkit-align-items: center
+	-webkit-box-align: center
+	-ms-flex-align: center
+	align-items: center
+	padding: 30px
+	border-top-left-radius: 3px
+	border-top-right-radius: 3px
+	margin-top: 50px
+
+	h3
+		color: white
+
+	p
+		color: white
+		font-size: 10pt
+		text-align: right
+		width: 89%
+
+.body
+	background-color: #FFFFFF
+	padding: 30px
+
+	input[type=email], input[type=password], input[type=text]
+		width: 100%
+		background-color: #FFFFFF
+		border-bottom: 3px solid #DBDBDB
+		border-top: 0
+		border-left: 0
+		border-right: 0
+		font-size: 45pt
+		padding: 5px
+		color: #D36969
+
+	label, em, i
+		color: #C5ABAB
+		font-size: 15pt
+
+	input[type=submit]
+		background-color: #FFFFFF
+		border: none
+		font-size: 45pt
+
+		color: #D36969
+
+	input[type=submit]:hover
+		cursor: pointer
+
+.online
+	width: 10px
+	height: 10px
+	border-radius: 100%
+	background-color: #69BF8F
+	float: left
+	margin: 5px
+	margin-top: 11px
+
+aside
+	width: 270px
+	background-color: #1F272A
+	height: 100%
+	padding: 15px
+	float: left
+
+
+	img
+		margin-top: -15px
+		margin-left: -15px
+
+	h1
+		color: white
+		float: left
+
+	h2
+		color: #D36969
+
+	ul
+		list-style: none
+		color: #B1B1B1
+
+.main
+	float: right
+	width: calc(100% - 340px)
+	padding: 10px
+
+	#new_pin
+		text-align: center
+		margin: 0 auto
+		display: block
+		width: 15%
+		background: #DE6565
+		color: #3d3d3d
+		font-size: 30px
+
+	.box:nth-child(odd)
+		background-color: #9E413E
+	.box:nth-child(3n)
+		background-color: #652524
+	.box
+		float: left
+		background-color: #803230
+		margin: 10px
+		padding: 20px
+		width: 325px
+		border-radius: 3px
+		word-wrap: break-word
+
+		p
+			font-size: 25pt
+			color: #000000
+
+
+		img
+			border-top-left-radius: 3px
+			border-top-right-radius: 3px
+			width: 365px
+			margin-top: -20px
+			margin-left: -20px
+			margin-right: -20px
+
+		img.votes
+			width: 25px
+			margin-left: 1px
+			margin-right: 1px
+	#pins
+		margin: 0 auto
+
+	.add
+		width: 100px
+		height: 100px
+
+.pin-show
+	background-color: #803230
+	margin: 20px auto
+	padding: 20px
+	width: 325px
+	border-radius: 3px
+	word-wrap: break-word
+
+	p
+		font-size: 25pt
+		color: #000000
+
+	img
+		border-top-left-radius: 3px
+		border-top-right-radius: 3px
+		width: 365px
+		margin-top: -20px
+		margin-left: -20px
+		margin-right: -20px
+
+	.text-area
+		font-size: 25pt
+		color: #000000
+		background-color: #803230
+		width: 325px
+		height: 585px
+		border: none
+		resize: none
+
+	input[type=submit]
+		background-color: #803230
+		border: none
+		color: #D36969
+		font-size: inherit
+		cursor: pointer
+
+.chat
+	margin-top: 30px
+	height: calc(100% - 80px)
+
+	.invisible
+		display: none
+
+	.media-list
+		list-style: none
+
+	#messages
+		overflow: auto
+		height: calc( 100% - 215px)
+
+	.message
+		width: 100%
+		min-height: 60px
+		display: inline-block
+
+	.text-area
+		width: 100%
+		height: 50px
+		resize: none
+		border: 1px solid #FFB7B7
+		font-size: 15pt
+
+	img
+		float: left
+
+
+	.media-body
+		p
+			word-wrap: break-word
+			width: calc(100% - 60px)
+			float: right
+			font-size: 15pt
+
+		img
+			max-height: 400px
+
+
+.gerade
+	background-color: #FFFFFF
+
+.ungerade
+	background-color: #FFFFFF
+
+/* INBOX */
+.folders
+	list-style: none
+
+	li
+		width: 33.3%
+		float: left
+		text-align: center
+		font-size: 20pt
+		background-color: #DE6565
+		padding-top: 5px
+		padding-bottom: 5px
+		margin-bottom: 5px
+
+		a
+			color: #3D3D3D
+
+	#sent
+		border-color: #3d3d3d
+		border-right-style: solid
+		border-left-style: solid
+		width: calc(33.3% - 6px)
+
+.conversation
+	min-height: 115px
+
+	img
+		float: left
+		margin-right: 10px
+
+.chosen-single
+	border-radius: 0px
+	box-shadow: none
+	background: #DE6565
+	border: none
+
+
+
+/* GILDEN */
+.gilde, .about
+	header
+		background-color: #DE6565
+		padding: 20px
+		min-height: 300px
+
+		img
+			float: left
+			margin-right: 10px
+
+		textarea
+			width: calc( 100% - 312px)
+			height: 200px
+			min-width: 300px
+			border-color: #FF7A7A
+			resize: none
+			font-size: inherit
+			background-color: inherit
+		p.bio
+			display: flex
+			min-height: 236px
+			min-width: 300px
+
+		p.snap
+			background-color: #ece000
+			line-height: 32px
+			height: 32px
+			display: inline-block
+			padding-right: 5px
+			color: white
+			font-size: 15pt
+
+
+		.sozialimg
+			margin-right: 0
+
+	textarea
+		width: 100%
+		font-size: 15pt
+		resize: none
+		background-color: inherit
+		height: 800px
+
+	.favourites, .kanban
+		margin: 20px auto
+		border-spacing: 0px
+		th
+			font-size: 25pt
+			border-bottom: 3px solid #DE6565
+			color: #8C8C8C
+			padding-bottom: 3px
+		td
+			font-size: 20pt
+
+		input[type=text]
+			font-size: 20pt
+
+	.kanban
+		th
+			font-size: 25pt
+			border-bottom: 3px solid #DE6565
+			color: #8C8C8C
+			padding-bottom: 3px
+
+		td
+			font-size: 20pt
+
+
+
+/*LANDING*/
+
+.black_fullscreen
+	background-color: black
+	width: 100%
+	height: 100%
+	position: absolute
+	top: 0
+	color: #ABABAB
+
+	h1
+		position: absolute
+		bottom: 100px
+		left: calc( 50% - 275px)
+
+	img
+		max-height: 100%
+		width: auto
+		top: calc( 50% - auto/2)
+		left: calc(50% - 273px)
+		position: absolute
+
+	.buttons
+		position: absolute
+		left: calc(50% - 107px)
+		bottom: 60px
+
+/*HOME*/
+
+.side-box
+	background-color: #DE6565
+	width: 310px
+	height: 340px
+	padding: 3px
+
+	a
+		color: black
+
+.ansage
+	font-size: 15pt
+	ol
+		padding-left: 60px
+
+/*SMILEYS*/
+
+.smiley
+	display: inline-block
+	width: 32px
+	height: 32px
+	background: image-url('smileys/sprite.png')
+
+.smiley-cool
+	background-position: -736px -64px
+
+.smiley-cry
+	background-position: -736px -288px
+
+.smiley-grin
+	background-position: -705px -608px
+.smiley-blush
+	background-position: 0 0
+.smiley-heart
+	background-position: 0 0
+.smiley-sleep
+	background-position: 0 0

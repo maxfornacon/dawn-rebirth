@@ -1,0 +1,51 @@
+%aside
+	= image_tag @user.avatar.url(:medium)
+	%h1.name= @user.name
+	%br
+	- if @user.online?
+		.online
+	%br
+	%br
+	%p
+		= @user.score
+		Chakrataler
+	- unless current_user.id == @user.id
+		- for friendship in current_user.friendships
+			- if friendship.friend.name == @user.name
+				- friend = 1
+				- break
+		- if friend == 1
+			= link_to "entfolgen", friendship, :method => :delete
+		- else
+			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
+
+	- if @user.owner?
+		%b
+			Meister der Gilde
+			= link_to @guild.name, guild_path(@guild.id)
+		%br
+	- elsif @user.guildmember?
+		%b
+			Mitglied der Gilde
+			= link_to @guild.name, guild_path(@guild.id)
+	- elsif current_user.id == @user.id
+		= link_to "Neue Gilde gründen", new_guild_path
+
+
+	= link_to about_path(@user) do
+		%p
+			Über
+			= @user.name
+		%br
+
+	%h2= "Folge ich (#{@user.friendships.count})"
+	%ul
+		- for friendship in @user.friendships
+			%li
+				= friendship.friend.name
+				- if current_user.id == @user.id
+					#{link_to "[x]", friendship, :method => :delete}
+	%h2= "Follower (#{@user.inverse_friends.count})"
+	%ul
+		- for user in @user.inverse_friends
+			%li= user.name
