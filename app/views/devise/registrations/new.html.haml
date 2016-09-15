@@ -10,16 +10,13 @@
         .field
           = f.text_field :name
           %br/
-          %br/
           = f.label :name
         .field
           = f.email_field :email
           %br/
-          %br/
           = f.label :email
         .field
           = f.password_field :password, autocomplete: "off"
-          %br/
           %br/
           = f.label :password, "Passwort"
           - if @minimum_password_length
@@ -28,10 +25,10 @@
         .field
           = f.password_field :password_confirmation, autocomplete: "off"
           %br/
-          %br/
           = f.label :password_confirmation, "Passwort bestätigen"
-        .actions
-          = f.submit "Registrieren"
           %br/
+          %br/
+        .actions
+          = f.submit "Registrieren", class: "btn"
           %br/
       = render "devise/shared/links"
