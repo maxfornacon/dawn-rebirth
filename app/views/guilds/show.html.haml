@@ -1,70 +1,26 @@
-.gilde
-	%header
-		.container
-			= image_tag @guild.image.url(:standart)
-			%h1
-				= @guild.name
-				,
-				= @guild.score
-				,
-				= @guild.guildtype
-				,
-				= @guild.id
-			%p= @guild.description
-
-	%table
-		%tr
-			%th Name
-			%th Online?
-		- @user.each do |user|
-			- if user.guild_id == @guild.id
-				%tr
-					%td= link_to user.name, user
-					- if user.online?
-						%td
-							.online
-					%td= role(user.guildrank)
-	%br
+= render 'header'
+%table
+	%tr
+		%th Name
+		%th Online?
+	- @user.each do |user|
+		- if user.guild_id == @guild.id
+			%tr
+				%td= link_to user.name, user
+				- if user.online?
+					%td
+						.online
+				%td= role(user.guildrank)
+%br
 
 
-	- if current_user.owner? or current_user.admin?
-		= link_to "bearbeiten", edit_guild_path
-	- elsif current_user.guild_id == @guild.id
-		= link_to "leave", leave_path(@guild), class: "btn"
-	- elsif current_user.guildmember?
-	- else
-		= link_to "Join", join_path(@guild), class: "btn"
+- if current_user.owner? or current_user.admin?
+	= link_to "bearbeiten", edit_guild_path
+- elsif current_user.guild_id == @guild.id
+	= link_to "leave", leave_path(@guild), class: "btn"
+- elsif current_user.guildmember?
+- else
+	= link_to "Join", join_path(@guild), class: "btn"
 
-	- if current_user.owner? and current_user.guild_id == @guild.id or current_user.admin?
-		= link_to "löschen", guild_path, method: :delete, data: { confirm: "Bist du sicher, dass du die Gilde löschen möchtest?"}, class: "btn"
-
-
-
-	%h1= role(print_rolenumber(@guild.guildtype, 4))
-	- User.where(guild_id: @guild.id, guildrank: 14).find_each do |user|
-		= user.name
-	- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 3))
-		- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
-			= user.name
-	- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 2))
-		- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
-			= user.name
-	- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 1))
-		- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
-			= user.name
-	- if current_user.guild_id == @guild.id
-		.container.chat
-			#messages.panel.panel-default{"data-chat-room-id" => "#{@chat_room.id}"}
-				.panel-body
-					%ul.media-list
-						= render @chat_room.messages
-			.well
-				= form_for @message, url: '#' do |f|
-					= hidden_field_tag 'chat_room_id', @chat_room.id
-					.form-group
-						= f.text_area :body, class: 'text-area'
-						%small.text-muted From 2 to 1000 characters
-					= f.submit "Post"
+- if current_user.owner? and current_user.guild_id == @guild.id or current_user.admin?
+	= link_to "löschen", guild_path, method: :delete, data: { confirm: "Bist du sicher, dass du die Gilde löschen möchtest?"}, class: "btn"

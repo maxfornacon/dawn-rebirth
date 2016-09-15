@@ -1,14 +1,15 @@
 %aside
 	= image_tag @user.avatar.url(:medium)
-	%h1.name= @user.name
-	%br
-	- if @user.online?
-		.online
-	%br
-	%br
-	%p
-		= @user.score
-		Chakrataler
+	.info
+		%h1.name= @user.name
+		%br
+		- if @user.online?
+			.online
+		%br
+		%br
+		.score#user
+			= render 'guilds/score'
+			= @user.score
 	- unless current_user.id == @user.id
 		- for friendship in current_user.friendships
 			- if friendship.friend.name == @user.name

@@ -1,0 +1,14 @@
+.gilde
+	%header
+		.container
+			= image_tag @guild.image.url(:standart)
+			%h1
+				= @guild.name
+			.score
+				= render "score"
+				= @guild.score
+			%p= @guild.description
+
+	%ul
+		%li= link_to "Mitglieder", guilds_members_path
+		%li= link_to "Chat", guilds_chat_path

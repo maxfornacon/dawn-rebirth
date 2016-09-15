@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'leave/:id', to: 'guilds#leave', as:'leave'
   get '/about/:id', to: "users#about", as: 'about'
 
+  get 'guilds/chat/:id', to: 'guilds#chat', as: 'guilds_chat'
+  get 'guilds/members/:id', to: 'guilds#members', as: 'guilds_members'
   
 
 	root "home#index"

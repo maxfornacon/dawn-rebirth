@@ -2,7 +2,8 @@
 	= link_to image_tag(message.user.avatar.url(:extrasmall), alt: message.user.name, class: "media-object"), message.user, target: '_blank'
 	.media-body
 		%h4.media-heading
-			= link_to message.user.name, message.user, target: '_blank'
-			%small.text-muted
-				[#{message.created_at.strftime('%-d %B %Y, %H:%M:%S')}]
+			= link_to message.user.name + ":", message.user, target: '_blank'
+
+		.top-right
+			[#{message.created_at.strftime('%H:%M:%S')}]
 		%p= raw(message.body_html)

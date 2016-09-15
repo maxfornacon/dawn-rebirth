@@ -31,3 +31,9 @@ $(document).ready(function() {
 		});
 	}, 4500);
 });
+
+$("#message_body").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#message_button").click();
+    }
+});

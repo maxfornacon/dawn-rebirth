@@ -1,6 +1,6 @@
 class GuildsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :find_guild, only: [:show, :edit, :update, :destroy, :join, :leave]
+	before_action :find_guild, only: [:show, :edit, :update, :destroy, :join, :leave, :members, :chat]
 
 	def index
 		@guilds = Guild.all.order("created_at DESC")
@@ -8,6 +8,14 @@ class GuildsController < ApplicationController
 
 	def show
 		@user = User.all.order("created_at DESC")
+
+	end
+
+	def members 
+		@user = User.all.order("created_at DESC")
+	end
+
+	def chat
 		@chat_room = Guild.includes(:messages).find_by(id: params[:id])
 		@message = Message.new
 	end
