@@ -1,8 +1,7 @@
 .container
 	- @users.each do |user|
-		= image_tag user.avatar.url(:extrasmall)
-		= link_to user.name, user	
-		%br
-		%hr				
-		%br
+		= link_to user do
+			.searchbox
+				= image_tag user.avatar.url(:medium)
+				= link_to user.name, user
 
