@@ -9,6 +9,10 @@
 				= @guild.score
 			%p= @guild.description
 
-	%ul
+	%ul.guildnav
+		%li= link_to "Home", guild_path
 		%li= link_to "Mitglieder", guilds_members_path
 		%li= link_to "Chat", guilds_chat_path
+	%br
+	%br
+	%br

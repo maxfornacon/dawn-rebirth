@@ -1,26 +1,27 @@
 = render 'header'
-%table
-	%tr
-		%th Name
-		%th Online?
-	- @user.each do |user|
-		- if user.guild_id == @guild.id
-			%tr
-				%td= link_to user.name, user
-				- if user.online?
-					%td
-						.online
-				%td= role(user.guildrank)
-%br
+.container
+	%table
+		%tr
+			%th Name
+			%th Online?
+		- @user.each do |user|
+			- if user.guild_id == @guild.id
+				%tr
+					%td= link_to user.name, user
+					- if user.online?
+						%td
+							.online
+					%td= role(user.guildrank)
+	%br
 
 
-- if current_user.owner? or current_user.admin?
-	= link_to "bearbeiten", edit_guild_path
-- elsif current_user.guild_id == @guild.id
-	= link_to "leave", leave_path(@guild), class: "btn"
-- elsif current_user.guildmember?
-- else
-	= link_to "Join", join_path(@guild), class: "btn"
+	- if current_user.owner? or current_user.admin?
+		= link_to "bearbeiten", edit_guild_path
+	- elsif current_user.guild_id == @guild.id
+		= link_to "leave", leave_path(@guild), class: "btn"
+	- elsif current_user.guildmember?
+	- else
+		= link_to "Join", join_path(@guild), class: "btn"
 
-- if current_user.owner? and current_user.guild_id == @guild.id or current_user.admin?
-	= link_to "löschen", guild_path, method: :delete, data: { confirm: "Bist du sicher, dass du die Gilde löschen möchtest?"}, class: "btn"
+	- if current_user.owner? and current_user.guild_id == @guild.id or current_user.admin?
+		= link_to "löschen", guild_path, method: :delete, data: { confirm: "Bist du sicher, dass du die Gilde löschen möchtest?"}, class: "btn"
