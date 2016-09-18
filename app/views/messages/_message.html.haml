@@ -6,4 +6,5 @@
 
 		.top-right
 			[#{message.created_at.strftime('%H:%M:%S')}]
+			= link_to "[x]", message_path, method: :delete, data: { confirm: "sicher?"}
 		%p= raw(message.body_html)

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'guilds/chat/:id', to: 'guilds#chat', as: 'guilds_chat'
   get 'guilds/members/:id', to: 'guilds#members', as: 'guilds_members'
+
+  resources :messages
   
 
 	root "home#index"

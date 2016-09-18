@@ -1,12 +1,11 @@
 %aside
 	= image_tag @user.avatar.url(:medium)
+	= link_to about_path(@user) do
+		%i.material-icons person
 	.info
 		%h1.name= @user.name
-		%br
 		- if @user.online?
 			.online
-		%br
-		%br
 		.score#user
 			= render 'guilds/score'
 			= @user.score
