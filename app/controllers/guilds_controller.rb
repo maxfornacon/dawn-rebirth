@@ -40,7 +40,11 @@ class GuildsController < ApplicationController
 	end
 
 	def new
-		@guild = current_user.guilds.build
+		if current_user.score >= 1000
+			@guild = current_user.guilds.build
+		else
+			redirect_to current_user, alert: "Du hast nicht genügen Chakrataler um eine Gilde zu gründen!"
+		end
 	end
 
 	def create

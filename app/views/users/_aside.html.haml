@@ -38,14 +38,28 @@
 			= @user.name
 		%br
 
-	%h2= "Folge ich (#{@user.friendships.count})"
-	%ul
-		- for friendship in @user.friendships
-			%li
-				= friendship.friend.name
-				- if current_user.id == @user.id
-					#{link_to "[x]", friendship, :method => :delete}
+
+	
 	%h2= "Follower (#{@user.inverse_friends.count})"
 	%ul
 		- for user in @user.inverse_friends
 			%li= user.name
+				
+
+			
+
+	%a.popup-btn{:href => "#"}= "Folge ich (#{@user.friendships.count})"
+	.popup-wrap
+		.popup-box
+			%h2 
+				= @user.name
+				folgt
+			%ul
+				- for friendship in @user.friendships
+					%li
+						= friendship.friend.name
+						- if current_user.id == @user.id
+							#{link_to "[x]", friendship, :method => :delete}
+			%a.close-btn.popup-close{:href => "#"}
+				%i.material-icons close
+
