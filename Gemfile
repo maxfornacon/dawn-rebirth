@@ -31,4 +31,5 @@ gem 'masonry-rails', '~> 0.2.4'
 gem 'redis', '~> 3.2'
 gem 'auto_html', '~> 1.6.4'
 
+
 ruby "2.2.4"

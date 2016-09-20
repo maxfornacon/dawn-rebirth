@@ -6,18 +6,52 @@
 		%h1.name= @user.name
 		- if @user.online?
 			.online
-		.score#user
-			= render 'guilds/score'
-			= @user.score
-	- unless current_user.id == @user.id
-		- for friendship in current_user.friendships
-			- if friendship.friend.name == @user.name
-				- friend = 1
-				- break
-		- if friend == 1
-			= link_to "entfolgen", friendship, :method => :delete
-		- else
-			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
+	
+	%a.popup-btn3{:href => "#"}
+		.box
+			%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
+			%p Score
+	
+
+	%a.popup-btn1{:href => "#"}
+		.box
+			%span= @user.inverse_friends.count
+			%p Follower
+	%a.popup-btn2{:href => "#"}
+		.box
+			%span= @user.friendships.count
+			%p Folgt
+
+	.popup-wrap1
+		.popup-box1
+			%h2 Follower
+			%ul
+				- for user in @user.inverse_friends
+					%li= user.name
+			%a.close-btn.popup-close1{:href => "#"}
+				%i.material-icons close
+
+	.popup-wrap2
+		.popup-box2
+			%h2 
+				= @user.name
+				folgt
+			%ul
+				- for friendship in @user.friendships
+					%li
+						= friendship.friend.name
+						- if current_user.id == @user.id
+							#{link_to "[x]", friendship, :method => :delete}
+			%a.close-btn.popup-close2{:href => "#"}
+				%i.material-icons close
+
+	.popup-wrap3
+		.popup-box3
+			%h2 Score
+			%h3= @user.score
+			%a.close-btn.popup-close3{:href => "#"}
+				%i.material-icons close
+
 
 	- if @user.owner?
 		%b
@@ -31,35 +65,53 @@
 	- elsif current_user.id == @user.id
 		= link_to "Neue Gilde gründen", new_guild_path
 
+	- unless current_user.id == @user.id
+		- for friendship in current_user.friendships
+			- if friendship.friend.name == @user.name
+				- friend = 1
+				- break
+		- if friend == 1
+			= link_to "entfolgen", friendship, :method => :delete
+		- else
+			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
 
-	= link_to about_path(@user) do
-		%p
-			Über
-			= @user.name
-		%br
+:javascript
+	$(document).ready(function() {
+	  $('.popup-btn1').click(function(e) {
+	    $('.popup-wrap1').fadeIn(250);
+	    $('.popup-box1').removeClass('transform-out').addClass('transform-in');
 
+	    e.preventDefault();
+	  });
+	  $('.popup-btn2').click(function(e) {
+	    $('.popup-wrap2').fadeIn(250);
+	    $('.popup-box2').removeClass('transform-out').addClass('transform-in');
 
-	
-	%h2= "Follower (#{@user.inverse_friends.count})"
-	%ul
-		- for user in @user.inverse_friends
-			%li= user.name
-				
+	    e.preventDefault();
+	  });
+	  $('.popup-btn3').click(function(e) {
+	    $('.popup-wrap3').fadeIn(250);
+	    $('.popup-box3').removeClass('transform-out').addClass('transform-in');
 
-			
+	    e.preventDefault();
+	  });
 
-	%a.popup-btn{:href => "#"}= "Folge ich (#{@user.friendships.count})"
-	.popup-wrap
-		.popup-box
-			%h2 
-				= @user.name
-				folgt
-			%ul
-				- for friendship in @user.friendships
-					%li
-						= friendship.friend.name
-						- if current_user.id == @user.id
-							#{link_to "[x]", friendship, :method => :delete}
-			%a.close-btn.popup-close{:href => "#"}
-				%i.material-icons close
+	  $('.popup-close1').click(function(e) {
+	    $('.popup-wrap1').fadeOut(250);
+	    $('.popup-box1').removeClass('transform-in').addClass('transform-out');
 
+	    e.preventDefault();
+	  });
+	  $('.popup-close2').click(function(e) {
+	    $('.popup-wrap2').fadeOut(250);
+	    $('.popup-box2').removeClass('transform-in').addClass('transform-out');
+
+	    e.preventDefault();
+	  });
+	  $('.popup-close3').click(function(e) {
+	    $('.popup-wrap3').fadeOut(250);
+	    $('.popup-box3').removeClass('transform-in').addClass('transform-out');
+
+	    e.preventDefault();
+	  });
+	});
