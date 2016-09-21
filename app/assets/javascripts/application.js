@@ -11,11 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-
 //= require jquery_ujs
 //= require turbolinks
-//= require masonry/masonry.min
-//= require masonry/modernizr-transitions
+//= require masonry/jquery.masonry
+//= require masonry/jquery.imagesloaded.min
 //= require cable
 //= require_tree .
 
