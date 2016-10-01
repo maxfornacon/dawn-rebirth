@@ -3,6 +3,7 @@
 	font-family: "Old English Text MT"
 	src: url("/assets/old-english-text-mt.ttf")
 
+$footerheight: 180px
 *
 	margin: 0
 	padding: 0
@@ -43,6 +44,21 @@ body
 			font-size: 1.25rem
 			font-weight: 700
 			color: #502C2C
+
+	main	
+		position: relative
+		z-index: 1
+		min-height: 100%
+		margin-bottom: $footerheight
+		background: #EBEDEC
+
+	footer
+		position: fixed
+		right: 0
+		bottom: 0
+		left: 0
+		height: $footerheight
+		background: #373F41
 
 a
 	text-decoration: none
@@ -197,9 +213,10 @@ nav
 aside
 	width: 270px
 	background-color: #1F272A
-	height: 100%
+	height: calc(100% - 80px)
 	padding: 15px
 	float: left
+	position: absolute
 
 
 	img

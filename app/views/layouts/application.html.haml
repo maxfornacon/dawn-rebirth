@@ -9,33 +9,40 @@
 		%link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
 
 	%body
-		- if notice
-			#notice_wrapper
-				%p.notice= notice
-		- elsif alert
-			#alert_wrapper
-				%p.alert= alert
-		%nav
-			%p.heading= link_to ".dawn//Rebirth", root_path
-			- if user_signed_in?
-				= form_tag users_path, :method => 'get', :id => 'users_search' do
-					= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
-					= submit_tag "Suchen", :name => nil, class: "btn"
-
-			%ul
+		%main
+			- if notice
+				#notice_wrapper
+					%p.notice= notice
+			- elsif alert
+				#alert_wrapper
+					%p.alert= alert
+			%nav
+				%p.heading= link_to ".dawn//Rebirth", root_path
 				- if user_signed_in?
+					= form_tag users_path, :method => 'get', :id => 'users_search' do
+						= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
+						= submit_tag "Suchen", :name => nil, class: "btn"
 
-					%li
-						= image_tag current_user.avatar.url(:thumb)
-						= link_to current_user.name, current_user
-						= image_tag("arrow_down.png", height: '25',width: '25')
-						%ul.hidden
-							%li= link_to "Einstellungen", edit_user_registration_path
-							%li= link_to "Logout", destroy_user_session_path, method: :delete
-							%li= link_to "Chat", rooms_show_path
+				%ul
+					- if user_signed_in?
 
-				- else
-					%li= link_to "Login", new_user_session_path
-					%li= link_to "Registrieren", new_user_registration_path
+						%li
+							= image_tag current_user.avatar.url(:thumb)
+							= link_to current_user.name, current_user
+							= image_tag("arrow_down.png", height: '25',width: '25')
+							%ul.hidden
+								%li= link_to "Einstellungen", edit_user_registration_path
+								%li= link_to "Logout", destroy_user_session_path, method: :delete
+								%li= link_to "Chat", rooms_show_path
 
-		= yield
+					- else
+						%li= link_to "Login", new_user_session_path
+						%li= link_to "Registrieren", new_user_registration_path
+
+			= yield
+
+		%footer
+			%ul
+				%li Impressum
+				%li Haftungsausschuss
+				%li FAQ
