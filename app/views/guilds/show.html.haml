@@ -25,3 +25,5 @@
 
 	- if current_user.owner? and current_user.guild_id == @guild.id or current_user.admin?
 		= link_to "löschen", guild_path, method: :delete, data: { confirm: "Bist du sicher, dass du die Gilde löschen möchtest?"}, class: "btn"
+
+	%b
