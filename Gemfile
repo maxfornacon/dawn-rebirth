@@ -30,6 +30,6 @@ gem 'dotiw', '~> 3.1', '>= 3.1.1'
 gem 'masonry-rails', '~> 0.2.4'
 gem 'redis', '~> 3.2'
 gem 'auto_html', '~> 1.6.4'
-
+gem 'jquery-turbolinks'
 
 ruby "2.2.4"

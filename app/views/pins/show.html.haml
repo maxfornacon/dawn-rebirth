@@ -1,7 +1,7 @@
 - if @pin.user == current_user or current_user.admin?
 	.pin-show.box
 		- if @pin.image?
-			= image_tag @pin.image.url
+			= image_tag @pin.image.url(:crop)
 			%p= @pin.description
 			%i
 				vor

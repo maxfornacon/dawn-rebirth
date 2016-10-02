@@ -51,5 +51,6 @@
 	%h2 Gilden
 	- @guilds = Guild.all.order("created_at DESC")
 	- @guilds.each do |guild|
-		= link_to guild.name, guild_path(guild.id)
+		= link_to guild_path(guild.id) do
+			= image_tag guild.image.url(:standart)
 
