@@ -2,8 +2,17 @@
 	%h1 Du kannst nur eine Gilde gründen!
 - else
 	= form_for @guild do |f|
-		= f.text_field :name
-		= f.text_area :description
-		= f.select :guildtype, options_for_select([['Chatgilde'], ['Magiergilde'], ['Exorzistengilde'], ['Shinobigilde']])
-		= f.submit "Gründen"
+		.gilde.newgilde
+			%header
+				.container
+					= f.file_field :image
+					%br
+					= image_tag "http://placehold.it/300x300"
 
+					= f.text_field :name, placeholder: "Name"
+					%br
+					%br
+					= f.text_area :description, placeholder: "Beschreibung"
+				= f.select :guildtype, options_for_select([['Chatgilde'], ['Magiergilde'], ['Exorzistengilde'], ['Shinobigilde']])
+			.container
+				= f.submit "Gründen", class: "btn"

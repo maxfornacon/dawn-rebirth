@@ -6,7 +6,10 @@
 		- @pin.each do |pin|
 			.box
 				- if pin.image?
-					= image_tag pin.image.url
+					- begin
+						= image_tag pin.image.url(:crop)
+					- rescue
+						%span [image missing]
 				%p= pin.description
 				%i #{I18n.l(pin.created_at, format: '%-d %B %Y')}
 				= link_to like_pin_path(pin), method: :put do
