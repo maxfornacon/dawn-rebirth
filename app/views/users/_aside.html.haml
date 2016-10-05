@@ -9,7 +9,10 @@
 	
 	%a.popup-btn3{:href => "#"}
 		.box
-			%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
+			- if @user.score < 1000
+				%span= @user.score
+			- else
+				%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
 			%p Score
 	
 
