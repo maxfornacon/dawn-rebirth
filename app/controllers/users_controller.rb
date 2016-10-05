@@ -14,9 +14,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def markdown
-	end
-
 	def about
 		if @user.guildmember?
 			@guild = Guild.find(@user.guild_id)

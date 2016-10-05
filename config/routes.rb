@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
-  get 'rooms/show'
 
   devise_for :users
-	resources :users
+	resources :users, except: [:create, :new, :destroy]
   resources :pins do
     member do
       put "like" => "pins#upvote"
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :friendships
+  resources :friendships, except: [:index, :new, :edit, :show, :update]
   get 'friendships/create'
   get 'friendships/destroy'
 

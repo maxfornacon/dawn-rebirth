@@ -13,6 +13,9 @@ end
 group :development do
   gem 'web-console'
 	gem 'sqlite3'
+
+	gem 'traceroute' #rake traceroute
+	gem 'rack-mini-profiler'
 end
 group :production do
 	gem 'pg'
