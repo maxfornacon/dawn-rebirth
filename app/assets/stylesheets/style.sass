@@ -54,12 +54,26 @@ body
 
 	footer
 		position: fixed
+		width: 100%
+		display: flex
 		right: 0
 		bottom: 0
 		left: 0
 		height: $footerheight
 		background: #373F41
+		justify-content: space-around
+		align-items: center
 
+		.col
+			background: #40484a
+			width: 20%
+			min-height: 100px
+			padding: 10px
+			position: relative
+			min-width: 150px
+
+			li
+				list-style: none
 a
 	text-decoration: none
 	color: #D36969
@@ -87,7 +101,8 @@ nav
 	display: -ms-flexbox
 	display: flex
 	vertical-align: super
-
+	position: relative
+	z-index: 1
 
 	.heading
 		float: left
@@ -279,7 +294,7 @@ aside
 		float: left
 		background-color: #803230
 		margin: 10px
-		padding: 20px
+		padding: 20px 20px 10px 20px
 		width: 325px
 		border-radius: 3px
 		word-wrap: break-word
@@ -291,7 +306,17 @@ aside
 			span
 				display: block
 				text-align: center
-				margin-top: -6px
+				margin-top: -4px
+				margin-bottom: -3px
+
+		.flag 
+			position: absolute
+			top: 2px
+			right: 2px
+			opacity: 0.5
+
+		.flag:hover
+			opacity: 1
 
 		img
 			border-top-left-radius: 3px
@@ -301,7 +326,7 @@ aside
 			margin-left: -20px
 			margin-right: -20px
 
-		img.votes
+		img.voteimg
 			width: 25px
 			margin-left: 1px
 			margin-right: 1px

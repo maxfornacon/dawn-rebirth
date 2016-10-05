@@ -20,6 +20,7 @@
 			- begin
 				%td= Guild.find(u.guild_id).name
 			- rescue
+				%td false
 			%td= u.owner
 			%td= u.sign_in_count
 			%td= u.last_sign_in_at

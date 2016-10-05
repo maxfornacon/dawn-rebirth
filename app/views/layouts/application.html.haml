@@ -7,7 +7,7 @@
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 		%link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
-
+		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 	%body
 		%main
 			- if notice
@@ -43,7 +43,9 @@
 			= yield
 
 		%footer
-			%ul
-				%li Impressum
-				%li Haftungsausschuss
-				%li FAQ
+			- 3.times do
+				.col
+			.col
+				%ul
+					%li Haftungsausschluss
+					%li Impressum
