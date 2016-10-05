@@ -84,6 +84,6 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 	#ActionCable
-	config.web_socket_server_url = "wss://serene-thicket-69156.herokuapp.com/cable"
-	config.action_cable.allowed_request_origins = ['https://serene-thicket-69156.herokuapp.com', 'http://serene-thicket-69156.herokuapp.com']
+	config.web_socket_server_url = "wss://dare.pakass.de/cable"
+	config.action_cable.allowed_request_origins = ['http://dare.pakass.de/', 'http://dare.pakass.de/']
 end

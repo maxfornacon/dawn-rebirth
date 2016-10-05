@@ -1,6 +1,6 @@
 class PinsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+	before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :flag]
 	
   def index
 		@pins = Pin.all.order("created_at DESC")
@@ -54,13 +54,18 @@ class PinsController < ApplicationController
 		redirect_to @user
 	end
 
+	def flag
+		@user = User.find(@pin.user)
+		@pin.flags.create
+		redirect_to @user
+	end
 	private
 
-	def pin_params
-		params.require(:pin).permit(:description, :image)
-	end
+		def pin_params
+			params.require(:pin).permit(:description, :image)
+		end
 
-	def find_pin
-		@pin = Pin.find(params[:id])
-	end
+		def find_pin
+			@pin = Pin.find(params[:id])
+		end
 end

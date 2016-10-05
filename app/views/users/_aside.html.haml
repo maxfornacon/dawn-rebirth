@@ -75,6 +75,8 @@
 		- else
 			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
 
+	- if @user.admin?
+		ADMIN
 :javascript
 	$(document).ready(function() {
 	  $('.popup-btn1').click(function(e) {

@@ -1,0 +1,28 @@
+%table
+	%tr
+		%th ID
+		%th Email
+		%th Name
+		%th Score
+		%th Pins
+		%th Gilde
+		%th Owner
+		%th sign_in_count
+		%th last Login
+		%th last IP
+	- @users.each do |u|
+		%tr
+			%td= u.id
+			%td= u.email
+			%td= u.name
+			%td= u.score
+			%td= u.pins.count
+			- begin
+				%td= Guild.find(u.guild_id).name
+			- rescue
+			%td= u.owner
+			%td= u.sign_in_count
+			%td= u.last_sign_in_at
+			%td= u.last_sign_in_ip
+
+

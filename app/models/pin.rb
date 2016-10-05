@@ -6,4 +6,6 @@ class Pin < ApplicationRecord
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
 	acts_as_votable
+
+	has_many :flags, dependent: :destroy
 end

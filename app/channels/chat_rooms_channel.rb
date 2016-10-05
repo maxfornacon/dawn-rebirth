@@ -10,4 +10,8 @@ class ChatRoomsChannel < ApplicationCable::Channel
   def send_message(data)
     current_user.messages.create!(body: data['message'], guild_id: data['chat_room_id'])
   end
+
+  def destroy_message
+  	
+  end	
 end

@@ -31,9 +31,10 @@
 							= link_to current_user.name, current_user
 							= image_tag("arrow_down.png", height: '25',width: '25')
 							%ul.hidden
+								- if current_user.admin?
+									%li= link_to "Adminbereich", admin_index_path
 								%li= link_to "Einstellungen", edit_user_registration_path
 								%li= link_to "Logout", destroy_user_session_path, method: :delete
-								%li= link_to "Chat", rooms_show_path
 
 					- else
 						%li= link_to "Login", new_user_session_path

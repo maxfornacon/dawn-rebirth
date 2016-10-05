@@ -1,0 +1,60 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+de:
+  devise:
+    confirmations:
+      confirmed: "Vielen Dank für Ihre Registrierung. Du bist jetzt angemeldet."
+      send_instructions: "Du erhälst in wenigen Minuten eine E-Mail, mit der du deine Registrierung bestätigen kannst."
+      send_paranoid_instructions: "Falls deine E-Mail-Adresse in unserer Datenbank existiert, erhälst du in wenigen Minuten eine E-Mail mit der du deine Registrierung bestätigen kannst."
+    failure:
+      already_authenticated: "Du bist bereits angemeldet."
+      inactive: "Dein Account ist noch nicht aktiviert."
+      invalid: "Ungültiger %{authentication_keys} oder Passwort."
+      locked: "Dein Account ist gesperrt"
+      last_attempt: "Du hast noch einen Versuch bis dein Account gesperrt wird."
+      not_found_in_database: "Ungültiger %{authentication_keys} oder Passwort."
+      timeout: "Deine Sitzung ist abgelaufen, bitte melde dich erneut an."
+      unauthenticated: "Du musst dich anmelden oder registrieren um fortfahren zu können."
+      unconfirmed: "Du musst erst deine E-Mail-Addresse bestätigen um fortfahren zu können."
+    mailer:
+      confirmation_instructions:
+        subject: "Anleitung zur Bestätigung Ihres Accounts"
+      reset_password_instructions:
+        subject: "Anleitung für das Zurücksetzen Ihres Passworts"
+      unlock_instructions:
+        subject: "Anleitung für die Account-Freischaltung"
+    omniauth_callbacks:
+      failure: "Du konntest nicht mit deinem %{kind}-Account angemeldet werden, weil \"%{reason}\"."
+      success: "Du hast dich erfolgreich mit deinem %{kind}-Account angemeldet."
+    passwords:
+      no_token: "Du kannst dich nicht auf dieser Seite anmelden, wenn du nicht von einer Passwort-Zurücksetzen-E-Mail kommst. Wenn du von solch einer E-Mail kommst, überprüfe bitte, ob du die gesamte URL verwendeten."
+      send_instructions: "Du erhälst in wenigen Minuten eine E-Mail mit der Anleitung, wie du dein Passwort zurücksetzen kannst."
+      send_paranoid_instructions: "Falls deine E-Mail-Adresse in unserer Datenbank existiert, erhälst du in wenigen Minuten eine E-Mail mit der Anleitung, wie du dein Passwort zurücksetzen kannst."
+      updated: "Dein Passwort wurde erfolgreich geändert. Du bist nun eingeloggt."
+      updated_not_active: "Dein Passwort wurde erfolgreich geändert."
+    registrations:
+      destroyed: "Dein Account wurde erfolgreich gelöscht. Wir hoffen dich irgendwann wieder begrüßen zu dürfen."
+      signed_up: "Hallo! DU hast dich erfolgreich eingeloggt."
+      signed_up_but_inactive: "Danke für deine Registrierung. Wir konnten dich jedoch nicht eingeloggen. Du musst erst deine E-Mail-Addresse bestätigen."
+      signed_up_but_locked: "Du hast dich erfolgreich registriert, jedoch konntest du nicht eingeloggt werden, da dein Account gesperrt ist."
+      signed_up_but_unconfirmed: "Eine Nachricht mit einem Bestätigungslink wurde an deine E-Mail-Addresse gesendet. Bitte folge dem Link, um deinen Account zu aktivieren."
+      update_needs_confirmation: "Du hast deinen Account erfolgreich geupdatet, dennoch musst du deine E-Mail-Addresse bestätigen. Bitte überprüfe dein E-Mailpostfach und folge dem Bestätigungslink."
+      updated: "Dein Account wurde erfolgreich geupdatet."
+    sessions:
+      signed_in: "Erfolgreich eingeloggt."
+      signed_out: "Erfolgreich ausgeloggt."
+      already_signed_out: "Erfolgreich ausgeloggt."
+    unlocks:
+      send_instructions: "Du erhälst in wenigen Minuten eine E-Mail, mit der du deine Registrierung bestätigen kannst."
+      send_paranoid_instructions: "Wenn dein Account existiert wirst du eine E-Mail bekommen, welche die Anleitung beinhaltet wie du deinen Account freischalten kannst."
+      unlocked: "Dein Account wurde erfolgreich aktiviert. Bitte logge dich ein."
+  errors:
+    messages:
+      already_confirmed: "wurde bereits bestätigt, bitte versuchen Sie, sich anzumelden"
+      confirmation_period_expired: "musste innerhalb von %{period} bestätigt werden, bitte neu anfordern."
+      expired: "ist abgelaufen, bitte neu anfordern"
+      not_found: "nicht gefunden"
+      not_locked: "ist nicht gesperrt"
+      not_saved:
+        one: "Konnte %{resource} nicht speichern: ein Fehler." 
+        other: "Konnte %{resource} nicht speichern: %{count} Fehler."

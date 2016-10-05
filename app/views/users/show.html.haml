@@ -12,11 +12,18 @@
 						%span [image missing]
 				%p= pin.description
 				%i #{I18n.l(pin.created_at, format: '%-d %B %Y')}
-				= link_to like_pin_path(pin), method: :put do
-					= image_tag("like_up.png", class: "votes")
-					%span= pin.get_upvotes.size
-				= link_to unlike_pin_path(pin), method: :put do
-					= image_tag("like_down.png", class: "votes")
-					%span= pin.get_downvotes.size
+				.votes
+					= link_to like_pin_path(pin), method: :put, class: "votelink" do
+						= image_tag("like_up.png", class: "votes")
+					%span= pin.get_upvotes.size - pin.get_downvotes.size
+					%br
+					= link_to unlike_pin_path(pin), method: :put, class: "votelink" do
+						= image_tag("like_down.png", class: "votes")
+
 				- if current_user.id == pin.user_id or current_user.admin?
 					= link_to "zum Pin", pin
+
+				= pluralize(pin.flags.count, "flag")
+				= link_to flag_pin_path(pin), method: :post do
+					%i.material-icons flag
+

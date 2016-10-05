@@ -1,0 +1,10 @@
+%table
+	%tr
+		%th ID
+		%th User
+		%th Flags
+	- @pins.each do |p|
+		%tr
+			%td= p.id
+			%td= p.user.name
+			%td= p.flags.count

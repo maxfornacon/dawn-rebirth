@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       put "like" => "pins#upvote"
       put "unlike" => "pins#downvote"
+      post 'flag'
     end
   end
   
@@ -23,6 +24,11 @@ Rails.application.routes.draw do
   get 'guilds/chat/:id', to: 'guilds#chat', as: 'guilds_chat'
   get 'guilds/members/:id', to: 'guilds#members', as: 'guilds_members'
   
+
+  get 'admin/users'
+  get 'admin/index'
+  get 'admin/flags'
+
 
 	root "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,0 +1,20 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+	margin: 0 auto;
+	border-spacing: 0;
+	td, th {
+		padding: 8px;
+	}
+
+	tr:hover {
+		background-color: #e8d4d4;
+	}
+
+	th {
+		border-bottom: #CF3333 2px solid;
+	}
+
+}
