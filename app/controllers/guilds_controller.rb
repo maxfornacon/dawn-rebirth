@@ -11,7 +11,7 @@ class GuildsController < ApplicationController
 
 	end
 
-	def members 
+	def members
 		@user = User.all.order("created_at DESC")
 	end
 
@@ -21,14 +21,18 @@ class GuildsController < ApplicationController
 	end
 
 	def join
-		if current_user.score >= 100
-			current_user.update_attribute :guild_id, @guild.id
-			current_user.update_attribute :guildrank, 11
-			current_user.update_attribute :guildmember, true
-			current_user.decrement!(:score, by = 100)
-			@guild.increment!(:score, by = 100)
-			redirect_to @guild, notice: "Du bist der Gilde beigetreten!"
-		else
+		begin
+			if current_user.score >= 100
+				current_user.update_attribute :guild_id, @guild.id
+				current_user.update_attribute :guildrank, 11
+				current_user.update_attribute :guildmember, true
+				current_user.decrement!(:score, by = 100)
+				@guild.increment!(:score, by = 100)
+				redirect_to @guild, notice: "Du bist der Gilde beigetreten!"
+			else
+				redirect_to @guild, alert: "Du hast nicht genügend Chakrataler um dieser Gilde beizutreten!"
+			end
+		rescue Exception => e
 			redirect_to @guild, alert: "Du hast nicht genügend Chakrataler um dieser Gilde beizutreten!"
 		end
 	end
@@ -87,6 +91,7 @@ class GuildsController < ApplicationController
 			render 'edit'
 		end
 	end
+
 
 	private
 

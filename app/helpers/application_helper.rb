@@ -5,9 +5,9 @@ module ApplicationHelper
   def markdown(text)
     options = {
       filter_html:     true,
-      hard_wrap:       true, 
+      hard_wrap:       true,
       link_attributes: { rel: 'nofollow', target: "_blank" },
-      space_after_headers: true, 
+      space_after_headers: true,
       fenced_code_blocks: true
     }
 
@@ -21,9 +21,6 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(renderer, extensions)
 
     markdown.render(text).html_safe
-  end
-  def smileys(text)
-    Smiley.new.parse(text)
   end
 
   def role(id)
@@ -54,7 +51,7 @@ module ApplicationHelper
         @roleid = 14
       elsif number == 5
         @roleid = 15
-      end       
+      end
     end
   end
 end

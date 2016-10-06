@@ -10,7 +10,7 @@ class AdminController < ApplicationController
 	end
 
 	def flags
-		@pins = Pin.all	
+		@pins = Pin.all.includes(:user)
 	end
 
 

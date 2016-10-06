@@ -3,27 +3,34 @@
 	%h1= role(print_rolenumber(@guild.guildtype, 4))
 	- User.where(guild_id: @guild.id, guildrank: 14).find_each do |user|
 		= user.name
-		- if user.online?
-			%td
-				.online
+
 	- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
 		%h2= role(print_rolenumber("Shinobigilde", 3))
 		- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
 			= user.name
-			- if user.online?
-				%td
-					.online
+
 	- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
 		%h2= role(print_rolenumber("Shinobigilde", 2))
 		- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
 			= user.name
-			- if user.online?
-				%td
-					.online
+
 	- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
 		%h2= role(print_rolenumber("Shinobigilde", 1))
 		- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
 			= user.name
-			- if user.online?
-				%td
-					.online
+
+	- if current_user.owner? or current_user.admin?
+		%table
+			%tr
+				%th Name
+				%th Rang
+				%th 
+			- @user.each do |user|
+				- if user.guild_id == @guild.id
+					%tr
+						%td= link_to user.name, user
+						%td= role(user.guildrank)
+						%td
+							= link_to "rauswerfen"
+							= link_to "befördern"
+							= link_to "degradieren"

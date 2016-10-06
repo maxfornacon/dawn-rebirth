@@ -10,10 +10,9 @@
 			%li Nicht verhinderbare unangemessene Inhalte durch User
 		%br
 		%p Wir bitten um Verständnis und sind bemüht die genanneten Probleme schnellstmöglich zu beheben. Dabei ist eine Zusammenarbeit mit den Nutzern äußerst behilflich! Falls also eine Fehlermeldung auftreten sollte oder unangemessenes Verhalten von Nutzern beobachtet werden, wäre eine Weiterleitung an einen Administrator sehr hilfreich!
-
 		- @nagato = User.find(1)
-		%p 
-			Derzeitiger Administrator ist 
+		%p
+			Derzeitiger Administrator ist
 			= link_to @nagato.name, @nagato
 			(Erreichbar über Chat und das Postfach)
 	%br
@@ -39,8 +38,6 @@
 						- if current_user.id == pin.user_id or current_user.admin?
 							= link_to "zum Pin", pin
 
-
-
 .side-box
 	%h2 Neuste Otakus
 	- @users = User.all.order("created_at DESC").limit(9)
@@ -53,5 +50,3 @@
 	- @guilds.each do |guild|
 		= link_to guild_path(guild.id) do
 			= image_tag guild.image.url(:standart)
-			
-

@@ -16,6 +16,9 @@ group :development do
 
 	gem 'traceroute' #rake traceroute
 	gem 'rack-mini-profiler'
+	gem 'bullet'
+	gem 'brakeman', :require => false #brakeman
+	gem 'rails_best_practices' #rails_best_practices .
 end
 group :production do
 	gem 'pg'

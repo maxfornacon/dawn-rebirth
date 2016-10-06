@@ -36,7 +36,7 @@ Rails.application.configure do
 
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
-  
+
   config.assets.enabled = true
   config.assets.paths << Rails.root.join('/app/assets/fonts')
   # Debug mode disables concatenation and preprocessing of assets.
@@ -56,4 +56,14 @@ Rails.application.configure do
 
 	#devise
 	config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #bullet
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
 end
