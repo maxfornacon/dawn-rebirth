@@ -91,6 +91,6 @@ Rails.application.configure do
     :storage => :s3,
     :s3_region => 'us-east-1',
     :s3_host_name => 'win.pakass.de:9000',
-    :bucket => 'devdawnrebirth'
+    :bucket => 'dawnrebirth'
   }
 end
