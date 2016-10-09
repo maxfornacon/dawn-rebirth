@@ -28,3 +28,65 @@
 		display: flex
 		margin: auto
 
+.kage
+	margin: 0 auto
+	width: 300px
+	p
+		text-align: center
+		background: #DE6565
+		margin-top: -4px
+		padding: 6px
+		font-size: 25px
+
+.jonin
+	min-height: 158px
+	.box100
+		width: 100px
+		float: left
+		p
+			text-align: center
+			background: #DE6565
+			margin-top: -4px
+			padding: 3px
+			font-size: 20px
+.chunin
+	min-height: 100px
+	.box50
+		width: 50px
+		float: left
+		p
+			text-align: center
+			margin-top: -4px
+			font-size: 12px
+
+
+.guild
+	$headingColor: #DE6565
+
+	h2
+		margin: 10px 0
+		color: $headingColor
+
+
+
+	// Spear effect
+	h2
+		text-align: center
+		overflow: hidden
+		span
+			display: inline-block
+			position: relative
+			
+			&:before, &:after
+				content: ""
+				border-bottom: 2px solid $headingColor
+				width: 100em
+				margin: 0 1.5em
+				position: absolute
+				bottom: .5em
+			
+			&:before
+				right: 100%
+			
+			&:after
+				left: 100%

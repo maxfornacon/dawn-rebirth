@@ -92,7 +92,6 @@ class GuildsController < ApplicationController
 		end
 	end
 
-
 	private
 
 	def guild_params

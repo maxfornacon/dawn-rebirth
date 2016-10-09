@@ -15,8 +15,9 @@ class UsersController < ApplicationController
 	end
 
 	def about
-		if @user.guildmember?
+		begin
 			@guild = Guild.find(@user.guild_id)
+		rescue
 		end
 	end
 
@@ -31,6 +32,44 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def rank_up
+		@guild = Guild.find(params[:id])
+		if current_user.owner? and current_user.guild_id == @guild.id
+			user = User.find(params[:user_id])
+			if user.guildrank < 15
+				user.guildrank = user.guildrank + 1
+				user.save
+				redirect_to guilds_members_path(@guild), notice: "Rang erhöht"
+			else
+				redirect_to guilds_members_path(@guild), alert: "nicht möglich"
+			end
+		end		
+	end
+	def rank_down
+		@guild = Guild.find(params[:id])
+		if current_user.owner? and current_user.guild_id == @guild.id
+			user = User.find(params[:user_id])
+			if user.guildrank > 11
+				user.guildrank = user.guildrank - 1
+				user.save
+				redirect_to(guilds_members_path(@guild), notice: "Rang erniedrigt")
+			else
+				redirect_to guilds_members_path(@guild), alert: "nicht möglich"
+			end
+		end		
+	end
+	def kick
+		@guild = Guild.find(params[:id])
+		if current_user.owner? and current_user.guild_id == @guild.id
+			user = User.find(params[:user_id])
+			user.update_attribute :guild_id, false
+			user.update_attribute :guildmember, false
+			redirect_to guilds_members_path(@guild), alert: "gekickt"
+		end
+	end
+
+	def markdown
+	end
 	private
 
 		def about_params

@@ -1,17 +1,6 @@
 = render 'header'
 .container
-	%table
-		%tr
-			%th Name
-			%th Online?
-		- @user.each do |user|
-			- if user.guild_id == @guild.id
-				%tr
-					%td= link_to user.name, user
-					- if user.online?
-						%td
-							.online
-					%td= role(user.guildrank)
+
 	%br
 
 

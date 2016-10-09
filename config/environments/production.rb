@@ -86,4 +86,9 @@ Rails.application.configure do
 	#ActionCable
 	#config.web_socket_server_url = "wss://dare.pakass.de/cable"
 	config.action_cable.allowed_request_origins = ['http://dare.pakass.de']
+
+  config.paperclip_defaults = {
+    :storage => :minio,
+    :bucket => 'dawnrebirth'
+  }
 end

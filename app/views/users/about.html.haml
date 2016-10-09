@@ -1,64 +1,36 @@
-.about
-	%header
-		.container
-			= image_tag @user.avatar.url(:medium)
-			%h2
-				= @user.name
-				,
-				- if @user.date_of_birth?
-					- begin
-						= distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years)
-					- rescue
-					,
-				- if @user.is_female?
-					♀
-				-else
-					♂
-			%p.bio= @user.status
-
-			- if @user.twitter?
-				= link_to "https://twitter.com/" + @user.twitter do
-					= image_tag("twitter.png", width:"32px", height: "32px", class: "sozialimg")
-			- if @user.facebook?
-				= link_to "https://www.facebook.com/" + @user.facebook do
-					= image_tag("facebook.png", width:"32px", height: "32px", class: "sozialimg")
-			- if @user.askfm?
-				= link_to "https://ask.fm/" + @user.askfm do
-					= image_tag("askfm.png", width:"32px", height: "32px", class: "sozialimg")
-			- if @user.instagram?
-				= link_to "https://instagram.com/" + @user.instagram do
-					= image_tag("instagram.png", width:"32px", height: "32px", class: "sozialimg")
-			- if @user.snapchat?
-				= image_tag("snapchat.png", width:"32px", height: "32px", class: "sozialimg")
-				%p.snap= @user.snapchat
-	.container
-		%table.favourites
-			%tr
-				- if @user.favanime?
-					%th Anime
-					%th
-				-if @user.favmanga?
-					%th Manga
-			%tr
-				- if @user.favanime?
-					%td= @user.favanime
-					%td &nbsp;&nbsp;
-				-if @user.favmanga?
-					%td= @user.favmanga
+= render 'aside'
+.main
+	- if @user.status?
+		%p.status= @user.status
+	- if @user.date_of_birth?
 		- begin
-			%p= markdown(@user.bio)
+			= distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years)
 		- rescue
+	- if @user.is_female?
+		♀
+	-else
+		♂
 
-		%table.kanban
-			%tr
-				%th ToWatch
-				%th Watching
-				%th Watched
-			%tr
-				%td
-				%td
-				%td
+	- if @user.twitter?
+		= link_to "https://twitter.com/" + @user.twitter do
+			= image_tag("twitter.png", width:"32px", height: "32px", class: "sozialimg")
+	- if @user.facebook?
+		= link_to "https://www.facebook.com/" + @user.facebook do
+			= image_tag("facebook.png", width:"32px", height: "32px", class: "sozialimg")
+	- if @user.askfm?
+		= link_to "https://ask.fm/" + @user.askfm do
+			= image_tag("askfm.png", width:"32px", height: "32px", class: "sozialimg")
+	- if @user.instagram?
+		= link_to "https://instagram.com/" + @user.instagram do
+			= image_tag("instagram.png", width:"32px", height: "32px", class: "sozialimg")
+	- if @user.snapchat?
+		= image_tag("snapchat.png", width:"32px", height: "32px", class: "sozialimg")
+		%p.snap= @user.snapchat
 
+	- begin
+		.bio
+			= markdown(@user.bio)
+	- rescue
 
-		- if current_user.id == @user.id
-			= link_to "bearbeiten", edit_user_path
+	- if current_user.id == @user.id
+		= link_to "bearbeiten", edit_user_path

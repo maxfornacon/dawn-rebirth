@@ -28,8 +28,7 @@ gem 'coffee-script-source', '1.8.0'
 
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'devise', '~> 4.2'
-gem 'paperclip', '~> 4.3.0'
-gem 'paperclip-dropbox', '~> 1.3', '>= 1.3.2'
+gem 'paperclip', '~> 5.1'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'dotiw', '~> 3.1', '>= 3.1.1'
@@ -37,5 +36,7 @@ gem 'masonry-rails', '~> 0.2.4'
 gem 'redis', '~> 3.2'
 gem 'auto_html', '~> 1.6.4'
 gem 'jquery-turbolinks'
+gem 'redcarpet', '~> 3.3', '>= 3.3.4'
+gem 'aws-sdk', '~> 2.6', '>= 2.6.6'
 
 ruby "2.2.4"

@@ -1,0 +1,7 @@
+development:
+  access_key_id: GJB9TW275ET3W87UJW0D
+  secret_access_key: 2ngAhhCr1oPVHI+pg/YQL+ZIPtytjyf70jvVXgy2
+
+production:
+  access_key_id: GJB9TW275ET3W87UJW0D
+  secret_access_key: 2ngAhhCr1oPVHI+pg/YQL+ZIPtytjyf70jvVXgy2

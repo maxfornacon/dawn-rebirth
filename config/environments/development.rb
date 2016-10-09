@@ -66,4 +66,11 @@ Rails.application.configure do
     Bullet.rails_logger = true
     Bullet.add_footer = true
   end
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_region => 'us-east-1',
+    :s3_host_name => 'win.pakass.de:9000',
+    :bucket => 'devdawnrebirth'
+  }
+
 end

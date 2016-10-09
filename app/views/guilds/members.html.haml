@@ -1,36 +1,48 @@
 = render 'header'
-.container
-	%h1= role(print_rolenumber(@guild.guildtype, 4))
-	- User.where(guild_id: @guild.id, guildrank: 14).find_each do |user|
-		= user.name
+.guild
+	.container
+		.kage
+			%h2
+				%span= role(print_rolenumber(@guild.guildtype, 4))
+			- User.where(guild_id: @guild.id, owner: true).find_each do |user|
+				= image_tag user.avatar.url(:medium)
+				%p= user.name
+		.jonin
+			%h2
+				%span= role(print_rolenumber("Shinobigilde", 3))
+			- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
+				- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
+					.box100
+						= image_tag user.avatar.url(:small)
+						%p= user.name
+		.chunin	
+			%h2
+				%span= role(print_rolenumber("Shinobigilde", 2))	
+			- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
+				- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
+					.box50
+						= image_tag user.avatar.url(:extrasmall)
+						%p= user.name
+		.genin
+			%h2
+				%span= role(print_rolenumber("Shinobigilde", 1))
+			- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
+				- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
+					= user.name
+					&nbsp;
 
-	- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 3))
-		- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
-			= user.name
-
-	- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 2))
-		- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
-			= user.name
-
-	- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
-		%h2= role(print_rolenumber("Shinobigilde", 1))
-		- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
-			= user.name
-
-	- if current_user.owner? or current_user.admin?
-		%table
-			%tr
-				%th Name
-				%th Rang
-				%th 
-			- @user.each do |user|
-				- if user.guild_id == @guild.id
-					%tr
-						%td= link_to user.name, user
-						%td= role(user.guildrank)
-						%td
-							= link_to "rauswerfen"
-							= link_to "befördern"
-							= link_to "degradieren"
+		- if current_user.owner? or current_user.admin?
+			%table
+				%tr
+					%th Name
+					%th Rang
+					%th 
+				- @user.each do |user|
+					- if user.guild_id == @guild.id
+						%tr
+							%td= link_to user.name, user
+							%td= role(user.guildrank)
+							%td
+								= link_to "rauswerfen", kick_user_path(user_id: user.id)
+								= link_to "befördern", rank_up_user_path(user_id: user.id)
+								= link_to "degradieren", rank_down_user_path(user_id: user.id)

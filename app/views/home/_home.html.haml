@@ -15,6 +15,9 @@
 			Derzeitiger Administrator ist
 			= link_to @nagato.name, @nagato
 			(Erreichbar über Chat und das Postfach)
+	%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/dawn_rebirth"} Tweets by dawn_rebirth
+	%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
+
 	%br
 	%hr
 	%br
@@ -38,6 +41,7 @@
 						- if current_user.id == pin.user_id or current_user.admin?
 							= link_to "zum Pin", pin
 
+
 .side-box
 	%h2 Neuste Otakus
 	- @users = User.all.order("created_at DESC").limit(9)
@@ -50,3 +54,4 @@
 	- @guilds.each do |guild|
 		= link_to guild_path(guild.id) do
 			= image_tag guild.image.url(:standart)
+	

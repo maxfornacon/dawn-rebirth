@@ -2,9 +2,13 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   devise_for :users
-	resources :users, except: [:create, :new, :destroy]
+	resources :users, except: [:create, :new, :destroy] do
+    get :rank_up, on: :member
+    get :rank_down, on: :member
+    get :kick, on: :member
+  end
   get '/about/:id', to: "users#about", as: 'about'
-  
+
   resources :pins do
     member do
       put "like" => "pins#upvote"
@@ -20,9 +24,9 @@ Rails.application.routes.draw do
   resources :guilds
   get 'join/:id', to: 'guilds#join', as:'join'
   get 'leave/:id', to: 'guilds#leave', as:'leave'
-
   get 'guilds/chat/:id', to: 'guilds#chat', as: 'guilds_chat'
   get 'guilds/members/:id', to: 'guilds#members', as: 'guilds_members'
+
 
   get 'admin/users'
   get 'admin/index'

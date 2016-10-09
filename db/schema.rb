@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 20161004175112) do
     t.string   "snapchat"
     t.string   "googleplus"
     t.boolean  "admin",                  default: false
-    t.integer  "score"
+    t.integer  "score",                  default: 0
     t.integer  "guildrank",              default: 0
     t.boolean  "online",                 default: false
     t.index ["email"], name: "index_users_on_email", unique: true

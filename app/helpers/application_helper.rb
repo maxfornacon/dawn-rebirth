@@ -46,7 +46,7 @@ module ApplicationHelper
       elsif number == 2
         @roleid = 12
       elsif number == 3
-        @roleid == 13
+        @roleid = 13
       elsif number == 4
         @roleid = 14
       elsif number == 5
