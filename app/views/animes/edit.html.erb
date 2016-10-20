@@ -1,0 +1,6 @@
+<h1>Anime</h1>
+
+<%= render 'form', anime: @anime %>
+
+<%= link_to 'Zurück', @anime %>
+<%= link_to 'Löschen', @anime, method: :delete, data: { confirm: "Bist du sicher, dass du den Anime löschen möchtest?"}%>

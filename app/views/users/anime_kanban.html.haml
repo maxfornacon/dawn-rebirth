@@ -1,0 +1,18 @@
+= render 'aside'
+.main
+	.container.animecontainer
+		= link_to 'New Anime', new_anime_path, id: "new_anime"
+		%br
+		.col
+			%h2 To Watch
+			= render @to_watch
+						
+		.col
+			%h2 Watching
+			= render @watching
+						
+		.col
+			%h2 Watched
+			= render @watched
+						
+

@@ -1,0 +1,14 @@
+.anime
+	= link_to anime.name, anime
+	- if current_user.id == @user.id
+		- if anime.state == 'watching'
+			.link.double
+				.doublebutton
+					= link_to "<i class='material-icons'>arrow_back</i>".html_safe, change_anime_path(anime, state: "to_watch"), method: :put
+					= link_to "<i class='material-icons'>arrow_forward</i>".html_safe, change_anime_path(anime, state: "watched"), method: :put
+		- elsif anime.state == 'watched'
+			.link
+				= link_to "<i class='material-icons'>arrow_back</i>".html_safe, change_anime_path(anime, state: "watching"), method: :put
+		- else
+			.link
+				= link_to "<i class='material-icons'>arrow_forward</i>".html_safe, change_anime_path(anime, state: "watching"), method: :put

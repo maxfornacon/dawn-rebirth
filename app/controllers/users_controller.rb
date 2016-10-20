@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :find_user, only: [:show, :edit, :update, :about]
+	before_action :find_user, only: [:show, :edit, :update, :about, :anime_kanban]
 
 	def index
 		@users = User.search(params[:search])
@@ -69,6 +69,12 @@ class UsersController < ApplicationController
 	end
 
 	def markdown
+	end
+
+	def anime_kanban
+		@to_watch = @user.animes.where(state: "to_watch")
+    @watching = @user.animes.where(state: "watching")
+    @watched = @user.animes.where(state: "watched")
 	end
 	private
 

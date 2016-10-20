@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @anime.name %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @anime.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @anime.end %>
+</p>
+
+<%= link_to 'Edit', edit_anime_path(@anime) %> |
+<%= link_to 'Back', anime_kanban_path(@anime.user) %>

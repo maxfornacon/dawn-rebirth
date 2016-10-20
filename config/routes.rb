@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :animes do
+    member do
+      put :change
+    end
+  end
   mount ActionCable.server => '/cable'
 
   devise_for :users
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
     get :kick, on: :member
   end
   get '/about/:id', to: "users#about", as: 'about'
+  get '/anime_kanban/:id', to: "users#anime_kanban", as: 'anime_kanban'
 
   resources :pins do
     member do

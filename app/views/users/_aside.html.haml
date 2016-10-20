@@ -3,8 +3,12 @@
 	- if @user.admin?
 		#adminribbon
 			ADMIN
+	= link_to @user do
+		= image_tag('pin.png', class: 'material-icons')
 	= link_to about_path(@user) do
 		%i.material-icons person
+	= link_to anime_kanban_path(@user) do
+		%i.material-icons apps
 	.info
 		%h1.name= @user.name
 		- if @user.online?
@@ -80,7 +84,7 @@
 		- else
 			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
 
-	
+
 :javascript
 	$(document).ready(function() {
 	  $('.popup-btn1').click(function(e) {
