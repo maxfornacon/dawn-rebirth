@@ -25,9 +25,9 @@ jQuery(document).on 'turbolinks:load', ->
 
     $('#new_message').submit (e) ->
       $this = $(this)
-      textarea = $this.find('#message_body')
-      if $.trim(textarea.val()).length > 1
-        App.global_chat.send_message textarea.val(), messages.data('chat-room-id')
-        textarea.val('')
+      textarea = $this.find('.emojionearea-editor')
+      if $.trim(textarea.html()).length > 1
+        App.global_chat.send_message textarea.html(), messages.data('chat-room-id')
+        textarea.html('')
       e.preventDefault()
       return false

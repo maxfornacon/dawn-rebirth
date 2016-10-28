@@ -9,6 +9,19 @@
 			= form_for @message, url: '#' do |f|
 				= hidden_field_tag 'chat_room_id', @chat_room.id
 				.form-group
-					= f.text_field :body, autocomplete: "off", class: 'text-area'
+					= f.text_field :body, autocomplete: "off", class: 'text-area', id: 'emojiarea2'
+					#container
 				= f.submit "Post", id: "message_button"
 
+:javascript
+	$(document).ready(function() {
+		$("#emojiarea2").emojioneArea({
+			events: {
+				keyup: function (editor, event) {
+			    if(event.keyCode == 13){
+			      $("#message_button").click();
+			    }
+				}
+			}
+		});
+	});

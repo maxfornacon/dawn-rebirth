@@ -5,7 +5,6 @@ Rails.application.routes.draw do
     end
   end
   mount ActionCable.server => '/cable'
-
   devise_for :users
 	resources :users, except: [:create, :new, :destroy] do
     get :rank_up, on: :member

@@ -6,4 +6,6 @@
 
 		.top-right
 			[#{message.created_at.strftime('%H:%M:%S')}]
-		%p= raw(message.body_html)
+
+		-#= raw(message.body_html)
+		= message.body.html_safe

@@ -1,7 +1,8 @@
 = render 'aside'
 .main
 	.container.animecontainer
-		= link_to 'New Anime', new_anime_path, id: "new_anime"
+		- if current_user.id == @user.id
+			= link_to 'New Anime', new_anime_path, id: "new_anime"
 		%br
 		.col
 			%h2 To Watch

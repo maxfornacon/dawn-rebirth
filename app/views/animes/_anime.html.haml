@@ -1,5 +1,8 @@
 .anime
-	= link_to anime.name, anime
+	- if current_user.id == @user.id
+		= link_to anime.name, anime
+	- else
+		%p= anime.name
 	- if current_user.id == @user.id
 		- if anime.state == 'watching'
 			.link.double

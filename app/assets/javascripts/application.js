@@ -16,6 +16,7 @@
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require cable
+//= require emojionearea
 //= require_tree .
 
 
@@ -31,11 +32,3 @@ $(document).ready(function() {
 		});
 	}, 4500);
 });
-
-$("#message_body").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#message_button").click();
-    }
-});
-
-
