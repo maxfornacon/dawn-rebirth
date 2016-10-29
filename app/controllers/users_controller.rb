@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :find_user, only: [:show, :edit, :update, :about, :anime_kanban]
+	before_action :find_user, only: [:show, :edit, :update, :about, :anime_kanban, :destroy]
 	before_action :find_guild, only: [:show, :about, :rank_up, :rank_down, :kick, :anime_kanban]
 
 	def index
@@ -25,6 +25,11 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def destroy
+		if @user.destroy
+			redirect_to admin_users_path, notice: "User destroyed"
+		end
+	end
 	def rank_up
 		if current_user.owner? and current_user.guild_id == @guild.id
 			user = User.find(params[:user_id])

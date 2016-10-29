@@ -37,6 +37,15 @@ module ApplicationHelper
         @role = "Anbu"
       end
     end
+    if @guild.guildtype == "Magiergilde"
+      if id == 11
+        @role = "Magier"
+      elsif id == 12
+        @role = "S-Rang-Magier"
+      elsif id == 13
+        @role = "Meister"
+      end
+    end
   end
 
   def print_rolenumber(guildtype, number)
@@ -51,6 +60,15 @@ module ApplicationHelper
         @roleid = 14
       elsif number == 5
         @roleid = 15
+      end
+    end
+    if guildtype == "Magiergilde"
+      if number == 1
+        @roleid = 11
+      elsif number == 2
+        @roleid = 12
+      elsif number == 3
+        @roleid = 13
       end
     end
   end

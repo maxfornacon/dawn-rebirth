@@ -1,35 +1,59 @@
 = render 'header'
 .guild
 	.container
-		.kage
-			%h2
-				%span= role(print_rolenumber(@guild.guildtype, 4))
-			- User.where(guild_id: @guild.id, owner: true).find_each do |user|
-				= image_tag user.avatar.url(:medium)
-				%p= user.name
-		.jonin
-			%h2
-				%span= role(print_rolenumber("Shinobigilde", 3))
-			- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
-				- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
-					.box100
-						= image_tag user.avatar.url(:small)
-						%p= user.name
-		.chunin	
-			%h2
-				%span= role(print_rolenumber("Shinobigilde", 2))	
-			- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
-				- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
-					.box50
-						= image_tag user.avatar.url(:extrasmall)
-						%p= user.name
-		.genin
-			%h2
-				%span= role(print_rolenumber("Shinobigilde", 1))
-			- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
-				- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
-					= user.name
-					&nbsp;
+		- if @guild.guildtype == "Shinobigilde"
+			.kage
+				%h2
+					%span= role(print_rolenumber(@guild.guildtype, 4))
+				- User.where(guild_id: @guild.id, owner: true).find_each do |user|
+					= image_tag user.avatar.url(:medium)
+					%p= user.name
+			.jonin
+				%h2
+					%span= role(print_rolenumber("Shinobigilde", 3))
+				- if User.where(guild_id: @guild.id, guildrank: 13).find_each.count != 0
+					- User.where(guild_id: @guild.id, guildrank: 13).find_each do |user|
+						.box100
+							= image_tag user.avatar.url(:small)
+							%p= user.name
+			.chunin	
+				%h2
+					%span= role(print_rolenumber("Shinobigilde", 2))	
+				- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
+					- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
+						.box50
+							= image_tag user.avatar.url(:extrasmall)
+							%p= user.name
+			.genin
+				%h2
+					%span= role(print_rolenumber("Shinobigilde", 1))
+				- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
+					- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
+						= user.name
+						&nbsp;
+						
+		- elsif @guild.guildtype == "Magiergilde"
+			.kage
+				%h2 
+					%span= role(print_rolenumber(@guild.guildtype, 3))
+				- User.where(guild_id: @guild.id, owner: true).find_each do |user|
+					= image_tag user.avatar.url(:medium)
+					%p= user.name
+			.jonin
+				%h2
+					%span= role(print_rolenumber(@guild.guildtype, 2))
+				- if User.where(guild_id: @guild.id, guildrank: 12).find_each.count != 0
+					- User.where(guild_id: @guild.id, guildrank: 12).find_each do |user|
+						.box50
+							= image_tag user.avatar.url(:extrasmall)
+							%p= user.name
+			.chunin
+				%h2
+					%span= role(print_rolenumber(@guild.guildtype, 1))
+				- if User.where(guild_id: @guild.id, guildrank: 11).find_each.count != 0
+					- User.where(guild_id: @guild.id, guildrank: 11).find_each do |user|
+						= user.name
+						&nbsp;
 
 		- if current_user.owner? or current_user.admin?
 			%table

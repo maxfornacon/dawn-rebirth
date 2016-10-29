@@ -10,6 +10,7 @@
 		%th sign_in_count
 		%th last Login
 		%th last IP
+		%th destroy
 	- @users.each do |u|
 		%tr
 			%td= u.id
@@ -25,5 +26,5 @@
 			%td= u.sign_in_count
 			%td= u.last_sign_in_at
 			%td= u.last_sign_in_ip
-
+			%td= link_to "Löschen", admin_destroy_user_path(u), method: :delete, data: {confirm: "You sure?"}
 
