@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :find_user, only: [:show, :edit, :update, :about, :anime_kanban]
+	before_action :find_guild, only: [:show, :about, :rank_up, :rank_down, :kick, :anime_kanban]
 
 	def index
 		@users = User.search(params[:search])
@@ -8,17 +9,9 @@ class UsersController < ApplicationController
 
 	def show
 		@pin = @user.pins.all.order("created_at DESC")
-		begin
-			@guild = Guild.find(@user.guild_id)
-		rescue
-		end
 	end
 
 	def about
-		begin
-			@guild = Guild.find(@user.guild_id)
-		rescue
-		end
 	end
 
 	def edit
@@ -33,7 +26,6 @@ class UsersController < ApplicationController
 	end
 
 	def rank_up
-		@guild = Guild.find(params[:id])
 		if current_user.owner? and current_user.guild_id == @guild.id
 			user = User.find(params[:user_id])
 			if user.guildrank < 15
@@ -46,7 +38,6 @@ class UsersController < ApplicationController
 		end		
 	end
 	def rank_down
-		@guild = Guild.find(params[:id])
 		if current_user.owner? and current_user.guild_id == @guild.id
 			user = User.find(params[:user_id])
 			if user.guildrank > 11
@@ -59,7 +50,6 @@ class UsersController < ApplicationController
 		end		
 	end
 	def kick
-		@guild = Guild.find(params[:id])
 		if current_user.owner? and current_user.guild_id == @guild.id
 			user = User.find(params[:user_id])
 			user.update_attribute :guild_id, false
@@ -84,5 +74,12 @@ class UsersController < ApplicationController
 
 		def find_user
 			@user = User.find(params[:id])
+		end
+
+		def find_guild
+			begin
+				@guild = Guild.find(params[:id])
+			rescue
+			end
 		end
 end
