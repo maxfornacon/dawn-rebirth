@@ -59,17 +59,15 @@
 			margin-top: -4px
 			font-size: 12px
 
-
+$headingColor: #DE6565
 .guild
-	$headingColor: #DE6565
-
+	
 	h2
 		margin: 10px 0
 		color: $headingColor
 
 
 
-	// Spear effect
 	h2
 		text-align: center
 		overflow: hidden
@@ -90,3 +88,21 @@
 			
 			&:after
 				left: 100%
+
+#treppchen
+	width: 809px
+	margin: 0 auto
+
+	.first
+		margin-top: 10px
+
+	.second, .third
+		width: 250px
+
+	span
+		font-size: 60px
+		color: $headingColor
+	span:nth-of-type(odd)
+		margin: 0 108px
+	span:nth-of-type(2)
+		margin: 0 134px
