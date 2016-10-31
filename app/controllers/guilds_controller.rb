@@ -3,12 +3,11 @@ class GuildsController < ApplicationController
 	before_action :find_guild, only: [:show, :edit, :update, :destroy, :join, :leave, :members, :chat]
 
 	def index
-		@guilds = Guild.all.order("created_at DESC")
+		@guilds = Guild.all.order(score: :desc)
 	end
 
 	def show
 		@user = User.all.order("created_at DESC")
-
 	end
 
 	def members

@@ -1,5 +1,6 @@
-%h1 index
-
-- @guilds.each do |g|
-	= link_to g.name, guild_path(g.id)
-	%br
+.container
+	= image_tag(@guilds.second.image.url(:standart))
+	= image_tag(@guilds.first.image.url(:standart))
+	= image_tag(@guilds.third.image.url(:standart))
+	- @guilds.each do |g|
+		= link_to g.name, guild_path(g.id)

@@ -83,7 +83,7 @@ class UsersController < ApplicationController
 
 		def find_guild
 			begin
-				@guild = Guild.find(params[:id])
+				@guild = Guild.find(@user.guild_id)
 			rescue
 			end
 		end
