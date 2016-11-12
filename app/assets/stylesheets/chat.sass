@@ -6,11 +6,11 @@
 	.media-list
 		list-style: none
 
-	#messages
+	#messages, #msgs
 		overflow: auto
 		height: 850px
 
-	.message
+	.message, .msg
 		width: calc(100% - 8px)
 		min-height: 50px
 		display: inline-block
@@ -19,7 +19,7 @@
 		margin-top: -1px
 
 	.text-area
-		width: 100%
+		width: calc(100% - 8px)
 		height: 35px
 		resize: none
 		border: 1px solid #FFB7B7
@@ -48,7 +48,7 @@
 			max-height: 400px
 			max-width: 800px
 
-	#message_button
+	#message_button, #msg_button
 		display: none
 
 	.well
@@ -64,3 +64,15 @@
 	float: left
 	width: 48%
 	padding: 1%
+
+.side-box
+	span
+		width: 60%
+		background: #373f41
+		display: block
+		text-align: center
+		padding: 5px
+		margin: 5px auto
+
+		a
+			color: #c7c7c7

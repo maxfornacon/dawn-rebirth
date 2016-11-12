@@ -1,0 +1,4 @@
+.message-input
+	= form_for(@msg, remote: true) do |f|
+		= f.text_field :content, autocomplete: "off", class: 'text-area'
+		= f.submit "Send", id: 'msg_button'

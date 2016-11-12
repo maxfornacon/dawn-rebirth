@@ -14,10 +14,16 @@
           %br/
           %br/
         .field
-          = f.radio_button :is_female, '1'
-          = f.label :is_female, "♀"
-          = f.radio_button :is_female, '0'
-          = f.label :is_female, "♂"
+          - if current_user.is_female == 1
+            = f.radio_button :is_female, '1', checked: true
+            = f.label :is_female, "♀"
+            = f.radio_button :is_female, '0'
+            = f.label :is_female, "♂"
+          - else
+            = f.radio_button :is_female, '1'
+            = f.label :is_female, "♀"
+            = f.radio_button :is_female, '0', checked: true
+            = f.label :is_female, "♂"
           %br/
           %br/
         .field

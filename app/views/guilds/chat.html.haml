@@ -1,7 +1,7 @@
 = render 'header'
-- if current_user.guild_id == @guild.id
+- if current_user.guild_id == @guild.id or current_user.admin?
 	.container.chat
-		#messages.panel.panel-default{"data-chat-room-id" => "#{@chat_room.id}"}
+		#messages{"data-chat-room-id" => "#{@chat_room.id}"}
 			.panel-body
 				%ul.media-list
 					= render @chat_room.messages

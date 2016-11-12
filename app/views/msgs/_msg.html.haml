@@ -1,0 +1,11 @@
+.message
+	= link_to image_tag(msg.user.avatar.url(:extrasmall), alt: msg.user.name, class: "media-object"), msg.user, target: '_blank'
+	.media-body
+		%h4.media-heading
+			= link_to msg.user.name + ":", msg.user, target: '_blank'
+
+		.top-right
+			[#{msg.created_at.strftime('%d %b - %H:%M:%S')}]
+
+		-#= raw(msg.body_html)
+		= msg.content.html_safe

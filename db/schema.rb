@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161015204940) do
+ActiveRecord::Schema.define(version: 20161110133149) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "name"
     t.datetime "start"
     t.datetime "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "state",      default: "to_watch"
+    t.integer  "user_id"
   end
 
   create_table "flags", force: :cascade do |t|
@@ -52,11 +54,20 @@ ActiveRecord::Schema.define(version: 20161015204940) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "guild_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.text     "body_html"
+    t.integer  "publicchat_id"
     t.index ["guild_id"], name: "index_messages_on_guild_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "msgs", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_msgs_on_user_id"
   end
 
   create_table "pins", force: :cascade do |t|
@@ -83,6 +94,11 @@ ActiveRecord::Schema.define(version: 20161015204940) do
     t.index ["cached_weighted_score"], name: "index_pins_on_cached_weighted_score"
     t.index ["cached_weighted_total"], name: "index_pins_on_cached_weighted_total"
     t.index ["user_id"], name: "index_pins_on_user_id"
+  end
+
+  create_table "publicchats", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

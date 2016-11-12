@@ -10,11 +10,12 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
-  has_many :pins
+  has_many :pins, dependent: :destroy
   has_many :comments, dependent: :delete_all
 
   has_many :guilds
 	has_many :messages, dependent: :destroy
+  has_many :msgs, dependent: :destroy
   acts_as_voter
 
   has_many :friendships
