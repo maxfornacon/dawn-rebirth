@@ -13,6 +13,12 @@ class MsgsController < ApplicationController
     end
   end
 
+  def destroy
+    @dmsg = Msg.find(params[:id])
+    @dmsg.destroy
+    redirect_to :back
+  end
+
   private
 
     def get_msgs

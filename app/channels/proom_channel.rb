@@ -2,10 +2,8 @@
 class ProomChannel < ApplicationCable::Channel
   def subscribed
     stream_from "proom_channel"
-    @count +=1
   end
 
   def unsubscribed
-    @count -=1
   end
 end
