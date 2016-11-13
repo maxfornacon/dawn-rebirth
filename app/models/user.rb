@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :guilds
 	has_many :messages, dependent: :destroy
   has_many :msgs, dependent: :destroy
-  acts_as_voter
 
   has_many :friendships
   has_many :friends, :through => :friendships
@@ -24,6 +23,8 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
 
   has_many :animes, dependent: :destroy
+
+  acts_as_voter
 
   def online?
     updated_at > 10.minutes.ago

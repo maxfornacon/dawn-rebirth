@@ -43,21 +43,21 @@ class PinsController < ApplicationController
 
 	def upvote
 		@user = User.find(@pin.user)
-		@pin.upvote_from current_user
+		@pin.upvote_by current_user
 		@user.increment!(:score, by = 1)
-		redirect_to @user
+		redirect_to :back
 	end
 
 	def downvote
 		@user = User.find(@pin.user)
-		@pin.downvote_from current_user
-		redirect_to @user
+		@pin.downvote_by current_user
+		redirect_to :back
 	end
 
 	def flag
 		@user = User.find(@pin.user)
 		@pin.flags.create
-		redirect_to @user
+		redirect_to :back
 	end
 	private
 
