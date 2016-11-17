@@ -1,46 +1,22 @@
-= form_for @user do |f|
-	.about
-		%header
-			.container
-				= image_tag @user.avatar.url(:medium)
-				%h2
-					= @user.name
-					,
-					= distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years)
-					,
-					- if @user.is_female?
-						♀
-					-else
-						♂
-				= f.text_area :status
-		.container
-			.favourites
-				%table
-					%tr
-						%th Anime
-						%th
-						%th Manga
-					%tr
-						%td= f.text_field :favanime
-						%td &nbsp;&nbsp;
-						%td= f.text_field :favmanga
-
-
-			= f.text_area :bio
-			%br
-			= f.label :twitter
-			= f.text_field :twitter
-			%br
-			= f.label :facebook
-			= f.text_field :facebook
-			%br
-			= f.label :askfm
-			= f.text_field :askfm
-			%br
-			= f.label :instagram
-			= f.text_field :instagram
-			%br
-			= f.label :snapchat
-			= f.text_field :snapchat
-			%br
-			= f.submit 'speichern', class: "btn"
+= render 'aside'
+.main
+	= form_for @user do |f|
+		%p.status= f.text_area :status
+		~ f.text_area :bio
+		%br
+		= f.label :twitter
+		= f.text_field :twitter
+		%br
+		= f.label :facebook
+		= f.text_field :facebook
+		%br
+		= f.label :askfm
+		= f.text_field :askfm
+		%br
+		= f.label :instagram
+		= f.text_field :instagram
+		%br
+		= f.label :snapchat
+		= f.text_field :snapchat
+		%br
+		= f.submit 'speichern', class: "btn"

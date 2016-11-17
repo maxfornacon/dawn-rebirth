@@ -7,7 +7,7 @@
 		.top-right
 			[#{msg.created_at.strftime('%d %b - %H:%M:%S')}]
 			- if current_user.admin?
-				= link_to "[x]", msg_path(msg), method: :delete, data: { confirm: "Bist du sicher, dass du die Nachricht löschen möchtest?"}
+				=# link_to "TEST", msg_path(msg), method: :delete, data: { confirm: "Bist du sicher, dass du die Nachricht löschen möchtest?"}
 
 		-#= raw(msg.body_html)
 		= msg.content.html_safe

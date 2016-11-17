@@ -4,28 +4,9 @@
 		%p.status= @user.status
 	- if @user.date_of_birth?
 		- begin
-			= distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years)
+			- if distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years) != "less than 1 year"
+				= distance_of_time_in_words(Time.now, @user.date_of_birth, false, :only => :years)
 		- rescue
-	- if @user.is_female?
-		♀
-	-else
-		♂
-
-	- if @user.twitter?
-		= link_to "https://twitter.com/" + @user.twitter do
-			= image_tag("twitter.png", width:"32px", height: "32px", class: "sozialimg")
-	- if @user.facebook?
-		= link_to "https://www.facebook.com/" + @user.facebook do
-			= image_tag("facebook.png", width:"32px", height: "32px", class: "sozialimg")
-	- if @user.askfm?
-		= link_to "https://ask.fm/" + @user.askfm do
-			= image_tag("askfm.png", width:"32px", height: "32px", class: "sozialimg")
-	- if @user.instagram?
-		= link_to "https://instagram.com/" + @user.instagram do
-			= image_tag("instagram.png", width:"32px", height: "32px", class: "sozialimg")
-	- if @user.snapchat?
-		= image_tag("snapchat.png", width:"32px", height: "32px", class: "sozialimg")
-		%p.snap= @user.snapchat
 
 	- begin
 		.bio

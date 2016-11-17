@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :find_user, only: [:show, :edit, :update, :about, :anime_kanban, :destroy]
-	before_action :find_guild, only: [:show, :about, :rank_up, :rank_down, :kick, :anime_kanban]
+	before_action :find_guild, only: [:show, :about, :rank_up, :rank_down, :kick, :anime_kanban, :edit]
 
 	def index
 		@users = User.search(params[:search])
