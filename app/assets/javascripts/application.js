@@ -17,6 +17,7 @@
 //= require turbolinks
 //= require cable
 //= require emojionearea
+//= require cookies_eu
 //= require_tree .
 
 

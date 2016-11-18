@@ -1,10 +1,17 @@
 %table
 	%tr
 		%th ID
+		%th Content
+		%th IMG
 		%th User
 		%th Flags
 	- @pins.each do |p|
 		%tr
 			%td= p.id
+			%td= p.description
+			- if p.image?
+				%td= image_tag(p.image.url(:crop), height: '32')
+			- else
+				%td none
 			%td= p.user.name
 			%td= p.flags.count
