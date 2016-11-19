@@ -13,11 +13,11 @@
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+//= require cookies_eu
 //= require masonry/jquery.masonry
 //= require turbolinks
 //= require cable
 //= require emojionearea
-//= require cookies_eu
 //= require_tree .
 
 
