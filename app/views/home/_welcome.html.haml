@@ -1,8 +1,64 @@
-.black_fullscreen
-	= image_tag("itachi.png")
-	%h1 Die Morgendämmerung erwartet dich!
-	.buttons
-		= link_to "Login", new_user_session_path, class: "btn"
-		oder
-		= link_to "Registrieren", new_user_registration_path, class: "btn"
-		
+.landing
+	.cl50
+		%p.heading= link_to ".dawn//Rebirth", root_path
+		= image_tag("itachi.png")
+		%p Die Morgendämmerung erwartet dich!
+			
+	.cl50
+		.center
+			.tabs
+				%p.tab.signin.active 
+					%a Login 
+				%p oder
+				%p.tab.signup 
+					%a Registrieren
+			%br
+			.content
+				.signin-cont.cont
+					= form_for(resource, as: resource_name, url: session_path(resource_name), enctype: "multipart/form-data") do |f|
+						.form-group
+							= f.text_field :email
+							%label E-Mail
+							%span
+						.form-group
+							= f.password_field :password
+							%label Passwort
+							%span
+						.field
+							= f.check_box :remember_me, class: 'checkbox'
+							= f.label :remember_me, "Daten speichern", class: 'label'
+						= f.submit 'Log in', class: "btn"
+						= link_to "Passwort vergessen?", new_password_path(:user)
+				.signup-cont.cont
+					= form_for(resource, :as => resource_name, :url => registration_path(resource_name), enctype: "multipart/form-data") do |f|
+						= devise_error_messages!
+						.form-group
+							= f.text_field :name
+							%label Name
+							%span
+						.form-group
+							= f.email_field :email
+							%label E-Mail
+						.form-group
+							= f.password_field :password, autocomplete: "off"
+							%label Passwort
+							- if @minimum_password_length
+								%em
+									(mindestens #{@minimum_password_length} Zeichen)
+						.form-group
+							= f.password_field :password_confirmation, autocomplete: "off"
+							%label Passwort bestätigen
+						%label.label Hiermit erkläre ich mich mit den Nutzungsbedingungen einverstanden!
+						.actions
+							= f.submit "Registrieren", class: "btn"
+
+
+:javascript
+	$('input, textarea').blur(function() {
+		if( $(this).val().length !== '' && !$(this).hasClass('not-empty')) {
+			$(this).addClass('not-empty');
+		} else{
+			$(this).removeClass('not-empty');
+		}
+	});
+
