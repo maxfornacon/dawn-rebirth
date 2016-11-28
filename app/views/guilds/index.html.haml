@@ -1,8 +1,11 @@
 .container
 	#treppchen
-		= image_tag(@guilds.second.image.url(:standart), class: 'second')
-		= image_tag(@guilds.first.image.url(:standart), class: 'first')
-		= image_tag(@guilds.third.image.url(:standart), class: 'third')
+		- if @guilds.count >= 1
+			= image_tag(@guilds.second.image.url(:standart), class: 'second')
+			- if @guilds.count >= 2
+				= image_tag(@guilds.first.image.url(:standart), class: 'first')
+				- if @guilds.count >= 3
+					= image_tag(@guilds.third.image.url(:standart), class: 'third')
 		- 3.times do |x|
 			- x = x + 1
 			%span= x

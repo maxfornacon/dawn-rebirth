@@ -18,13 +18,38 @@
 					%p.alert= alert
 
 			= render 'home/consent_banner'
+			.Dropdown
+				.Dropdown-profile
+					%span.Name Menü
+					%span.MenuIcon
+						%span.MenuIcon-line
+						%span.MenuIcon-line
+						%span.MenuIcon-line
+				.Dropdown-nav
+					%ul.Dropdown-group
+						%li
+							= inline_svg "pin.svg", class: 'svg'
+							= link_to "Pins", pins_path, class: "NavLink"
+							%a.entypo-plus.OptionLink{:href => new_pin_path}
+						%li
+							= inline_svg "mask.svg", class: 'svg'
+							= link_to "Gilden", guilds_path, class: "NavLink"
+							%a.entypo-plus.OptionLink{:href => new_guild_path}
+						%li
+							%a.entypo-chat.NavLink{:href => chat_path} Chat
+						%li
+							%a.entypo-users.NavLink{:href => users_path} Users
+					%ul.Dropdown-group
+						%li
+							%a.entypo-logout.NavLink{:href => "#"} Logout
 
 			%nav
 				%p.heading= link_to ".dawn//Rebirth", root_path
-				- if user_signed_in?
-					= form_tag users_path, :method => 'get', :id => 'users_search' do
-						= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
-						= submit_tag "Suchen", :name => nil, class: "btn"
+				-#- if user_signed_in?
+					-#= form_tag users_path, :method => 'get', :id => 'users_search' do
+						-#= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
+						-#= submit_tag "Suchen", :name => nil, class: "btn"
+				
 
 				%ul
 					- if user_signed_in?
@@ -46,9 +71,19 @@
 			= yield
 
 		%footer
-			- 3.times do
-				.col
-			.col
-				%ul
-					%li Haftungsausschluss
-					%li Impressum
+			%ul
+				%li Über
+				%li Kontakt
+				%li Nutzungsbedingungen
+				%li Datenschutzerklärung
+				%li Impressum
+
+			%br
+			%hr
+
+			%p &copy; 2016 Fossner Media
+
+:javascript
+	$(".Dropdown").on("click", function(){
+		$(this).toggleClass('is-expanded');
+	});
