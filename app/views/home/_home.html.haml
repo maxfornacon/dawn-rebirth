@@ -18,41 +18,11 @@
 			(Erreichbar über den 
 			= link_to "Chat", chat_path
 			und Twitter: @HolyNagato)
-	%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/HolyNagato"} Tweets by HolyNagato
-	%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
-
-	%br
-	%hr
-	%br
-	%h1 Pins der Leute denen du folgst:
-	#pins.transitions-enabled
-		- @pin.each do |pin|
-			- for friendship in current_user.friendships
-				- if friendship.friend.name == pin.user.name
-					.box
-						- if pin.image?
-							- begin
-								= image_tag pin.image.url(:crop)
-							- rescue
-								%span [image missing]
-						%p= pin.description
-						%i #{I18n.l(pin.created_at, format: '%-d %B %Y')}
-						.votes
-							= link_to like_pin_path(pin), method: :put, class: "votelink" do
-								= image_tag("like_up.png", class: "voteimg")
-							%span= pin.get_upvotes.size - pin.get_downvotes.size
-							= link_to unlike_pin_path(pin), method: :put, class: "votelink" do
-								= image_tag("like_down.png", class: "voteimg")
-
-						- if current_user.id == pin.user_id or current_user.admin?
-							= link_to "zum Pin", pin
-
-						= link_to flag_pin_path(pin), method: :post, class: "flag" do
-							%i.material-icons flag
+	-#%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/HolyNagato"} Tweets by HolyNagato
+	-#%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 
 
 .side-box
-	%span= link_to "Chat", chat_path
 	%h2 Neuste Otakus
 	- @users = User.all.order("created_at DESC").limit(9)
 	- @users.each do |user|
