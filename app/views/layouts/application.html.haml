@@ -7,6 +7,8 @@
 		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 		%link{:href => "https://fonts.googleapis.com/icon?family=Material+Icons", :rel => "stylesheet"}/
+
+
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 	%body
 		%main
@@ -19,54 +21,59 @@
 
 			= render 'home/consent_banner'
 			.Dropdown
-				.Dropdown-profile
-					%span.Name Menü
-					%span.MenuIcon
-						%span.MenuIcon-line
-						%span.MenuIcon-line
-						%span.MenuIcon-line
-				.Dropdown-nav
-					%ul.Dropdown-group
-						%li
-							= inline_svg "pin.svg", class: 'svg'
-							= link_to "Pins", pins_path, class: "NavLink"
-							%a.entypo-plus.OptionLink{:href => new_pin_path}
-						%li
-							= inline_svg "mask.svg", class: 'svg'
-							= link_to "Gilden", guilds_path, class: "NavLink"
-							%a.entypo-plus.OptionLink{:href => new_guild_path}
-						%li
-							%a.entypo-chat.NavLink{:href => chat_path} Chat
-						%li
-							%a.entypo-users.NavLink{:href => users_path} Users
-					%ul.Dropdown-group
-						%li
-							%a.entypo-logout.NavLink{:href => "#"} Logout
+				- if user_signed_in?
+					.Dropdown-profile
+						%span.Name Menü
+						%span.MenuIcon
+							%span.MenuIcon-line
+							%span.MenuIcon-line
+							%span.MenuIcon-line
+					.Dropdown-nav
+						%ul.Dropdown-group
+							%li
+								= link_to current_user do
+									= image_tag current_user.avatar.url(:extrasmall), class: "NavLink"
+									%span= current_user.name
+						%hr
+						%ul.Dropdown-group
+							%li
+								= link_to pins_path do
+									%i.icon-docs.NavLink
+									%span Pins
+
+								%a.icon-plus.OptionLink{:href => new_pin_path}
+							%li
+								= link_to guilds_path do
+									%i.icon-graduation-cap.NavLink
+									%span Gilden
+								%a.icon-plus.OptionLink{:href => new_guild_path}
+							%li
+								= link_to chat_path do
+									%i.icon-chat.NavLink
+									%span Chat
+							%li
+								= link_to users_path do
+									%i.icon-users.NavLink
+									%span Users
+						%hr
+						%ul.Dropdown-group
+							%li
+								= link_to edit_user_registration_path do
+									%i.icon-cog.NavLink
+									%span Einstellungen
+							%li
+								= link_to destroy_user_session_path, method: :delete do
+									%i.icon-logout.NavLink
+									%span Logout
+
 
 			%nav
 				%p.heading= link_to ".dawn//Rebirth", root_path
-				-#- if user_signed_in?
-					-#= form_tag users_path, :method => 'get', :id => 'users_search' do
-						-#= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
-						-#= submit_tag "Suchen", :name => nil, class: "btn"
-				
-
-				%ul
-					- if user_signed_in?
-
-						%li
-							= image_tag current_user.avatar.url(:thumb)
-							= link_to current_user.name, current_user
-							= image_tag("arrow_down.png", height: '25',width: '25')
-							%ul.hidden
-								- if current_user.admin?
-									%li= link_to "Adminbereich", admin_index_path
-								%li= link_to "Einstellungen", edit_user_registration_path
-								%li= link_to "Logout", destroy_user_session_path, method: :delete
-
-					- else
-						%li= link_to "Login", new_user_session_path
-						%li= link_to "Registrieren", new_user_registration_path
+				- if user_signed_in?
+					= form_tag users_path, :method => 'get', :id => 'users_search' do
+						= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
+						= submit_tag "Suchen", :name => nil, class: "btn"
+			
 
 			= yield
 

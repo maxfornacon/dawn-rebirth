@@ -5,7 +5,10 @@
 				.pin
 					.left
 						= image_tag pin.user.avatar.url(:extrasmall)
+						-#.triangle
 					.vertical
+						.dot
+						%hr
 					.right
 						- if pin.image?
 							- begin

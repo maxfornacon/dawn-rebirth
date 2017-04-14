@@ -1,6 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400)
-
-@import url(http://weloveiconfonts.com/api/?family=entypo)
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400)
 
 [class*="entypo-"]:before
   font-family: 'entypo', sans-serif
@@ -11,7 +9,7 @@
   border: none
 
 .Dropdown-profile, .Dropdown-nav li .NavLink
-  display: block
+  display: inherit
   height: 24px
   padding: 8px
   background-color: #373F41
@@ -22,9 +20,7 @@ a
 .Dropdown
   position: absolute
   z-index: 2
-  margin: 0 auto
-  left: 0
-  right: 0
+  right: 30px
   margin-top: 5px
   cursor: pointer
   overflow: hidden
@@ -34,19 +30,16 @@ a
   border-top-right-radius: 4px
   border-bottom-left-radius: 4px
   border-bottom-right-radius: 4px
+  -webkit-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+  -moz-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+  transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+
+  img
+    border-radius: 100px
 
 .Dropdown-profile
   position: relative
-  .Photo
-    background: #ddd
-    display: inline-block
-    vertical-align: middle
-    border-top-left-radius: 2px
-    border-top-right-radius: 2px
-    border-bottom-left-radius: 2px
-    border-bottom-right-radius: 2px
-    height: 24px
-    width: 24px
+  margin-bottom: 5px
   .Name
     display: inline-block
     line-height: 24px
@@ -56,49 +49,53 @@ a
     color: #a9a9a9
 .Dropdown-nav
   height: 0
-  -webkit-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
-  -moz-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
-  transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+  hr 
+    border: 1px solid #4f5758
+    margin: -1px auto
+    width: 175px
+    z-index: 99
+    position: relative
   ul
     list-style: none
     margin: 0
     padding: 0
   li
     position: relative
+    background: #373F41
+    i
+      font-size: 20px
+    span
+      position: absolute
     a
       color: #ccc
       -webkit-transition: color 0.3s ease
       -moz-transition: color 0.3s ease
       transition: color 0.3s ease
+      line-height: 40px
       &:hover
         color: #DE6565
+
     .OptionLink
       position: absolute
       top: 0
       right: 0
-      bottom: 0
       height: 22px
       font-size: 18px
       margin: auto
       z-index: 5
+
     .NavLink
       line-height: 24px
 
-    .svg
-      height: 20px
-      display: inline-block
-      margin: 10px 8px 0
-      float: left
-      fill: #ccc
-      &:hover
-        fill: #DE6565
-  li:hover .svg
-    fill: #DE6565
 
+  .Dropdown-group:nth-child(1)
+    margin-bottom: -12px
 
 .Dropdown.is-expanded
-  height: 202px
-
+  margin-right: -2px
+  margin-top: 3px
+  height: 328px
+  border: 2px solid #4f5758
 
 .Dropdown.is-expanded .MenuIcon-line
   &:nth-child(1), &:nth-child(3)

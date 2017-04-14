@@ -40,6 +40,7 @@ gem 'aws-sdk', '~> 2.6', '>= 2.6.6'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'cookies_eu', '~> 1.6'
 gem 'inline_svg', '~> 0.11.1'
+gem 'entypo-rails', '~> 3.0'
 
 
 ruby "2.2.4"

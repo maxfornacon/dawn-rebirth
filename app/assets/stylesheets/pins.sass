@@ -1,19 +1,43 @@
 .timeline
+	width: 50% !important
 	.pin
 		width: 100%
 		float: left
-		margin-top: 20px
+		display: flex
+		align-items: stretch
 		.left
-			width: 60px
-			height: 50px
-			float: left
-			margin: 30px 
+			display: flex
+			align-items: center
+			margin-right: 15px
+
+			.triangle
+				width: 0
+				height: 0
+				-webkit-transform:rotate(360deg)
+				border-style: solid
+				border-width: 25px 0 25px 15px
+				border-color: transparent transparent transparent #de6565
+
 
 		.vertical
-			height: 100px
-			width: 1px
+			width: 3px
 			background: #d4d4d4
 			float: left
+			display: flex
+			align-items: center
+			.dot
+				width: 15px
+				height: 15px
+				background: #373F41
+				border-radius: 100px
+				display: inline-table
+				margin-left: -5.6px
+				z-index: 99
+
+			hr 
+				width: 51px
+				position: absolute
+				z-index: 1
 
 		.right
 			width: calc(100% - 193px)
@@ -21,3 +45,5 @@
 			padding: 10px
 			background: #de6565
 			display: inline-block
+			margin-top: 10px
+			margin-bottom: 10px
