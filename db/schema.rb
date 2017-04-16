@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212100750) do
+ActiveRecord::Schema.define(version: 20170415085021) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "name"
@@ -54,10 +54,9 @@ ActiveRecord::Schema.define(version: 20161212100750) do
     t.text     "body"
     t.integer  "user_id"
     t.integer  "guild_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text     "body_html"
-    t.integer  "publicchat_id"
     t.index ["guild_id"], name: "index_messages_on_guild_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
@@ -72,33 +71,15 @@ ActiveRecord::Schema.define(version: 20161212100750) do
 
   create_table "pins", force: :cascade do |t|
     t.text     "description"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.integer  "cached_votes_total",      default: 0
-    t.integer  "cached_votes_score",      default: 0
-    t.integer  "cached_votes_up",         default: 0
-    t.integer  "cached_votes_down",       default: 0
-    t.integer  "cached_weighted_score",   default: 0
-    t.integer  "cached_weighted_total",   default: 0
-    t.float    "cached_weighted_average", default: 0.0
-    t.index ["cached_votes_down"], name: "index_pins_on_cached_votes_down"
-    t.index ["cached_votes_score"], name: "index_pins_on_cached_votes_score"
-    t.index ["cached_votes_total"], name: "index_pins_on_cached_votes_total"
-    t.index ["cached_votes_up"], name: "index_pins_on_cached_votes_up"
-    t.index ["cached_weighted_average"], name: "index_pins_on_cached_weighted_average"
-    t.index ["cached_weighted_score"], name: "index_pins_on_cached_weighted_score"
-    t.index ["cached_weighted_total"], name: "index_pins_on_cached_weighted_total"
+    t.string   "case",               default: "serious"
     t.index ["user_id"], name: "index_pins_on_user_id"
-  end
-
-  create_table "publicchats", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

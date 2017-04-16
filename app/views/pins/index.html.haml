@@ -1,5 +1,5 @@
-.container.timeline
-	- @pins.each do |pin|
+.container
+	- @serious.each do |pin|
 		- for friendship in current_user.friendships
 			- if friendship.friend.name == pin.user.name
 				.pin

@@ -4,6 +4,8 @@ class PinsController < ApplicationController
 	
   def index
 		@pins = Pin.all.order("created_at DESC")
+		@serious = Pin.all.find_by case: 'serious'
+		@shit = Pin.find_by case: 'shit'
   end
 
   def show
@@ -62,7 +64,7 @@ class PinsController < ApplicationController
 	private
 
 		def pin_params
-			params.require(:pin).permit(:description, :image)
+			params.require(:pin).permit(:description, :image, :case)
 		end
 
 		def find_pin
