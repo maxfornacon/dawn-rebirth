@@ -1,72 +1,179 @@
-.darkroom
-  %br
-  .container
-    .head
-      %h3 Veränderung...
-      %p ... ist Stärke!
-    .body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-        = devise_error_messages!
-        .field
-          %img#image
-          = f.file_field :avatar
-          %br/
-          = f.label :avatar
-          %br/
-          %br/
-        .field
-          - if current_user.is_female == 1
-            = f.radio_button :is_female, '1', checked: true
-            = f.label :is_female, "♀"
-            = f.radio_button :is_female, '0'
-            = f.label :is_female, "♂"
-          - else
-            = f.radio_button :is_female, '1'
-            = f.label :is_female, "♀"
-            = f.radio_button :is_female, '0', checked: true
-            = f.label :is_female, "♂"
-          %br/
-          %br/
-        .field
-          = f.date_select :date_of_birth, start_year: 1950, end_year: Date.current.year
-          %br/
-          = f.label :date_of_birth, "Geburtsdatum"
-        .field
-          = f.email_field :email
-          %br/
-          = f.label :email
-        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-          %div
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
-        .field
-          = f.password_field :password, autocomplete: "off"
-          %br/
-          = f.label :password, "Passwort"
-          %i (nichts eintragen falls Du nichts ändern möchtest)
-        .field
-          = f.password_field :password_confirmation, autocomplete: "off"
-          %br/
-          = f.label :password_confirmation, "Passwort bestätigen"
-        .field
-          = f.password_field :current_password, autocomplete: "off"
-          %br/
-          = f.label :current_password, "Aktuelles Passwort"
-          %i (trage Dein aktuelles Passwort ein um die Änderungen zu bestätigen)
-        .actions
-          = f.submit "Aktualisieren", class: "btn"
-      %p
-        #{button_to "Account löschen", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn"}
-      = link_to "zurück", :back
+.container
+  .forms
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = devise_error_messages!
+      
+      .field#image
+        %label#uploadlabel{:ondragover => "return false"}
+          %i.icon-upload
+          = image_tag current_user.avatar.url(:medium), id: "img"
+          = f.file_field :avatar, accept: "image/*"
+          %span.loader
+
+      .field.genderswitch
+        = f.check_box :is_female, class: "switch", id: "gender"
+        %label{:for => "gender"} Geschlecht
+
+
+      .field.date
+        = f.date_select :date_of_birth, start_year: 1950, end_year: Date.current.year
+        %br/
+        = f.label :date_of_birth, "Geburtsdatum"
+
+      .form-group.email
+        = f.email_field :email
+        = f.label :email
+        %span
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+      .form-group
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password, "Passwort ändern"
+        %span
+
+      .form-group
+        = f.password_field :password_confirmation, autocomplete: "off"
+        = f.label :password_confirmation, "Passwort bestätigen"
+        %span
+
+      %hr
+
+      %p Um dein Konto vor unbefugten Änderungen zu sichern musst Du dein aktuelles Passwort eingeben.
+
+      .form-group
+        = f.password_field :current_password, autocomplete: "off"
+        = f.label :current_password, "Aktuelles Passwort"
+        %span
+
+      .actions
+        = f.submit "Aktualisieren", class: "btn"
+        %br
+        %br
+        %p 
+          Um deinen Account zu löschen klicke hier:
+          #{link_to "Account löschen", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
 
 :javascript
-  document.getElementById("user_avatar").onchange = function () {
-    var reader = new FileReader();
 
-    reader.onload = function (e) {
-        // get loaded data and render thumbnail.
-        document.getElementById("image").src = e.target.result;
-    };
+  "use strict";
 
-    // read the image file as a data URL.
-    reader.readAsDataURL(this.files[0]);
-  };
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  (function() {
+    "use strict";
+    var FileUploader = (function() {
+      function FileUploader() {
+        _classCallCheck(this, FileUploader);
+      }
+
+      FileUploader.prototype.cache = function cache() {
+        this.$fileInput = document.querySelector("#user_avatar");
+        this.$img = document.querySelector("#img");
+        this.$label = document.querySelector("#uploadlabel");
+      };
+
+      FileUploader.prototype.events = function events() {
+        this.$fileInput.addEventListener(
+          "change",
+          this._handleInputChange.bind(this)
+        );
+        this.$img.addEventListener("load", this._handleImageLoaded.bind(this));
+        this.$label.addEventListener(
+          "dragenter",
+          this._handleDragEnter.bind(this)
+        );
+        this.$label.addEventListener(
+          "dragleave",
+          this._handleDragLeave.bind(this)
+        );
+        this.$label.addEventListener("drop", this._handleDrop.bind(this));
+      };
+
+      FileUploader.prototype.init = function init() {
+        this.cache();
+        this.events();
+      };
+
+      FileUploader.prototype._handleDragEnter = function _handleDragEnter(e) {
+        e.preventDefault();
+
+        if (!this.$label.classList.contains("dragging")) {
+          this.$label.classList.add("dragging");
+        }
+      };
+
+      FileUploader.prototype._handleDragLeave = function _handleDragLeave(e) {
+        e.preventDefault();
+
+        if (this.$label.classList.contains("dragging")) {
+          this.$label.classList.remove("dragging");
+        }
+      };
+
+      FileUploader.prototype._handleDrop = function _handleDrop(e) {
+        e.preventDefault();
+        this.$label.classList.remove("dragging");
+
+        this.$img.files = e.dataTransfer.files;
+        this._handleInputChange();
+      };
+
+      FileUploader.prototype._handleImageLoaded = function _handleImageLoaded() {
+        if (!this.$img.classList.contains("loaded")) {
+          this.$img.classList.add("loaded");
+        }
+      };
+
+      FileUploader.prototype._handleInputChange = function _handleInputChange(e) {
+        var file = undefined !== e ? e.target.files[0] : this.$img.files[0];
+
+        var pattern = /image-*/;
+        var reader = new FileReader();
+
+        if (!file.type.match(pattern)) {
+          alert("invalid format");
+          return;
+        }
+
+        this.$img.src = "";
+
+        reader.onload = this._handleReaderLoaded.bind(this);
+
+        if (this.$label.classList.contains("loaded")) {
+          this.$label.classList.remove("loaded");
+        }
+
+        this.$label.classList.add("loading");
+
+        reader.readAsDataURL(file);
+      };
+
+      FileUploader.prototype._handleReaderLoaded = function _handleReaderLoaded(
+      e
+      ) {
+        var reader = e.target;
+        this.$img.src = reader.result;
+        this.$label.classList.remove("loading");
+        this.$label.classList.add("loaded");
+      };
+
+      return FileUploader;
+    })();
+
+    var fileUploader = new FileUploader();
+    fileUploader.init();
+  })();
+
+  $('input, textarea').blur(function() {
+    if( $(this).val().length !== '' && !$(this).hasClass('not-empty')) {
+      $(this).addClass('not-empty');
+    } else{
+      $(this).removeClass('not-empty');
+    }
+  });

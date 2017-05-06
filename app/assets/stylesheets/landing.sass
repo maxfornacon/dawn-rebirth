@@ -33,127 +33,126 @@
 		width: 70%
 		margin: calc(50% - 243px) auto
 
-		form
-			.form-group
-				position: relative
-				width: 100%
-				margin: 3rem 0
-				&.full
-					margin-right: 10%
-					width: calc(100% - 3rem)
-		
-				label
-					position: absolute
-					top: 0
-					left: 0
-					color: #A9A9A9
-					padding: 1rem 0
-					pointer-events: none
-					transition: all .25s ease
-
-
-
-		input,
-		textarea
-			background-color: transparent
-			padding: 0.7rem 0
-			font-size: 20px
-			border: 0
-			border-bottom: 1px solid #ccc
+.center, .forms
+	form
+		.form-group
+			position: relative
 			width: 100%
-			color: #A9A9A9
-			& ~ span
-				display: block
+			margin-bottom: 2rem
+			&.full
+				margin-right: 10%
+				width: calc(100% - 3rem)
+	
+			label
 				position: absolute
-				bottom: 0
+				top: 0
 				left: 0
-				width: 0
-				background-color: #DE6565
-				height: 3px
-				transition: all .125s ease
+				color: #A9A9A9
+				padding: 1rem 0
+				pointer-events: none
+				transition: all .25s ease
 
-			&:focus
-				outline: 0
+	input,
+	textarea
+		background-color: transparent
+		padding: 0.7rem 0
+		font-size: 20px
+		border: 0
+		border-bottom: 1px solid #ccc
+		width: 100%
+		color: #A9A9A9
+		& ~ span
+			display: block
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 0
+			background-color: #DE6565
+			height: 3px
+			transition: all .125s ease
 
-			&:focus ~ label,
-			&.not-empty ~ label
-				font-size: 15px
-				color: #DE6565
-				top: -1.5rem
-				transition: all .125s ease
+		&:focus
+			outline: 0
 
-			&:focus ~ span
-				width: 100%
-				transition: all .075s ease
+		&:focus ~ label,
+		&.not-empty ~ label
+			font-size: 15px
+			color: #DE6565
+			top: -1.5rem
+			transition: all .125s ease
+
+		&:focus ~ span
+			width: 100%
+			transition: all .075s ease
 
 
-		textarea
-			min-height: 7rem
+	textarea
+		min-height: 7rem
 
-		.field
-			input
-				width: initial
+	.field
+		input
+			width: initial
 
-			.checkbox
-				position: relative
-				top: -0.2rem
-				margin: 0 1rem 0 0
-				cursor: pointer
-				&:before
-					-webkit-transition: all 0.3s ease-in-out
-					-moz-transition: all 0.3s ease-in-out
-					transition: all 0.3s ease-in-out
-					content: ""
-					position: absolute
-					left: 0
-					z-index: 1
-					width: 1rem
-					height: 1rem
-					border: 2px solid #a9a9a9
-				&:checked:before
-					-webkit-transform: rotate(-45deg)
-					-moz-transform: rotate(-45deg)
-					-ms-transform: rotate(-45deg)
-					-o-transform: rotate(-45deg)
-					transform: rotate(-45deg)
-					height: .5rem
-					border-color: #de6565
-					border-top-style: none
-					border-right-style: none
-				&:after
-					content: ""
-					position: absolute
-					top: -0.125rem
-					left: 0
-					width: 1.1rem
-					height: 1.1rem
-					background: #373F41
-					cursor: pointer
-
-		.btn 
-			background: #de6565
-			border: none
-			width: auto
-			padding: 10px
-			color: #3d3d3d
-			margin-top: 23px
-
-	.top-right
-		display: inline-block
-		.tab
-			display: initial
-			float: left
+		.checkbox
+			position: relative
+			top: -0.2rem
+			margin: 0 1rem 0 0
 			cursor: pointer
-			-moz-user-select: -moz-none
-			-ms-user-select: none
-			-webkit-user-select: none
-			user-select: none
-			a
-				color: #a9a9a9
-				font-size: 30px
-				padding: 0px 3px 0px 0
-			&.active
-				background-color: #de6565
+			&:before
+				-webkit-transition: all 0.3s ease-in-out
+				-moz-transition: all 0.3s ease-in-out
+				transition: all 0.3s ease-in-out
+				content: ""
+				position: absolute
+				left: 0
+				z-index: 1
+				width: 1rem
+				height: 1rem
+				border: 2px solid #a9a9a9
+			&:checked:before
+				-webkit-transform: rotate(-45deg)
+				-moz-transform: rotate(-45deg)
+				-ms-transform: rotate(-45deg)
+				-o-transform: rotate(-45deg)
+				transform: rotate(-45deg)
+				height: .5rem
+				border-color: #de6565
+				border-top-style: none
+				border-right-style: none
+			&:after
+				content: ""
+				position: absolute
+				top: -0.125rem
+				left: 0
+				width: 1.1rem
+				height: 1.1rem
+				background: #373F41
+				cursor: pointer
+
+	.btn 
+		background: #de6565
+		border: none
+		width: auto
+		padding: 10px
+		color: #3d3d3d
+		margin-top: 23px
+
+.top-right
+	display: inline-block
+	.tab
+		display: initial
+		float: left
+		cursor: pointer
+		-moz-user-select: -moz-none
+		-ms-user-select: none
+		-webkit-user-select: none
+		user-select: none
+		a
+			color: #a9a9a9
+			font-size: 30px
+			padding: 0px 3px 0px 0
+		&.active
+			background-color: #de6565
 
 
 .label

@@ -3,8 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_attached_file :avatar, styles: { medium: "300x300#", small: "100x100#", extrasmall: "50x50#", thumb: "20x20#" }, default_url: ':style/missing.png'
+
+  has_attached_file :avatar, styles: { medium: "300x300#", small: "100x100#", extrasmall: "50x50#", thumb: "20x20#" }, default_url: ':style/missing.png', :storage => :s3
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   validates_uniqueness_of :name
 
   has_one :profile, dependent: :destroy
@@ -30,12 +32,8 @@ class User < ApplicationRecord
     updated_at > 10.minutes.ago
   end
 
-  def self.search(name)
-    if name
-        name.downcase!
-        where('LOWER(name) LIKE ?', "%#{name}%")
-    else
-        all
-    end
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
   end
+
 end

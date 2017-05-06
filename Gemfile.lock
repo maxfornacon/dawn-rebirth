@@ -43,12 +43,14 @@ GEM
     auto_html (1.6.4)
       redcarpet (~> 3.1)
       rinku (~> 1.5.0)
-    aws-sdk (2.6.6)
-      aws-sdk-resources (= 2.6.6)
-    aws-sdk-core (2.6.6)
+    aws-sdk (2.9.14)
+      aws-sdk-resources (= 2.9.14)
+    aws-sdk-core (2.9.14)
+      aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.6)
-      aws-sdk-core (= 2.6.6)
+    aws-sdk-resources (2.9.14)
+      aws-sdk-core (= 2.9.14)
+    aws-sigv4 (1.0.0)
     bcrypt (3.1.11-x86-mingw32)
     brakeman (3.4.0)
     builder (3.2.2)
@@ -231,7 +233,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   auto_html (~> 1.6.4)
-  aws-sdk (~> 2.6, >= 2.6.6)
+  aws-sdk (~> 2.9, >= 2.9.14)
   brakeman
   bullet
   byebug

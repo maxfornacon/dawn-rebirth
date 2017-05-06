@@ -1,0 +1,192 @@
+.forms
+  max-width: 600px
+  margin: 0 auto
+
+  hr 
+    width: 60%
+    margin: 0 auto
+    margin-bottom: 25px
+
+  .date
+    margin-left: 250px
+
+  .genderswitch
+    label
+      margin: 50px
+      cursor: pointer
+     
+    .switch
+      display: none
+    .switch + label
+      position: relative
+      display: inline-block
+      padding-right: 70px
+       
+      &:before,
+      &:after
+        content: ""
+        display: block
+        position: absolute
+        top: 50%
+        transition: background 200ms ease-in-out
+      &:after
+        content: "♂"
+        right: 28px
+        margin-top: -15px
+        width: 30px
+        height: 30px
+        line-height: 30px
+        text-align: center
+
+        background: #FFFFFF
+        transition: right 200ms ease-in-out
+
+      &:before
+        right: -3px
+        margin-top: -18px
+        width: 64px
+        height: 36px
+        background: #EEEEEE
+       
+    .switch:checked + label
+      &:after
+        right: 0
+        color: #DE6565
+        content: "♀"
+      &:before
+        background: #DE6565
+
+  #image
+    float: left
+
+    /*LOADER*/
+    .loader  
+      animation: rotate 1s infinite  
+      height: 50px
+      width: 50px
+
+    .loader:before,
+    .loader:after    
+      border-radius: 50%
+      content: ''
+      display: block
+      height: 20px  
+      width: 20px
+    .loader:before 
+      animation: ball1 1s infinite  
+      background-color: #cb2025
+      box-shadow: 30px 0 0 #f8b334
+      margin-bottom: 10px
+    .loader:after 
+      animation: ball2 1s infinite 
+      background-color: #00a096
+      box-shadow: 30px 0 0 #97bf0d
+
+    @keyframes rotate 
+      0%  
+        -webkit-transform: rotate(0deg) scale(0.8) 
+        -moz-transform: rotate(0deg) scale(0.8)
+
+      50%  
+        -webkit-transform: rotate(360deg) scale(1.2) 
+        -moz-transform: rotate(360deg) scale(1.2)
+
+      100%  
+        -webkit-transform: rotate(720deg) scale(0.8) 
+        -moz-transform: rotate(720deg) scale(0.8)
+
+
+    @keyframes ball1 
+      0% 
+        box-shadow: 30px 0 0 #f8b334
+
+      50% 
+        box-shadow: 0 0 0 #f8b334
+        margin-bottom: 0
+        -webkit-transform: translate(15px,15px)
+        -moz-transform: translate(15px, 15px)
+
+      100% 
+        box-shadow: 30px 0 0 #f8b334
+        margin-bottom: 10px
+
+
+    @keyframes ball2 
+      0% 
+        box-shadow: 30px 0 0 #97bf0d
+
+      50% 
+        box-shadow: 0 0 0 #97bf0d
+        margin-top: -20px
+        -webkit-transform: translate(15px,15px)
+        -moz-transform: translate(15px, 15px)
+
+      100% 
+        box-shadow: 30px 0 0 #97bf0d
+        margin-top: 0
+
+    /*END*/
+
+    /*fileupload*/
+    input
+      display: none
+
+    label 
+      align-items: center
+      background-color: rgba(0,0,0,0.02)
+      cursor: pointer
+      display: flex
+      height:  200px
+      justify-content: center
+      outline:  3px dashed #ccc
+      outline-offset: 5px 
+      position: relative
+      width: 200px
+      
+
+      *
+        pointer-events: none
+
+      .icon-upload
+        color: #DE6565
+        opacity: 0.4
+        font-size: 3em
+
+
+      &.dragging 
+        outline-color: #DE6565
+
+      &.loaded
+        .icon-upload
+          color: rgba(white, 0.5)
+
+      &.loading
+        .icon-upload
+          display: none
+        .loader
+          display: block
+
+      img 
+        left: 50%
+        max-height: 100%
+        max-width: 100%
+        position: absolute
+        top: 50%
+        transition: all 300ms ease-in
+        transform: translate(-50%,-50%)
+        z-index: -1
+
+        &.loaded
+          opacity: 1
+
+
+    .loader 
+      display: none
+    
+  /*styling*/
+
+  .field 
+    margin-top: 20px
+
+  .email
+    margin-top: 80px

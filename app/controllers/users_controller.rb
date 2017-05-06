@@ -4,7 +4,12 @@ class UsersController < ApplicationController
 	before_action :find_guild, only: [:show, :about, :rank_up, :rank_down, :kick, :anime_kanban, :edit]
 
 	def index
-		@users = User.search(params[:search])
+	  @users = User.all
+	  if params[:search]
+	    @users = User.search(params[:search]).order("created_at DESC")
+	  else
+	    @users = User.all.order("created_at DESC")
+	  end
 	end
 
 	def show
@@ -34,7 +39,7 @@ class UsersController < ApplicationController
 		if current_user.owner? and current_user.guild_id == @guild.id
 			user = User.find(params[:user_id])
 			if user.guildrank < 15
-				user.guildrank = user.guildrank + 1
+				user.guildrank = Useruser.guildrank + 1
 				user.save
 				redirect_to guilds_members_path(@guild), notice: "Rang erhöht"
 			else
