@@ -1,23 +1,6 @@
 .main
-	= @count
-	.ansage
-		%p Bei der Benutzung von .dawn//Rebirth ist zu beachten, dass sich die Community und die damit zusammenhängende Website noch in einer frühen Entwicklungsphase befindet. Daher können folgende Probleme auftreten oder Risiken bestehen:
-		%br
-		%ol
-			%li Unerwarte Fehlermeldungen/Abstürtze
-			%li Datenverlust
-			%li Übergriffe durch Dritte auf die eigenen Daten
-			%li Lange Wartezeiten
-			%li Nicht verhinderbare unangemessene Inhalte durch User
-		%br
-		%p Wir bitten um Verständnis und sind bemüht die genanneten Probleme schnellstmöglich zu beheben. Dabei ist eine Zusammenarbeit mit den Nutzern äußerst behilflich! Falls also eine Fehlermeldung auftreten sollte oder unangemessenes Verhalten von Nutzern beobachtet werden, wäre eine Weiterleitung an einen Administrator sehr hilfreich!
-		- @nagato = User.find(1)
-		%p
-			Derzeitiger Administrator ist
-			= link_to @nagato.name, @nagato
-			(Erreichbar über den 
-			= link_to "Chat", chat_path
-			und Twitter: @HolyNagato)
+	= link_to "Wichtige Infos", home_infos_path, class: 'btn'
+	
 	-#%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/HolyNagato"} Tweets by HolyNagato
 	-#%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 

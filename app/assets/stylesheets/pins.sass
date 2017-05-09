@@ -1,49 +1,146 @@
-.timeline
-	width: 50% !important
-	.pin
-		width: 100%
-		float: left
-		display: flex
-		align-items: stretch
-		.left
-			display: flex
-			align-items: center
-			margin-right: 15px
+.main
+	float: right
+	width: calc(100% - 340px)
+	padding: 10px
 
-			.triangle
-				width: 0
-				height: 0
-				-webkit-transform:rotate(360deg)
-				border-style: solid
-				border-width: 25px 0 25px 15px
-				border-color: transparent transparent transparent #de6565
+	#new_pin
+		text-align: center
+		margin: 0 auto
+		display: block
+		width: 15%
+		background: #DE6565
+		color: #3d3d3d
+		font-size: 30px
+
+	#pins
+		margin: 0 auto
+
+	.add
+		width: 100px
+		height: 100px
 
 
-		.vertical
-			width: 3px
-			background: #d4d4d4
-			float: left
-			display: flex
-			align-items: center
-			.dot
-				width: 15px
-				height: 15px
-				background: #373F41
-				border-radius: 100px
-				display: inline-table
-				margin-left: -5.6px
-				z-index: 99
+.pin
+	background: white
+	float: left
+	margin: 10px
+	width: 325px
+	word-wrap: break-word
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15)
 
-			hr 
-				width: 51px
+	h1
+		margin: 10px 30px
+	h2
+		margin: 0 30px
+		color: #DE6565
+		font-size: 20px
+		font-weight: 500
+
+	p
+		font-size: 18px
+		color: #000000
+		margin: 30px
+		line-height: 25px
+
+	.pin-dropdown-head
+		display: inherit
+		height: 24px
+		padding: 8px
+	.pin-dropdown
+		position: absolute
+		z-index: 2
+		right: 30px
+		margin-top: 5px
+		cursor: pointer
+		overflow: hidden
+		width: 100px
+		height: 45px
+		-webkit-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+		-moz-transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+		transition: height 0.2s cubic-bezier(0.19, 1, 0.22, 1)
+		.pin-dropdown-head
+			position: relative
+			margin-bottom: 5px
+			.PinMenuIcon
+				bottom: 0
+				top: 0
+				margin: auto
 				position: absolute
-				z-index: 1
+				right: 14px
+				height: 10px
+				width: 12px
+				.MenuIcon-line
+					background: #DE6565
+					display: inline-block
+					height: 2px
+					margin: auto
+					position: absolute
+					width: 100%
+					-webkit-transition: all 0.2s ease-in-out
+					-moz-transition: all 0.2s ease-in-out
+					transition: all 0.2s ease-in-out
+					&:nth-child(1)
+						top: 0
+					&:nth-child(2)
+						top: 50%
+					&:nth-child(3)
+						top: 100%
+		.pin-dropdown-body
 
-		.right
-			width: calc(100% - 193px)
-			margin-left: 50px
-			padding: 10px
-			background: #de6565
+		.pin-dropdown.is-expanded
+			height: 300px
+			background: black
+		.pin-dropdown.is-expanded .MenuIcon-line
+			&:nth-child(1), &:nth-child(3)
+				top: 50%
+
+
+	.votes
+		display: inline-block
+		span
 			display: inline-block
-			margin-top: 10px
-			margin-bottom: 10px
+			text-align: center
+
+		.icon-heart, .icon-trash
+			font-size: 20px
+			margin-right: 0
+			color: rgba(152, 151, 151, 0.5)
+			&:hover
+				color: #DE6565
+				opacity: 0.5
+				cursor: pointer
+		.icon-heart-red, .icon-trash-red
+			color: #DE6565
+
+	.flag 
+		position: absolute
+		bottom: 5px
+		right: 3px
+		opacity: 0.2
+
+	.flag:hover
+		opacity: 1
+
+	img
+		border-top-left-radius: 3px
+		border-top-right-radius: 3px
+		width: 365px
+		margin-top: -20px
+		margin-left: -20px
+		margin-right: -20px
+
+	.time
+		color: rgba(152, 151, 151, 0.5)
+		margin-left: 30px
+		margin-bottom: 30px
+	.time-span
+		color: rgba(152, 151, 151, 0.5)
+.pin-show
+	float: none
+	margin: 20px auto
+
+.pintype
+	background: #DE6565
+	color: #3d3d3d
+	display: inline-block
+	padding: 10px

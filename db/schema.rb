@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415085021) do
+ActiveRecord::Schema.define(version: 20170507232124) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "name"
@@ -78,7 +78,9 @@ ActiveRecord::Schema.define(version: 20170415085021) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.string   "case",               default: "serious"
+    t.string   "pintype",            default: "serious"
+    t.string   "heading"
+    t.string   "subheading"
     t.index ["user_id"], name: "index_pins_on_user_id"
   end
 

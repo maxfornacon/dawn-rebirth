@@ -13,6 +13,7 @@ module Dawnrebirth
     # -- all .rb files in that directory are automatically loaded.
     config.time_zone = 'Europe/Berlin'
 		config.active_record.default_timezone = :local # Or :utc
+		#config.i18n.default_locale = :de
 		config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

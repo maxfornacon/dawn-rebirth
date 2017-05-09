@@ -1,34 +1,35 @@
-.darkroom
-  %br
-  .container
-    .head
-      %h3 Tritt bei...
-      %p ... um wiedergeboren zu werden!
-    .body
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
-        .field
-          = f.text_field :name
-          %br/
-          = f.label :name
-        .field
-          = f.email_field :email
-          %br/
-          = f.label :email
-        .field
-          = f.password_field :password, autocomplete: "off"
-          %br/
+.container
+  .forms
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      %br
+      %br
+      .form-group
+        = f.text_field :name
+        = f.label :name
+        %span
+
+      .form-group
+        = f.email_field :email
+        = f.label :email
+        %span
+
+      .form-group
+        = f.password_field :password, autocomplete: "off"
+        = f.label :password, "Passwort"
+        - if @minimum_password_length
+          = f.label :password, "Passwort - mindestens #{@minimum_password_length} Zeichen"
+        - else
           = f.label :password, "Passwort"
-          - if @minimum_password_length
-            %em
-              (mindestens #{@minimum_password_length} Zeichen)
-        .field
-          = f.password_field :password_confirmation, autocomplete: "off"
-          %br/
-          = f.label :password_confirmation, "Passwort bestätigen"
-          %br/
-          %br/
-        .actions
-          = f.submit "Registrieren", class: "btn"
-          %br/
-      = render "devise/shared/links"
+        %span
+
+      .form-group
+        = f.password_field :password_confirmation, autocomplete: "off"
+        = f.label :password_confirmation, "Passwort bestätigen"
+        %span
+
+      .actions
+        = f.submit "Registrieren", class: "btn"
+        %br/
+        %br/
+    = render "devise/shared/links"
