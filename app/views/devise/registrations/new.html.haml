@@ -5,28 +5,28 @@
       %br
       %br
       .form-group
-        = f.text_field :name
+        = f.text_field :name, required: true
         = f.label :name
-        %span
+        %span.bar
 
       .form-group
-        = f.email_field :email
+        = f.email_field :email, required: true
         = f.label :email
-        %span
+        %span.bar
 
       .form-group
-        = f.password_field :password, autocomplete: "off"
+        = f.password_field :password, autocomplete: "off", required: true
         = f.label :password, "Passwort"
         - if @minimum_password_length
           = f.label :password, "Passwort - mindestens #{@minimum_password_length} Zeichen"
         - else
           = f.label :password, "Passwort"
-        %span
+        %span.bar
 
       .form-group
-        = f.password_field :password_confirmation, autocomplete: "off"
+        = f.password_field :password_confirmation, autocomplete: "off", required: true
         = f.label :password_confirmation, "Passwort bestätigen"
-        %span
+        %span.bar
 
       .actions
         = f.submit "Registrieren", class: "btn"

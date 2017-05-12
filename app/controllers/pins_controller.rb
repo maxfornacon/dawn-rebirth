@@ -4,8 +4,6 @@ class PinsController < ApplicationController
 	
   def index
 		@pins = Pin.all.order("created_at DESC")
-		@serious = Pin.all.find_by pintype: 'serious'
-		@shit = Pin.find_by pintype: 'shit'
   end
 
   def show
@@ -47,12 +45,21 @@ class PinsController < ApplicationController
 		@user = User.find(@pin.user)
 		@pin.upvote_by current_user
 		@user.increment!(:score, by = 1)
+		if @pin.get_upvotes.size > @pin.get_downvotes.size
+			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_upvotes.size
+			@pin.save
+		end
 		redirect_to :back
 	end
 
 	def downvote
 		@user = User.find(@pin.user)
 		@pin.downvote_by current_user
+
+		if @pin.get_downvotes.size > @pin.get_upvotes.size
+			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_downvotes.size
+			@pin.save
+		end
 		redirect_to :back
 	end
 

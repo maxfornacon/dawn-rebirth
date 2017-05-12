@@ -1,0 +1,47 @@
+%span.pintype
+	- if pin.get_downvotes.size > pin.get_upvotes.size
+		Weebshit
+	- else
+		Serious content
+- if pin.image?
+	= image_tag pin.image.url(:crop)
+
+-#.pin-dropdown
+	-#.pin-dropdown-head
+		-#%span.PinMenuIcon
+			-#%span.MenuIcon-line
+			-#%span.MenuIcon-line
+			-#%span.MenuIcon-line
+	-#.pin-dropdown-body
+		-#- if current_user.id == pin.user_id or current_user.admin?
+			-#= link_to "Bearb.", edit_pin_path
+			-#= link_to "Lösch.", pin_path, method: :delete, data: { confirm: "Bist du sicher, dass du den Pin löschen möchtest?"}
+			-#= link_to "zum Pin", pin
+		-#= link_to flag_pin_path(pin), method: :post, class: "flag" do
+			-#%i.icon-flag
+
+
+%h1= pin.heading
+%h2= pin.subheading
+%p= pin.description
+%i.icon-back-in-time.time
+%span.time-span= distance_of_time_in_words(pin.created_at, Time.now, false, :locale => :de, :highest_measure_only => true)
+.votes
+	- if current_user.voted_up_on? pin
+		%i.icon-heart.icon-heart-red
+	- else
+		= link_to like_pin_path(pin), method: :put, class: "votelink" do
+			%i.icon-heart
+	%span= pin.get_upvotes.size
+	- if current_user.voted_down_on? pin
+		%i.icon-trash.icon-trash-red
+	- else
+		= link_to unlike_pin_path(pin), method: :put, class: "votelink" do
+			%i.icon-trash
+	%span= pin.get_downvotes.size
+	- begin
+		%span= pin.popularity
+	- rescue
+
+
+	= link_to "zum Pin", pin

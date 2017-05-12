@@ -34,8 +34,12 @@
 
 	.center
 		width: 70%
-		margin: calc(50% - 243px) auto
-
+		margin: 0 auto
+		position: relative
+		top: 50%
+		-webkit-transform: translateY(-50%)
+		-ms-transform: translateY(-50%)
+		transform: translateY(-50%)
 .center, .forms
 	form
 		.form-group
@@ -48,10 +52,9 @@
 	
 			label
 				position: absolute
-				top: 0
+				top: 12px
 				left: 0
 				color: #A9A9A9
-				padding: 1rem 0
 				pointer-events: none
 				transition: all .25s ease
 
@@ -60,33 +63,37 @@
 		background-color: transparent
 		padding: 0.7rem 0
 		font-size: 20px
-		border: 0
+		border: none
 		border-bottom: 1px solid #ccc
 		width: 100%
 		color: #A9A9A9
-		& ~ span
-			display: block
-			position: absolute
-			bottom: 0
-			left: 0
-			width: 0
-			background-color: #DE6565
-			height: 3px
-			transition: all .125s ease
 
 		&:focus
-			outline: 0
+			outline: none
 
 		&:focus ~ label,
-		&.not-empty ~ label
+		&:valid ~ label
 			font-size: 15px
 			color: #DE6565
-			top: -1.5rem
-			transition: all .125s ease
+			top: -0.5rem
 
-		&:focus ~ span
-			width: 100%
-			transition: all .075s ease
+	.bar
+		position: relative
+		display: block
+		width: 100%
+		&:before 
+			content: ""
+			position: absolute
+			left: 50%
+			right: 50%
+			bottom: 0
+			background: #DE6565
+			height: 4px
+			transition: left 0.1s ease-out, right 0.1s ease-out
+
+	input:focus ~ .bar:before 
+		left: 0
+		right: 0
 
 
 	textarea
@@ -133,7 +140,7 @@
 				cursor: pointer
 		.light
 			&:after
-				background: white
+				background: #F2F2F2
 
 	.btn 
 		background: #de6565

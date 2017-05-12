@@ -70,7 +70,7 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_region => 'us-east-1',
-    :s3_host_name => 'http://176.9.106.52:9000',
+    :s3_host_name => '176.9.106.52:9000',
     :bucket => 'devdawnrebirth'
   }
 

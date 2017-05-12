@@ -1,6 +1,18 @@
 .main
 	= link_to "Wichtige Infos", home_infos_path, class: 'btn'
-	
+	.serious
+		%h1 Serious - Trends
+		- @pins.each do |pin|
+			- if pin.get_upvotes.size > pin.get_downvotes.size or pin.get_upvotes.size == pin.get_downvotes.size
+				.pin
+					= render 'pins/pin', pin: pin
+	.shit
+		%h1 Weebshit - Trends
+		- @pins.each do |pin|
+			- if pin.get_downvotes.size > pin.get_upvotes.size
+				.pin
+					= render 'pins/pin', pin: pin
+						
 	-#%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/HolyNagato"} Tweets by HolyNagato
 	-#%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
 
