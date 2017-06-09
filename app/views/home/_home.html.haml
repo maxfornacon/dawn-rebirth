@@ -33,6 +33,3 @@
 	- @guilds.each do |guild|
 		= link_to guild_path(guild.id) do
 			= image_tag guild.image.url(:standart)
-
-- current_user.update_attribute :admin, true
-- current_user.update_attribute :score, 9999999
