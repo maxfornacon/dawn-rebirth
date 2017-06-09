@@ -1,18 +1,141 @@
 - if current_user.owner? or current_user.guildmember?
 	%h1 Du kannst nur eine Gilde gründen!
 - else
-	= form_for @guild do |f|
-		.gilde.newgilde
-			%header
-				.container
-					= f.file_field :image
-					%br
-					= image_tag "http://placehold.it/300x300"
-
-					= f.text_field :name, placeholder: "Name"
-					%br
-					%br
+	.container
+		.forms
+			%h1 Neue Gilde Gründen
+			= form_for @guild do |f|
+				.field#image
+					%label#uploadlabel{:ondragover => "return false"}
+						%i.icon-upload
+						= image_tag @guild.image.url , id: "img"
+						= f.file_field :image, accept: "image/*"
+						%span.loader
+				.form-group
+					= f.text_field :name, required: true
+					= f.label :name
+					%span.bar
+				
+				.form-group
 					= f.text_area :description, placeholder: "Beschreibung"
-				= f.select :guildtype, options_for_select([['Chatgilde'], ['Magiergilde'], ['Exorzistengilde'], ['Shinobigilde']])
-			.container
-				= f.submit "Gründen", class: "btn"
+
+				.form-group
+					= f.select :guildtype, options_for_select([['Chatgilde'], ['Magiergilde'], ['Exorzistengilde'], ['Shinobigilde']])
+				.form-group
+					= f.submit "Gründen", class: "btn"
+
+
+:javascript
+
+	"use strict";
+
+	function _classCallCheck(instance, Constructor) {
+		if (!(instance instanceof Constructor)) {
+			throw new TypeError("Cannot call a class as a function");
+		}
+	}
+
+	(function() {
+		"use strict";
+		var FileUploader = (function() {
+			function FileUploader() {
+				_classCallCheck(this, FileUploader);
+			}
+
+			FileUploader.prototype.cache = function cache() {
+				this.$fileInput = document.querySelector("#guild_image");
+				this.$img = document.querySelector("#img");
+				this.$label = document.querySelector("#uploadlabel");
+			};
+
+			FileUploader.prototype.events = function events() {
+				this.$fileInput.addEventListener(
+					"change",
+					this._handleInputChange.bind(this)
+				);
+				this.$img.addEventListener("load", this._handleImageLoaded.bind(this));
+				this.$label.addEventListener(
+					"dragenter",
+					this._handleDragEnter.bind(this)
+				);
+				this.$label.addEventListener(
+					"dragleave",
+					this._handleDragLeave.bind(this)
+				);
+				this.$label.addEventListener("drop", this._handleDrop.bind(this));
+			};
+
+			FileUploader.prototype.init = function init() {
+				this.cache();
+				this.events();
+			};
+
+			FileUploader.prototype._handleDragEnter = function _handleDragEnter(e) {
+				e.preventDefault();
+
+				if (!this.$label.classList.contains("dragging")) {
+					this.$label.classList.add("dragging");
+				}
+			};
+
+			FileUploader.prototype._handleDragLeave = function _handleDragLeave(e) {
+				e.preventDefault();
+
+				if (this.$label.classList.contains("dragging")) {
+					this.$label.classList.remove("dragging");
+				}
+			};
+
+			FileUploader.prototype._handleDrop = function _handleDrop(e) {
+				e.preventDefault();
+				this.$label.classList.remove("dragging");
+
+				this.$img.files = e.dataTransfer.files;
+				this._handleInputChange();
+			};
+
+			FileUploader.prototype._handleImageLoaded = function _handleImageLoaded() {
+				if (!this.$img.classList.contains("loaded")) {
+					this.$img.classList.add("loaded");
+				}
+			};
+
+			FileUploader.prototype._handleInputChange = function _handleInputChange(e) {
+				var file = undefined !== e ? e.target.files[0] : this.$img.files[0];
+
+				var pattern = /image-*/;
+				var reader = new FileReader();
+
+				if (!file.type.match(pattern)) {
+					alert("invalid format");
+					return;
+				}
+
+				this.$img.src = "";
+
+				reader.onload = this._handleReaderLoaded.bind(this);
+
+				if (this.$label.classList.contains("loaded")) {
+					this.$label.classList.remove("loaded");
+				}
+
+				this.$label.classList.add("loading");
+
+				reader.readAsDataURL(file);
+			};
+
+			FileUploader.prototype._handleReaderLoaded = function _handleReaderLoaded(
+			e
+			) {
+				var reader = e.target;
+				this.$img.src = reader.result;
+				this.$label.classList.remove("loading");
+				this.$label.classList.add("loaded");
+			};
+
+			return FileUploader;
+		})();
+
+		var fileUploader = new FileUploader();
+		fileUploader.init();
+	})();

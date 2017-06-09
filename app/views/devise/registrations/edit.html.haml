@@ -24,9 +24,9 @@
         = f.email_field :email, required: true
         = f.label :email
         %span.bar
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
 
 
       = render 'editPW', f: f

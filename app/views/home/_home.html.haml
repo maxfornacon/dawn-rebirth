@@ -1,5 +1,7 @@
 .main
-	= link_to "Wichtige Infos", home_infos_path, class: 'btn'
+	.posts
+		- @posts.each do |p|
+			= render "posts/post", p: p
 	.serious
 		%h1 Serious - Trends
 		- @pins.each do |pin|

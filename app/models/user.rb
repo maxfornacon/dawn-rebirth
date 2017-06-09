@@ -26,6 +26,8 @@ class User < ApplicationRecord
 
   has_many :animes, dependent: :destroy
 
+  has_many :posts
+  
   acts_as_voter
 
   def online?

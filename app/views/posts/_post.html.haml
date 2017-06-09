@@ -1,0 +1,9 @@
+.post
+	%h1= p.title
+	%p= markdown(p.body)
+	%i.icon-back-in-time.time
+	%span.time-span= distance_of_time_in_words(p.created_at, Time.now, false, :locale => :de, :highest_measure_only => true)
+
+	- if current_user.admin?
+		= link_to "edit", edit_post_path(p)
+		= link_to "delete", post_path(p), method: :delete, data: { confirm: "Bist du sicher, dass du den Post löschen möchtest?"}
