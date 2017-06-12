@@ -7,11 +7,21 @@
 			%ul
 				- @pin.errors.full_messages.each do |msg|
 					%li= msg
-	= f.text_field :heading
-	= f.text_field :subheading
-	= f.text_area :description, maxlength: 222, required: true, class: "text-area"
-	
-	= f.file_field :image
+	%br
+	.form-group
+		= f.text_field :heading, required: true
+		= f.label :heading, "Überschrift"
+		%span.bar
+
+	.form-group
+		= f.text_field :subheading, required: true
+		= f.label :subheading, "Untertitel"
+		%span.bar
+
+	.form-group
+		= f.text_area :description, maxlength: 222, required: true, class: "text-area"
+		= f.label :description, "Text"
+		%span.bar
 
 	= f.button :submit
 	oder

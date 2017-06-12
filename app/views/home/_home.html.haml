@@ -5,22 +5,18 @@
 		- @posts.each do |p|
 			= render "posts/post", p: p
 	.serious
-		%h1 Serious - Trends
+		%h1.zentriert Serious - Trends
 		- @pins.each do |pin|
 			- if pin.get_upvotes.size > pin.get_downvotes.size or pin.get_upvotes.size == pin.get_downvotes.size
 				.pin
 					= render 'pins/pin', pin: pin
 	.shit
-		%h1 Weebshit - Trends
+		%h1.zentriert Weebshit - Trends
 		- @pins.each do |pin|
 			- if pin.get_downvotes.size > pin.get_upvotes.size
 				.pin
 					= render 'pins/pin', pin: pin
 						
-	-#%a.twitter-timeline{"data-dnt" => "true", "data-height" => "600", "data-lang" => "de", "data-link-color" => "#DE6565", "data-theme" => "light", "data-width" => "325", :href => "https://twitter.com/HolyNagato"} Tweets by HolyNagato
-	-#%script{:async => "", :charset => "utf-8", :src => "//platform.twitter.com/widgets.js"}
-
-
 .side-box
 	%h2 Neuste Otakus
 	- @users = User.all.order("created_at DESC").limit(9)
@@ -28,7 +24,7 @@
 		= link_to user do
 			= image_tag user.avatar.url(:small)
 .side-box
-	%h2 Gilden
+	%h2 Neuste Gilden
 	- @guilds = Guild.all.order("created_at DESC")
 	- @guilds.each do |guild|
 		= link_to guild_path(guild.id) do
