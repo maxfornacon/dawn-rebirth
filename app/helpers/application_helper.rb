@@ -88,4 +88,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def online_status(user)
+    content_tag :span, "", class: "user-#{user.id} online_status #{'online' if user.online?}"
+  end
 end

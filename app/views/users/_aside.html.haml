@@ -15,9 +15,7 @@
 		%i.material-icons apps
 	.info
 		%h1.name= @user.name
-		- if @user.online?
-			.online
-	
+		= online_status @user
 	%a.popup-btn3{:href => "#"}
 		.box
 			- if @user.score < 1000
