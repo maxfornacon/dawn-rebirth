@@ -7,12 +7,7 @@
 		%span.gender ♀
 	-else
 		%span.gender ♂
-	= link_to @user do
-		= image_tag('pin.png', class: 'material-icons')
-	= link_to about_path(@user) do
-		%i.material-icons person
-	= link_to anime_kanban_path(@user) do
-		%i.material-icons apps
+
 	.info
 		%h1.name= @user.name
 		= online_status @user
@@ -75,8 +70,6 @@
 		%b
 			Mitglied der Gilde
 			= link_to @guild.name, guild_path(@guild.id)
-	- elsif current_user.id == @user.id
-		= link_to "Neue Gilde gründen", new_guild_path
 
 	- unless current_user.id == @user.id
 		- for friendship in current_user.friendships
@@ -105,9 +98,22 @@
 				= image_tag("snapchat.png", width:"32px", height: "32px", class: "sozialimg")
 			%p.snap= @user.snapchat
 
+	%hr
+	%ul.menu
+		= link_to @user do
+			%li Pins
+		= link_to about_path(@user) do
+			%li Biografie
+		= link_to anime_kanban_path(@user) do
+			%li Anime
+	%hr
+
+
 
 :javascript
 	$(document).ready(function() {
+		$("a[href*='" + location.pathname + "'] > li").addClass("active");
+
 	  $('.popup-btn1').click(function(e) {
 	    $('.popup-wrap1').fadeIn(250);
 	    $('.popup-box1').removeClass('transform-out').addClass('transform-in');
