@@ -31,7 +31,7 @@ class User < ApplicationRecord
   acts_as_voter
 
   def online?
-    updated_at > 10.minutes.ago
+    !Redis.new.get("user_#{self.id}_online").nil?
   end
 
   def self.search(search)

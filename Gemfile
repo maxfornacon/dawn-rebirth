@@ -19,6 +19,8 @@ group :development do
 	gem 'bullet'
 	gem 'brakeman', :require => false #brakeman
 	gem 'rails_best_practices' #rails_best_practices .
+
+	gem 'seed_dump'
 end
 group :production do
 	gem 'pg'
@@ -41,6 +43,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'cookies_eu', '~> 1.6'
 gem 'inline_svg', '~> 0.11.1'
 gem 'entypo-rails', '~> 3.0'
+gem 'impressionist'
 
 
 ruby "2.2.4"

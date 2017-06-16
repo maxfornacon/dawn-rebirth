@@ -57,7 +57,7 @@
 							= f.password_field :password_confirmation, autocomplete: "off", required: true
 							%label Passwort bestätigen
 							%span.bar
-
-						%label.label Hiermit erkläre ich mich mit den Nutzungsbedingungen einverstanden!
-						.actions
+						.form-group
+							%label.label Hiermit erkläre ich mich mit den Nutzungsbedingungen einverstanden!
+						.form-group
 							= f.submit "Registrieren", class: "btn"
