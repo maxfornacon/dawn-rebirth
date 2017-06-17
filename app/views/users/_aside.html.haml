@@ -80,23 +80,25 @@
 			= link_to "entfolgen", friendship, :method => :delete
 		- else
 			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
+
+
 	.sozial-media
 		- if @user.twitter?
 			= link_to "https://twitter.com/" + @user.twitter do
-				= image_tag("twitter.png", width:"32px", height: "32px", class: "sozialimg")
+				%i.icon-social-twitter
 		- if @user.facebook?
 			= link_to "https://www.facebook.com/" + @user.facebook do
-				= image_tag("facebook.png", width:"32px", height: "32px", class: "sozialimg")
+				%i.icon-social-facebook
 		- if @user.askfm?
 			= link_to "https://ask.fm/" + @user.askfm do
-				= image_tag("askfm.png", width:"32px", height: "32px", class: "sozialimg")
+				= image_tag("askfm.png", width: "50px")
 		- if @user.instagram?
 			= link_to "https://instagram.com/" + @user.instagram do
-				= image_tag("instagram.png", width:"32px", height: "32px", class: "sozialimg")
+				%i.icon-social-instagram
 		- if @user.snapchat?
 			.snapchat
-				= image_tag("snapchat.png", width:"32px", height: "32px", class: "sozialimg")
-			%p.snap= @user.snapchat
+				= image_tag("snap.png", width:"17px", height: "17px")
+				%p.snap= @user.snapchat
 
 	%hr
 	%ul.menu
