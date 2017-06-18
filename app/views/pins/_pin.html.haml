@@ -25,14 +25,21 @@
 %h1= pin.heading
 %h2= pin.subheading
 %p= pin.description
-= link_to pin.user do
-	.user
-		= image_tag pin.user.avatar.url(:extrasmall)
-		%p= pin.user.name
+- begin
+	- if pin.user != @user
+		= link_to pin.user do
+			.user
+				= image_tag pin.user.avatar.url(:extrasmall)
+				%p= pin.user.name
+- rescue
+	= link_to pin.user do
+		.user
+			= image_tag pin.user.avatar.url(:extrasmall)
+			%p= pin.user.name
 %br
 %br
 %i.icon-back-in-time.time
-%span.time-span= distance_of_time_in_words(pin.created_at, Time.now, false, :locale => :de, :highest_measure_only => true)
+%span.time-span= distance_of_time_in_words(pin.created_at, Time.now + 3600, false, :locale => :de, :highest_measure_only => true)
 .votes
 	- if current_user.voted_up_on? pin
 		%i.icon-heart.icon-heart-red
