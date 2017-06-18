@@ -89,12 +89,12 @@
 		- if @user.facebook?
 			= link_to "https://www.facebook.com/" + @user.facebook do
 				%i.icon-social-facebook
-		- if @user.askfm?
-			= link_to "https://ask.fm/" + @user.askfm do
-				= image_tag("askfm.png", width: "50px")
 		- if @user.instagram?
 			= link_to "https://instagram.com/" + @user.instagram do
 				%i.icon-social-instagram
+		- if @user.askfm?
+			= link_to "https://ask.fm/" + @user.askfm do
+				= image_tag("askfm.png", width: "50px")
 		- if @user.snapchat?
 			.snapchat
 				= image_tag("snap.png", width:"17px", height: "17px")

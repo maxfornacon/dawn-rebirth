@@ -9,6 +9,8 @@
 					%li= msg
 	%br
 	.form-group
+		= f.file_field :image	
+	.form-group
 		= f.text_field :heading, required: true
 		= f.label :heading, "Überschrift"
 		%span.bar

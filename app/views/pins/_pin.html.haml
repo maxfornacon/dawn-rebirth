@@ -1,10 +1,11 @@
+- if pin.image?
+	= image_tag pin.image.url(:crop)
 %span.pintype
 	- if pin.get_downvotes.size > pin.get_upvotes.size
 		Weebshit
 	- else
 		Serious content
-- if pin.image?
-	= image_tag pin.image.url(:crop)
+
 
 -#.pin-dropdown
 	-#.pin-dropdown-head
@@ -24,6 +25,12 @@
 %h1= pin.heading
 %h2= pin.subheading
 %p= pin.description
+= link_to pin.user do
+	.user
+		= image_tag pin.user.avatar.url(:extrasmall)
+		%p= pin.user.name
+%br
+%br
 %i.icon-back-in-time.time
 %span.time-span= distance_of_time_in_words(pin.created_at, Time.now, false, :locale => :de, :highest_measure_only => true)
 .votes

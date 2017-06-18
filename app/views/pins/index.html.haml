@@ -1,5 +1,5 @@
 .container
-	- @serious.each do |pin|
+	- @pins.each do |pin|
 		- for friendship in current_user.friendships
 			- if friendship.friend.name == pin.user.name
 				.pin
