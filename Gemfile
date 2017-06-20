@@ -44,6 +44,7 @@ gem 'cookies_eu', '~> 1.6'
 gem 'inline_svg', '~> 0.11.1'
 gem 'entypo-rails', '~> 3.0'
 gem 'impressionist'
+gem 'chat'
 
 
 ruby "2.2.4"

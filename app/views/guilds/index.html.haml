@@ -1,13 +1,22 @@
 .container
 	#treppchen
-		- if @guilds.count >= 1
-			= image_tag(@guilds.second.image.url(:standart), class: 'second')
-			- if @guilds.count >= 2
-				= image_tag(@guilds.first.image.url(:standart), class: 'first')
-				- if @guilds.count >= 3
-					= image_tag(@guilds.third.image.url(:standart), class: 'third')
-		- 3.times do |x|
-			- x = x + 1
-			%span= x
+		- if @top.count >= 2
+			.second
+				= image_tag(@top.second.image.url(:standart))
+				%span 2.
+		- if @top.count >= 1
+			.first
+				= image_tag(@top.first.image.url(:standart))
+				%span 1.
+		- if @top.count >= 3
+			.third
+				= image_tag(@top.third.image.url(:standart))
+				%span 3.
+	%br
+	%hr
+	%br
+	%br
 	- @guilds.each do |g|
-		= link_to g.name, guild_path(g.id)
+		.searchbox
+			= image_tag g.image.url(:standart)
+			= link_to g.name, guild_path(g.id)

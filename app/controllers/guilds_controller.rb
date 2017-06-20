@@ -3,7 +3,8 @@ class GuildsController < ApplicationController
 	before_action :find_guild, only: [:show, :edit, :update, :destroy, :join, :leave, :members, :chat]
 
 	def index
-		@guilds = Guild.all.order(score: :desc)
+		@top = Guild.all.order(score: :desc).limit(3)
+		@guilds = Guild.all.order(score: :desc).offset(3)
 	end
 
 	def show

@@ -61,6 +61,25 @@
 	%br
 	%br
 	%br
+	
+	.sozial-media
+		- if @user.twitter?
+			= link_to "https://twitter.com/" + @user.twitter do
+				%i.icon-social-twitter
+		- if @user.facebook?
+			= link_to "https://www.facebook.com/" + @user.facebook do
+				%i.icon-social-facebook
+		- if @user.instagram?
+			= link_to "https://instagram.com/" + @user.instagram do
+				%i.icon-social-instagram
+		- if @user.askfm?
+			= link_to "https://ask.fm/" + @user.askfm do
+				= image_tag("askfm.png", width: "50px")
+		- if @user.snapchat?
+			.snapchat
+				= image_tag("snap.png", width:"17px", height: "17px")
+				%p.snap= @user.snapchat
+				
 	- if @user.owner?
 		%b
 			Meister der Gilde
@@ -82,23 +101,6 @@
 			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
 
 
-	.sozial-media
-		- if @user.twitter?
-			= link_to "https://twitter.com/" + @user.twitter do
-				%i.icon-social-twitter
-		- if @user.facebook?
-			= link_to "https://www.facebook.com/" + @user.facebook do
-				%i.icon-social-facebook
-		- if @user.instagram?
-			= link_to "https://instagram.com/" + @user.instagram do
-				%i.icon-social-instagram
-		- if @user.askfm?
-			= link_to "https://ask.fm/" + @user.askfm do
-				= image_tag("askfm.png", width: "50px")
-		- if @user.snapchat?
-			.snapchat
-				= image_tag("snap.png", width:"17px", height: "17px")
-				%p.snap= @user.snapchat
 
 	%hr
 	%ul.menu
