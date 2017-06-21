@@ -7,5 +7,5 @@
 		.top-right
 			[#{msg.created_at.strftime('%d %b - %H:%M:%S')}]
 
-		-#= raw(msg.body_html)
-		= msg.content.html_safe
+		= raw(msg.content_html)
+		-#= msg.content.html_safe
