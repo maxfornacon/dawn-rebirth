@@ -31,9 +31,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		if @user.destroy
-			redirect_to admin_users_path, notice: "User destroyed"
-		end
+		redirect_to admin_users_path, notice: "User destroyed"
 	end
 	def rank_up
 		if current_user.owner? and current_user.guild_id == @guild.id

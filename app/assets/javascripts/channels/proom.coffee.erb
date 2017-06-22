@@ -9,6 +9,7 @@ App.proom = App.cable.subscriptions.create "ProomChannel",
 		unless data.msg.blank?
 			$('#messages-table').append data.msg
 			scroll_bottom()
+			play_sound()
 
 $(document).on 'turbolinks:load', ->
 	submit_msg()
@@ -25,3 +26,9 @@ scroll_bottom = () ->
 	try
 		$('#msgs').scrollTop($('#msgs')[0].scrollHeight)
 	catch
+
+play_sound = () ->
+	sound_checkbox = document.getElementById('sound-cb')
+	if sound_checkbox.checked
+		audio = new Audio("<%= asset_path('knob.mp3') %>")
+		audio.play()
