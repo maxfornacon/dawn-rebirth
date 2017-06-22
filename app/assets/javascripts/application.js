@@ -32,4 +32,27 @@ $(document).ready(function() {
 		$(this).remove();
 		});
 	}, 4500);
+
+	$(function($) {
+	  var addToAll, gallery, titlePosition;
+	  addToAll = true;
+	  gallery = false;
+	  titlePosition = 'over';
+	  $(addToAll ? 'img' : 'img.fancybox').each(function() {
+	    var $this, a, src, title;
+	    $this = $(this);
+	    title = $this.attr('title');
+	    src = $this.attr('data-big') || $this.attr('src');
+	    a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title);
+	    $this.wrap(a);
+	  });
+	  if (gallery) {
+	    $('a.fancybox').attr('rel', 'fancyboxgallery');
+	  }
+	  $('a.fancybox').fancybox({
+	    titlePosition: titlePosition
+	  });
+	});
+
+	$.noConflict();
 });
