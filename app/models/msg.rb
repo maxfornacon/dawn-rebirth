@@ -4,7 +4,7 @@ class Msg < ApplicationRecord
   scope :for_display, -> { order(:created_at).last(50)}
   auto_html_for :content do
 		html_escape
-		image
+		image(class: "fancybox")
 		youtube(width: 300, height: 200 )
 		link target: '_blank', rel: 'nofollow'
 		simple_format

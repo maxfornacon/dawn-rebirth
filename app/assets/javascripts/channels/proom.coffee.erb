@@ -10,6 +10,22 @@ App.proom = App.cable.subscriptions.create "ProomChannel",
 			$('#messages-table').append data.msg
 			scroll_bottom()
 			play_sound()
+			$ ($) ->
+				addToAll = true
+				gallery = false
+				titlePosition = 'over'
+				$(if addToAll then 'img' else 'img.fancybox').each ->
+					$this = $(this)
+					title = $this.attr('title')
+					src = $this.attr('data-big') or $this.attr('src')
+					a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title)
+					$this.wrap a
+					return
+				if gallery
+					$('a.fancybox').attr 'rel', 'fancyboxgallery'
+				$('a.fancybox').fancybox titlePosition: titlePosition
+				return
+			$.noConflict()
 
 $(document).on 'turbolinks:load', ->
 	submit_msg()
