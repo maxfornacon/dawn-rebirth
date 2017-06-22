@@ -1,6 +1,7 @@
-= simple_form_for(@anime) do |f| 
-	= f.error_notification 
+= form_for @anime do |f| 
+	.form-group
+		= f.text_field :name, required: true, autocomplete: "off"
+		= f.label :name, "Name des Anime"
+		%span.bar
 
-	= f.input :name, label: false
-
-	= f.button :submit 
+	= f.submit "Bestätigen", class: "btn"

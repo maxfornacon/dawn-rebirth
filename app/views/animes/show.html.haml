@@ -1,0 +1,8 @@
+.container
+	%p
+		%strong Name:
+		= @anime.name
+
+
+	= link_to 'Edit', edit_anime_path(@anime)
+	= link_to 'Back', anime_kanban_path(@anime.user) 
