@@ -11,7 +11,8 @@ App.proom = App.cable.subscriptions.create "ProomChannel",
 			scroll_bottom()
 			play_sound()
 			$('p img').addClass 'fancybox'
-
+			fancybox()
+			$.noConflict()
 				
 
 $(document).on 'turbolinks:load', ->
