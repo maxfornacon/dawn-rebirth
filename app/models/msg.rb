@@ -5,7 +5,7 @@ class Msg < ApplicationRecord
   auto_html_for :content do
 		html_escape
 		image
-		youtube(width: 300, height: 200 )
+		youtube
 		link target: '_blank', rel: 'nofollow'
 		simple_format
 	end

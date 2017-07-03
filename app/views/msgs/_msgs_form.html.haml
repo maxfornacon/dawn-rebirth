@@ -1,9 +1,7 @@
-.message-input
-	= form_for(@msg, remote: true) do |f|
-		= f.text_field :content, autocomplete: "off", class: 'text-area'
-		%br
-		%br
-		%input{:name => "sound", :type => "checkbox", :checked => "true", :value => "play", :id => "sound-cb", :class => 'checkbox light'}
-		%label Sound abspielen
-
-		= f.submit "Send", id: 'msg_button'
+= form_for(@msg, remote: true) do |f|
+	= f.text_field :content, autocomplete: "off"
+	%br
+	%br
+	%input{:name => "sound", :type => "checkbox", :checked => "true", :value => "play", :id => "sound-cb", :class => 'checkbox light'}
+	%label Sound abspielen
+	= f.submit "Send", id: 'msg_button'

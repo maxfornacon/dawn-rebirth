@@ -1,8 +1,11 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-
 $(document).on "turbolinks:load", ->
+	$('.chat p img').each ->
+		$this = $(this)
+		$this.addClass 'fancybox'
+		
 	$('#pins').imagesLoaded ->
 		$('#pins').masonry
 			itemSelector: '.pin'

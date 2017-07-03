@@ -43,6 +43,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'cookies_eu', '~> 1.6'
 gem 'inline_svg', '~> 0.11.1'
 gem 'entypo-rails', '~> 3.0'
+gem 'jquery-turbolinks'
 
 
 

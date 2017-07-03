@@ -53,9 +53,9 @@
 		= link_to unlike_pin_path(pin), method: :put, class: "votelink" do
 			%i.icon-trash
 	%span= pin.get_downvotes.size
-	- begin
-		%span= pin.popularity
-	- rescue
+	-# begin
+		-#%span= pin.popularity
+	-# rescue
 
 
 	= link_to "zum Pin", pin

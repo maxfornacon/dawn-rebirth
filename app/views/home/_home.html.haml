@@ -3,7 +3,7 @@
 		.bar-section
 			%span Online:
 			%br
-			%span [---]
+			%span= ActionCable.server.connections.length
 		.bar-section
 			= link_to chat_path do 
 				%i.icon-chat
@@ -21,18 +21,18 @@
 			= link_to "Neuer Post", new_post_path
 		- @posts.each do |p|
 			= render "posts/post", p: p
-	.serious
-		%h1.zentriert Serious - Trends
-		- @pins.each do |pin|
-			- if pin.get_upvotes.size > pin.get_downvotes.size or pin.get_upvotes.size == pin.get_downvotes.size
-				.pin
-					= render 'pins/pin', pin: pin
-	.shit
-		%h1.zentriert Weebshit - Trends
-		- @pins.each do |pin|
-			- if pin.get_downvotes.size > pin.get_upvotes.size
-				.pin
-					= render 'pins/pin', pin: pin
+	-#.serious
+		-#%h1.zentriert Serious - Trends
+		-#- @pins.each do |pin|
+			-#- if pin.get_upvotes.size > pin.get_downvotes.size or pin.get_upvotes.size == pin.get_downvotes.size
+				-#.pin
+				-#	= render 'pins/pin', pin: pin
+	-#.shit
+		-#%h1.zentriert Weebshit - Trends
+		-#- @pins.each do |pin|
+			-#- if pin.get_downvotes.size > pin.get_upvotes.size
+				-#.pin
+					-#= render 'pins/pin', pin: pin
 						
 .side-box
 	%h2 Neuste Otakus

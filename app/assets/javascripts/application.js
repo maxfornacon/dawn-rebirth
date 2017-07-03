@@ -11,13 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require cookies_eu
 //= require masonry/jquery.masonry
-//= require turbolinks
 //= require cable
 //= require emojionearea
+
+//= require turbolinks
+//= require jquery.turbolinks
 //= require_tree .
 
 
@@ -32,4 +33,5 @@ $(document).ready(function() {
 		$(this).remove();
 		});
 	}, 4500);
+
 });

@@ -1,79 +1,135 @@
 .chat
-	margin-top: 30px
-	height: calc(100% - 80px)
-	border-top: 1px solid #d6d4d4
+	.msgs 
+		height: 800px
+		overflow-y: auto
 
-	.media-list
-		list-style: none
+	.new_msg
+		#msg_content
+			width: calc(100% - 14px)
+			font-size: 20px
+			padding: 5px
+			border: 1px solid #FFB7B7
 
-	#messages, #msgs
-		overflow: auto
-		height: 850px
+	.message
+		display: flex
+		align-items: flex-start
+		margin-bottom: 10px
+		.user-img
+			border-radius: 100px
+			height: 40px
+			width: 40px
 
-	.message, .msg
-		width: calc(100% - 8px)
-		min-height: 50px
-		display: inline-block
-		border: 1px solid #d6d4d4
-		padding: 3px
-		margin-top: -1px
+	.other
+		.message-body
+			background: white
+			margin-left: 15px
 
+			&::before 
+				right: 100%
+				border: solid transparent
+				border-right-color: white
+				content: ''
+				height: 0
+				width: 0
+				position: absolute
+				pointer-events: none
+				border-width: 10px
+				top: 10px
 
-	.text-area
-		width: 100%
-		height: 35px
-		resize: none
-		border: 1px solid #FFB7B7
-		font-size: 15pt
-		padding-left: 8px
+	.me 
+		justify-content: flex-end
+		.message-body
+			background: white
+			margin-right: 15px
+			&::after 
+				left: 100%
+				border: solid transparent
+				border-left-color: white
+				content: ''
+				height: 0
+				width: 0
+				position: absolute
+				pointer-events: none
+				border-width: 10px
+				top: 10px
 
-	.media-object
-		float: left
-		height: 40px
-		margin-right: 5px
+	.message-body
+		padding: 10px
+		position: relative
+		max-width: calc(100% - 130px)
+		border-radius: 3px
 
-	.media-heading
-		display: inline-block
-		margin-top: 20px
+		img 
+			max-width: 350px
 
-	.media-body
 		p
-			word-wrap: break-word
-			display: inline-block
-			font-size: 15pt
-		.top-right
-			float: right
-			color: #afafaf
+			font-size: 20px
+		
+	.message-username
+		margin-bottom: 5px
+		display: inline-block
+		font-size: 20px
 
-		img
-			max-height: 400px
-			max-width: 300px
+	time
+		color: rgba(152, 151, 151, 0.5)
+		font-size: 11px
+
 
 	#message_button, #msg_button
 		display: none
 
-	.well
-		padding-bottom: 5em
+
+@media screen and (max-width: 700px)
+	.container
+		width: 100% !important
+
+	.chat
+		.msgs
+			padding: 10px
+		.message-body
+			max-width: none
+			p
+				font-size: 18px
+
+			img
+				max-width: 100%
+
+			iframe
+				max-width: 100%
+				height: initial
+		.new_msg
+			position: fixed
+			bottom: 0
+			width: 100%
+			background: #F2F2F2
 
 
-.row:after, .row:before 
-	content: " "
-	display: table
-	clear: both
+	
 
-.span6 
-	float: left
-	width: 48%
-	padding: 1%
+	.heading, #users_search
+		display: none
 
-.side-box
-	span
-		width: 60%
-		background: #373f41
-		display: block
-		text-align: center
-		padding: 5px
-		margin: 5px auto
+	.Dropdown
+		position: fixed !important
+		margin: 0 auto
+		margin-bottom: -50px
+		right: calc(50% - 100px) !important
+		.Name
+			&:after
+				content: ".dawn//rebirth" !important
+				font-family: "Old English Text MT"
+				color: white
+				font-size: 20px
 
-		a
-			color: #c7c7c7
+	.is-expanded
+		margin-right: auto !important
+		margin-bottom: -334px
+
+	nav
+		position: fixed !important
+		width: 100%
+
+	main 
+		margin-bottom: 74px !important
+	footer
+		display: none

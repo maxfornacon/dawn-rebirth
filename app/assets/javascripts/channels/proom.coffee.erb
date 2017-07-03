@@ -6,21 +6,22 @@ App.proom = App.cable.subscriptions.create "ProomChannel",
 		# Called when the subscription has been terminated by the server
 
 	received: (data) ->
-		unless data.msg.blank?
-			$('#messages-table').append data.msg
-			scroll_bottom()
-			play_sound()
-			$('p img').addClass 'fancybox'
-			fancybox()
-			$.noConflict()
-				
+		try
+			unless data.msg.blank?
+				$('#messages-table').append data.msg
+				scroll_bottom()
+				play_sound()
+				fancybox()
 
-$(document).on 'turbolinks:load', ->
+		catch err
+			$("#msg_#{data.id}").remove()
+
+
+$(document).on "turbolinks:load", ->
 	submit_msg()
 	scroll_bottom()
-	$('p img').addClass 'fancybox'
 	fancybox()
-	$.noConflict()
+
 
 submit_msg = () ->
 	$('#msg_content').on 'keydown', (event) ->
@@ -31,7 +32,7 @@ submit_msg = () ->
 
 scroll_bottom = () ->
 	try
-		$('#msgs').scrollTop($('#msgs')[0].scrollHeight)
+		$('.msgs').scrollTop($('.msgs')[0].scrollHeight)
 	catch
 
 play_sound = () ->
@@ -41,17 +42,17 @@ play_sound = () ->
 		audio.play()
 
 fancybox = () ->
-	addToAll = false
-	gallery = false
 	titlePosition = 'over'
-	$(if addToAll then 'img' else 'img.fancybox').each ->
+	$('.chat p img').each ->
+		$this = $(this)
+		$this.addClass 'fancybox'
+	$('img.fancybox').each ->
 		$this = $(this)
 		title = $this.attr('title')
 		src = $this.attr('data-big') or $this.attr('src')
 		a = $('<a href="#" class="fancybox"></a>').attr('href', src).attr('title', title)
 		$this.wrap a
 		return
-	if gallery
-		$('a.fancybox').attr 'rel', 'fancyboxgallery'
 	$('a.fancybox').fancybox titlePosition: titlePosition
 	return
+

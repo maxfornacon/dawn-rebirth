@@ -1,11 +1,25 @@
-.message
-	= link_to image_tag(msg.user.avatar.url(:extrasmall), alt: msg.user.name, class: "media-object"), msg.user, target: '_blank'
-	.media-body
-		%h4.media-heading
-			= link_to msg.user.name + ":", msg.user, target: '_blank'
+-# if current_user == msg.user
+	-#.message.me
+		-#.message-body
+			-#%span.message-username= link_to msg.user.name, msg.user, target: '_blank'
+			-#%time
+				-#%i.icon-clock
+				-#= msg.created_at.strftime('%H:%M:%S')
+			-# if current_user.admin?
+				-#= link_to '[x]', msg, method: :delete, remote: true, class: "del-link"
 
-		.top-right
-			[#{msg.created_at.strftime('%d %b - %H:%M:%S')}]
+			-#= raw(msg.content_html)
+		-#= link_to image_tag(msg.user.avatar.url(:extrasmall), alt: msg.user.name, class: "user-img"), msg.user, target: '_blank'
+-	#else
+.message.other{:id => "msg_#{msg.id}"}
+	= link_to image_tag(msg.user.avatar.url(:extrasmall), alt: msg.user.name, class: "user-img"), msg.user, target: '_blank'
+	.message-body
+		%span.message-username= link_to msg.user.name, msg.user, target: '_blank'
+		%time
+			%i.icon-clock
+			= msg.created_at.strftime('%H:%M:%S')
+		-# if current_user.admin?
+			-#= link_to '[x]', msg, method: :delete, remote: true, class: "del-link"
 
 		= raw(msg.content_html)
-		-#= msg.content.html_safe
+
