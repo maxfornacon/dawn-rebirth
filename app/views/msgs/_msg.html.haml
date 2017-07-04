@@ -15,6 +15,8 @@
 	= link_to image_tag(msg.user.avatar.url(:extrasmall), alt: msg.user.name, class: "user-img"), msg.user, target: '_blank'
 	.message-body
 		%span.message-username= link_to msg.user.name, msg.user, target: '_blank'
+		- if msg.user.admin?
+			= image_tag("shield.ico", width:"16px", class:"shield")
 		%time
 			%i.icon-clock
 			= msg.created_at.strftime('%H:%M:%S')
