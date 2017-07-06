@@ -92,4 +92,19 @@ module ApplicationHelper
   def online_status(user)
     content_tag :span, "", class: "user-#{user.id} online_status #{'online' if user.online?}"
   end
+
+  def redis
+    Redis.new
+  end
+
+  def listOutput(list)
+    listLength = redis.llen(list)
+    @arr = []
+    for i in 0..listLength - 1
+      #p redis.lindex("online_list", i)
+      @user = User.find(redis.lindex("online_list", i))
+      @arr << @user.name
+    end
+    return @arr
+  end
 end

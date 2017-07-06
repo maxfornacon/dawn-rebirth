@@ -1,0 +1,29 @@
+jQuery(document).on 'turbolinks:load', ->
+  if document.getElementById("msgs")
+    App.onlineList = App.cable.subscriptions.create {
+      channel: "ChatOnlineChannel"
+    },
+      connected: ->
+
+      disconnected: ->
+      received: (data) ->
+        if data.online
+          $('#messages-table').append "<span class='welcome_msg'> Willkommen, " + data.user_name + "!</span>"
+          if $('.li_' + data.user_id).length < 1
+            $('.user-list ul').append "<li class='li_" + data.user_id + "'>" + data.user_name + "</li>"
+          scroll_bottom()
+        else
+          l = $('.li_' + data.user_id).length
+          i = 0
+          while i < l
+            $(".li_"+ data.user_id).remove()
+            i++
+    return
+  else if App.onlineList
+    App.onlineList.unsubscribe()
+    App.onlineList = null
+
+scroll_bottom = () ->
+  try
+    $('.msgs').scrollTop($('.msgs')[0].scrollHeight)
+  catch

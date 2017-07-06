@@ -1,4 +1,12 @@
-.container.chat
-	= render 'msgs'
-	= render 'msgs_form'
+.container
+	.chat
+		= render 'msgs'
+		= render 'msgs_form'
 
+	.user-list
+		%span Nutzer Online
+		%ul
+			- @arr = listOutput("online_list")
+			- @arr.each do |a|
+				- @u = User.find_by name: a
+				%li{ class: "li_#{@u.id}"}= a

@@ -46,5 +46,4 @@ gem 'entypo-rails', '~> 3.0'
 gem 'jquery-turbolinks'
 
 
-
 ruby "2.2.4"
