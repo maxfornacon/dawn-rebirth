@@ -91,24 +91,72 @@
 		color: #9e9e9e
 		padding: 8px
 
+body.dark
+	nav
+		background: #282e2f
+	main 
+		background: #373F41
+
+		.Dropdown-profile
+			background: #282e2f
+		.Dropdown-group
+			background: #282e2f
+
+			i 
+				background: #282e2f
+
+		.message-username a 
+			color: rgba(211, 105, 105, 0.83)
+		.message-body
+			background: #4c5456 !important
+			color: #a7a7a7
+
+			&::before
+				border-right-color: #4c5456 !important
+
+		#msg_content
+			background: #4c5456
+			border-color: rgba(211, 105, 105, 0.83) !important
+
+	footer
+		background: #282e2f
+
+	.msgs 
+		&::-webkit-scrollbar-track
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3)
+			background-color: #4c5456
+		&::-webkit-scrollbar
+			width: 6px
+			background-color: #4c5456
+		&::-webkit-scrollbar-thumb
+			background-color: #282e2f
+
+	.user-list
+		border-left-color: rgba(211, 105, 105, 0.83)
+		span
+			color: #A7A7A7
+		ul
+			li 
+				color: #A7A7A7
+
+
+
 .user-list
-	width: 200px
+	width: 160px
 	margin-top: 20px
-	background: white
-	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15)
-	min-height: 145px
 	float: left
+	border-left: 2px solid #DE6565
+	margin-left: 10px
 	span
 		display: block
-		background: #DE6565
-		text-align: center
 		padding: 5px
-		color: white
+		font-weight: bold
 	ul
 		list-style: none
 		padding: 10px
 		li 
 			margin-bottom: 5px
+			margin-left: 5px
 
 
 

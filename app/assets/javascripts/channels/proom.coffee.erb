@@ -22,7 +22,6 @@ $(document).on "turbolinks:load", ->
 	scroll_bottom()
 	fancybox()
 
-
 submit_msg = () ->
 	$('#msg_content').on 'keydown', (event) ->
 		if event.keyCode is 13
@@ -55,4 +54,3 @@ fancybox = () ->
 		return
 	$('a.fancybox').fancybox titlePosition: titlePosition
 	return
-

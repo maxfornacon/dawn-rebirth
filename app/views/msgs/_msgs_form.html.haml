@@ -4,4 +4,19 @@
 	%br
 	%input{:name => "sound", :type => "checkbox", :checked => "true", :value => "play", :id => "sound-cb", :class => 'checkbox light'}
 	%label Sound abspielen
+
+
+	= check_box_tag "light", 1, false, class: "checkbox light", id: "light-cb"
+	%label LyGhT aus!
 	= f.submit "Send", id: 'msg_button'
+
+:javascript
+	document.getElementById("light-cb").onclick = function(){;
+		var tag = document.getElementsByTagName("BODY")[0];
+		var cb1 = document.getElementById("sound-cb");
+		var cb2 = document.getElementById("light-cb");
+
+		tag.classList.toggle("dark");
+		cb1.classList.toggle("light");
+		cb2.classList.toggle("light");
+	};
