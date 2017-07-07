@@ -74,6 +74,21 @@ class UsersController < ApplicationController
     @watching = @user.animes.where(state: "watching")
     @watched = @user.animes.where(state: "watched")
 	end
+
+	def make_mod
+		if current_user.admin?
+			user = User.find(params[:id])
+			user.update_attribute :mod, true
+			redirect_to admin_users_path, notice: "befördert"
+		end
+	end
+	def undo_mod
+		if current_user.admin?
+			user = User.find(params[:id])
+			user.update_attribute :mod, false
+			redirect_to admin_users_path, notice: "degradiert"
+		end
+	end
 	private
 
 		def about_params

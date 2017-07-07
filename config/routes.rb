@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get :rank_up, on: :member
     get :rank_down, on: :member
     get :kick, on: :member
+    get :make_mod, on: :member
+    get :undo_mod, on: :member
   end
   get '/about/:id', to: "users#about", as: 'about'
   get '/anime_kanban/:id', to: "users#anime_kanban", as: 'anime_kanban'

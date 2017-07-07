@@ -3,6 +3,10 @@
 	- if @user.admin?
 		#adminribbon
 			ADMIN
+	- elsif @user.mod?
+		#modribbon
+			MOD
+
 	- if @user.is_female?
 		%span.gender ♀
 	-else
