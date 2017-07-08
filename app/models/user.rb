@@ -9,11 +9,7 @@ class User < ApplicationRecord
 
   validates_uniqueness_of :name
 
-  has_one :profile, dependent: :destroy
-  accepts_nested_attributes_for :profile
-
   has_many :pins, dependent: :destroy
-  has_many :comments, dependent: :delete_all
 
   has_many :guilds
 	has_many :messages, dependent: :destroy
