@@ -11,8 +11,7 @@
 
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
-	%body
-
+	%body{:class => "#{'with-admin' if current_user.try(:admin?) or current_user.try(:mod?)}"}
 		%main
 			- if notice 
 				#notice_wrapper

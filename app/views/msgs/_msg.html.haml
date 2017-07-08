@@ -22,8 +22,7 @@
 		%time
 			%i.icon-clock
 			= msg.created_at.strftime('%H:%M:%S')
-		-# if current_user.admin?
-			-#= link_to '[x]', msg, method: :delete, remote: true, class: "del-link"
+			= link_to '[x]', msg, method: :delete, remote: true, class: "del-link admin-only"
 
 		= raw(msg.content_html)
 

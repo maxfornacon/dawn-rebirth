@@ -44,13 +44,13 @@
 	- if current_user.voted_up_on? pin
 		%i.icon-heart.icon-heart-red
 	- else
-		= link_to like_pin_path(pin), method: :put, class: "votelink" do
+		= link_to like_pin_path(pin), method: :put, class: "votelink up" do
 			%i.icon-heart
-	%span= pin.get_upvotes.size
+	%span.likes= pin.get_upvotes.size
 	- if current_user.voted_down_on? pin
 		%i.icon-trash.icon-trash-red
 	- else
-		= link_to unlike_pin_path(pin), method: :put, class: "votelink" do
+		= link_to unlike_pin_path(pin), method: :put, class: "votelink down" do
 			%i.icon-trash
 	%span= pin.get_downvotes.size
 	-# begin

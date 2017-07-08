@@ -8,24 +8,24 @@ class MsgsController < ApplicationController
   def create
     msg = current_user.msgs.build(msg_params)
     if msg.save
+      current_user.increment!(:score, by = 1)
       ActionCable.server.broadcast 'proom_channel', msg: render_msg(msg)
     end
   end
 
   def destroy
-    @msg = Msg.find(params[:id])
-    msg_id = @msg.id
-    @msg.destroy
+    if current_user.admin? or current_user.mod?
+      @msg = Msg.find(params[:id])
+      msg_id = @msg.id
+      @msg.destroy
 
-    if @msg.destroy
+      if @msg.destroy
 
-      ActionCable.server.broadcast 'proom_channel', id: msg_id
-    end
+        ActionCable.server.broadcast 'proom_channel', id: msg_id
+      end
 
-    respond_to do |format|
-      format.html { redirect_to chat_path }
-      format.json { head :no_content }
-      format.js   { render :layout => false }
+    else
+      redirect_to chat_path
     end
   end
 

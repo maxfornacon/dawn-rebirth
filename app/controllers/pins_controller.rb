@@ -49,7 +49,12 @@ class PinsController < ApplicationController
 			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_upvotes.size
 			@pin.save
 		end
-		redirect_to :back
+		respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { head :no_content }
+      format.js   { render :layout => false }
+    end
+
 	end
 
 	def downvote
