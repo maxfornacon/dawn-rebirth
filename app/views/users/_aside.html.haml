@@ -79,9 +79,6 @@
 		- if @user.askfm?
 			= link_to "https://ask.fm/" + @user.askfm do
 				= image_tag("askfm.png", width: "50px")
-		- if @user.tumblr?
-			= link_to "https://" + @user.tumblr + ".tumblr.com" do
-				%i.icon-social-tumblr
 		- if @user.snapchat?
 			.snapchat
 				= image_tag("snap.png", width:"17px", height: "17px")
