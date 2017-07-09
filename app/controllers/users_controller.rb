@@ -97,7 +97,7 @@ class UsersController < ApplicationController
 	private
 
 		def about_params
-			params.require(:user).permit(:status, :favanime, :favmanga, :bio, :twitter, :facebook, :instagram, :askfm, :snapchat, :googleplus)
+			params.require(:user).permit(:status, :favanime, :favmanga, :bio, :twitter, :facebook, :instagram, :askfm, :snapchat, :googleplus, :tumblr)
 		end
 
 		def find_user
