@@ -1,0 +1,25 @@
+= form_for(@update) do |f|
+	- if @update.errors.any?
+		#error_explanation
+			%h2
+				= pluralize(@update.errors.count, "error")
+				prohibited this win from being saved:
+			%ul
+				- @update.errors.full_messages.each do |message|
+					%li= message
+	.field
+		= f.label :title
+		%br
+		= f.text_field :title
+	.field
+		= f.label :body
+		%br
+		~ f.text_area :body
+	.field
+		= f.label :updatetype
+		%br
+		= f.text_field :updatetype
+
+	= f.submit
+
+
