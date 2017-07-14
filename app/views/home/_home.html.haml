@@ -1,5 +1,5 @@
 .main
-	.bar
+	.top-bar
 		.bar-section
 		.bar-section
 			= link_to chat_path do 
@@ -18,6 +18,30 @@
 			= link_to "Neuer Post", new_post_path
 		- @posts.each do |p|
 			= render "posts/post", p: p
+
+	.update-box
+		%span Letzte Änderungen
+		- @updates.each do |u|
+			= link_to update_path(u) do
+				- if u.updatetype == "add"
+					.update.update-add
+						= u.title
+				- elsif u.updatetype == "fix"
+					.update.update-fix
+						= u.title
+				- elsif u.updatetype == "remove"
+					.update.update-remove
+						= u.title
+		- if current_user.admin?
+			= link_to "new", new_update_path
+		.legende
+			.update.update-add
+			%span Neuerung
+			.update.update-fix
+			%span Bugfix
+			.update.update-remove
+			%span entfernt
+
 						
 .side-box
 	%h2 Neuste Otakus

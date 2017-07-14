@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     end
   end
   mount ActionCable.server => '/cable'
-  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
+  match 'users/:id/destroy' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   devise_for :users
 	resources :users, except: [:create, :new, :destroy] do
     get :rank_up, on: :member
@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   resources :messages
 
   resources :posts
+
+  resources :updates
 
 	root "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

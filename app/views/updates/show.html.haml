@@ -1,0 +1,16 @@
+.container
+	.update-show
+		- if @update.updatetype == "add"
+			%span Folgendes Feature wurde veröffentlicht:
+			%br
+			%h1.update-add= @update.title
+		- elsif @update.updatetype == "fix"
+			%span Folgender Fehler wurde behoben:
+			%br
+			%h1.update-fix= @update.title
+		- elsif @update.updatetype == "remove"
+			%span Folgendes Feature wurde entfernt:
+			%br
+			%h1.update-remove= @update.title
+
+		%p= @update.body
