@@ -12,6 +12,7 @@
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
 	%body{:class => "#{'with-admin' if current_user.try(:admin?) or current_user.try(:mod?)}"}
+		%script{:async => "async", :src => "//go.mobisla.com/notice.php?p=1325923&interactive=1&pushup=1", :type => "text/javascript"}
 		%main
 			- if notice 
 				#notice_wrapper
