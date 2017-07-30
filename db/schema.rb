@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170709152814) do
-=======
-ActiveRecord::Schema.define(version: 20170713195738) do
->>>>>>> updatebox
+ActiveRecord::Schema.define(version: 20170722141912) do
 
   create_table "animes", force: :cascade do |t|
     t.string   "name"
@@ -24,13 +20,6 @@ ActiveRecord::Schema.define(version: 20170713195738) do
     t.datetime "updated_at",                      null: false
     t.string   "state",      default: "to_watch"
     t.integer  "user_id"
-  end
-
-  create_table "changes", force: :cascade do |t|
-    t.string   "tile"
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
   end
 
   create_table "flags", force: :cascade do |t|
@@ -175,7 +164,7 @@ ActiveRecord::Schema.define(version: 20170713195738) do
     t.string   "snapchat"
     t.string   "googleplus"
     t.boolean  "admin",                  default: false
-    t.integer  "score",                  default: 0
+    t.decimal  "score",                  default: "0.0"
     t.integer  "guildrank",              default: 0
     t.boolean  "online",                 default: false
     t.boolean  "mod",                    default: false

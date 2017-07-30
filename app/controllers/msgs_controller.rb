@@ -8,7 +8,7 @@ class MsgsController < ApplicationController
   def create
     msg = current_user.msgs.build(msg_params)
     if msg.save
-      current_user.increment!(:score, by = 1)
+      current_user.increment!(:score, by = 0.05)
       ActionCable.server.broadcast 'proom_channel', msg: render_msg(msg)
     end
   end
