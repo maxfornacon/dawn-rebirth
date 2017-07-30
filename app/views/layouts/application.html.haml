@@ -12,7 +12,6 @@
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
 	%body{:class => "#{'with-admin' if current_user.try(:admin?) or current_user.try(:mod?)}"}
-		%script{:src => "//go.mobtrks.com/notice.php?p=1330073&interstitial=1"}
 		%main
 			- if notice 
 				#notice_wrapper
