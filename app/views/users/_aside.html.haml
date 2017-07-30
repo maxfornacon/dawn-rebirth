@@ -18,7 +18,7 @@
 	%a.popup-btn3{:href => "#"}
 		.box
 			- if @user.score < 1000
-				%span= @user.score
+				%span= @user.score.round
 			- else
 				%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
 			%p Score
@@ -58,7 +58,7 @@
 	.popup-wrap3
 		.popup-box3
 			%h2 Score
-			%h3= @user.score
+			%h3= @user.score.round
 			%a.close-btn.popup-close3{:href => "#"}
 				%i.material-icons close
 
