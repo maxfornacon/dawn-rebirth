@@ -12,8 +12,11 @@
 		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
 
 	%body{:class => "#{'with-admin' if current_user.try(:admin?) or current_user.try(:mod?)}"}
+		- if user_signed_in?
+			#current-user
+
 		%main
-			- if notice 
+			- if notice
 				#notice_wrapper
 					%p.notice= notice
 			- elsif alert
@@ -24,7 +27,7 @@
 			.Dropdown
 				- if user_signed_in?
 					.Dropdown-profile
-						%span.Name 
+						%span.Name
 						%span.MenuIcon
 							%span.MenuIcon-line
 							%span.MenuIcon-line
@@ -75,7 +78,7 @@
 					= form_tag users_path, :method => 'get', :id => 'users_search' do
 						= text_field_tag :search, params[:search],:placeholder => "Nach Usern suchen", required: true
 						= submit_tag "Suchen", :name => nil, class: "btn"
-			
+
 
 			= yield
 

@@ -18,7 +18,6 @@
 //= require emojionearea
 //= require turbolinks
 //= require jquery.turbolinks
-//= require conversations
 //= require_tree .
 
 
