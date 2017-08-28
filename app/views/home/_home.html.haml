@@ -52,8 +52,8 @@
 		= link_to user do
 			= image_tag user.avatar.url(:small)
 .side-box
-	%h2 Neuste Gilden
-	- @guilds = Guild.all.order("created_at DESC")
-	- @guilds.each do |guild|
-		= link_to guild_path(guild.id) do
-			= image_tag guild.image.url(:standart)
+	-#%h2 Neuste Gilden
+	-#- @guilds = Guild.all.order("created_at DESC")
+	-#- @guilds.each do |guild|
+	-#	= link_to guild_path(guild.id) do
+	-#		= image_tag guild.image.url(:standart)

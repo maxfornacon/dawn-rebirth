@@ -4,7 +4,6 @@
 	position: fixed
 	top: 0
 	z-index: 99
-
 	.form-group
 		margin-top: 2rem
 
@@ -27,6 +26,9 @@
 		text-align: center
 		font-size: 30px
 		color: white
+
+	i 
+		display: none
 
 .cl50:nth-of-type(2)
 	background: #373F41
@@ -135,8 +137,7 @@
 
 
 .tabs
-	width: 70%
-
+	
 	p
 		float: left
 		margin-right: 5px
@@ -238,3 +239,29 @@
 .light
 	&:after
 		background: #F2F2F2
+
+@media screen and (max-width: 850px)
+	.cl50
+		width: 100%
+		position: relative
+		img 
+			width: 100%
+
+	.cl50:nth-of-type(1)
+		margin-top: -30px
+
+		i 
+			display: block
+			font-size: 50px
+			color: white
+			margin: 0 auto
+
+
+	.cl50:nth-of-type(2)
+		left: 0
+		height: 625px
+		padding-top: 1px
+		margin-bottom: -75px
+
+		.center form .form-group
+			margin-bottom: 10px

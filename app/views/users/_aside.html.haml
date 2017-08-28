@@ -84,15 +84,15 @@
 				= image_tag("snap.png", width:"17px", height: "17px")
 				%p.snap= @user.snapchat
 				
-	- if @user.owner?
-		%b
-			Meister der Gilde
-			= link_to @guild.name, guild_path(@guild.id)
-		%br
-	- elsif @user.guildmember?
-		%b
-			Mitglied der Gilde
-			= link_to @guild.name, guild_path(@guild.id)
+	-#- if @user.owner?
+	-#	%b
+	-#		Meister der Gilde
+	-#		= link_to @guild.name, guild_path(@guild.id)
+	-#	%br
+	-#- elsif @user.guildmember?
+	-#	%b
+	-#		Mitglied der Gilde
+	-#		= link_to @guild.name, guild_path(@guild.id)
 
 	- unless current_user.id == @user.id
 		- for friendship in current_user.friendships
