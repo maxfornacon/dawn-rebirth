@@ -29,6 +29,8 @@ class User < ApplicationRecord
   
   acts_as_voter
 
+  has_one :pet
+
   def online?
     !Redis.new.get("user_#{self.id}_online").nil?
   end

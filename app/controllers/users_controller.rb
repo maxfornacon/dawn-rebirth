@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 
 	def show
 		@pin = @user.pins.all.order("created_at DESC")
+		@pet = @user.pet
 	end
 
 	def about

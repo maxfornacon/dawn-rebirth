@@ -1,0 +1,278 @@
+.petbox {
+  width: 260px;
+  height: 260px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.cat {
+  background: #555;
+  height: 10%;
+  bottom: 40%;
+  width: 65px;
+  left: 22%;
+  display: block;
+  position: absolute;
+  &:before {
+    width: 0;
+    height: 0;
+    border-left: 0 solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #555;
+    top: -14px;
+    left: 0;
+    position: absolute;
+    content: "";
+  }
+  &:after {
+    width: 0;
+    height: 0;
+    border-right: 0 solid transparent;
+    border-left: 15px solid transparent;
+    border-bottom: 15px solid #555;
+    top: -14px;
+    right: 0;
+    position: absolute;
+    content: "";
+  }
+  .eyes {
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    background: white;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 100%;
+    top: 15px;
+    &.left {
+      left: 10px;
+    }
+    &.right {
+      right: 10px;
+    }
+  }
+  .mouth {
+    position: absolute;
+    height: 4px;
+    width: 70%;
+    background: #eee;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0 0 30% 30%;
+    top: 28px;
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+  .feet {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    background: #6f6f6f;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 10px 10px 0 0;
+    top: 84px;
+    &.left {
+      left: 10px;
+    }
+    &.right {
+      right: 10px;
+    }
+  }
+  .tail {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0 0 100% 100%;
+    border-width: 12px;
+    border-style: solid;
+    background: transparent;
+    color: transparent;
+    border-color: #6f6f6f;
+    z-index: -1;
+    bottom: 10%;
+    display: block;
+    position: absolute;
+    height: 80%;
+    width: 100px;
+    left: -4px;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
+    transform: rotate(325deg);
+  }
+  &:hover .mouth {
+    height: 6px;
+    width: 6px;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 50%;
+    top: 26px;
+  }
+}
+
+.kohle {
+  background: #272727;
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  border-radius: 100%;
+  margin-left: 50px;
+  animation: up-down 1s ease-in-out 0s infinite alternate;
+
+  .ears {
+    border-left: 35px solid transparent;
+    border-bottom: 58px solid #272727;
+    border-right: 35px solid transparent;
+    width: 0;
+    border-radius: 50%;
+    position: absolute;
+    transform: rotate(-46deg);
+    top: -14px;
+    left: -26px;
+    &:after, &:before {
+      content: "";
+      position: absolute;
+      height: 62px;
+      width: 5px;
+      border-radius: 50%;
+      top: -5px;
+      background: #272727;
+    }
+    &:after {
+      left: -17px;
+      transform: rotate(28deg);
+    }
+    &:before {
+      left: 11px;
+      top: -5px;
+      transform: rotate(-27deg);
+    }
+
+    &.right {
+      left: 58px;
+      transform: rotate(49deg);
+    }
+  }
+  .eyes {
+    position: absolute;
+    background: #528153;
+    height: 33px;
+    width: 25px;
+    border-radius: 100%;
+    top: 41px;
+    left: 12px;
+    transform: rotate(-11deg);
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      background: #456940;
+      border-radius: 100%;
+      border: 1px solid #305030;
+    }
+
+    &:before {
+      height: 13px;
+      width: 10px;
+      top: 11px;
+      left: 6px;
+    }
+
+    &:after{
+      height: 4px;
+      width: 3px;
+      top: 16px;
+      left: 10px;
+    }
+
+    &.right {
+      left: 65px;
+      transform: rotate(11deg) !important;
+    }
+  }
+  .mouth {
+    position: absolute;
+    background: #688165;
+    width: 16px;
+    height: 3px;
+    border-radius: 100%;
+    left: 43px;
+    top: 90px;
+  }
+
+  .leg {
+    position: absolute;
+    border-left: 5px solid transparent;
+    border-bottom: 15px solid #272727;
+    border-right: 5px solid transparent;
+    top: 78px;
+    left: 4px;
+    transform: rotate(224deg);
+    &.two {
+      left: 26px;
+      top: 93px;
+      transform: rotate(199deg);
+    }
+    &.three {
+      left: 67px;
+      top: 90px;
+      transform: rotate(146deg);
+    }
+  }
+  .tail {
+    position: absolute;
+
+    &.one {
+      border-top: 41px solid #272727;
+      border-left: 2px solid transparent;
+      border-right: 2px solid transparent;
+      height: 0;
+      width: 4px;
+      top: 91px;
+      left: 43px;
+      z-index: -2;
+    }
+    &.two {
+      border-top: 17px solid #272727;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      height: 0;
+      width: 3px;
+      top: 123px;
+      left: 37px;
+      z-index: -2;
+      transform: rotate(77deg);
+    }
+    &.three {
+      border-top: 41px solid #272727;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      height: 0;
+      width: 2px;
+      top: 132px;
+      left: 36px;
+      z-index: -2;
+      transform: rotate(-14deg);
+    }
+    &.tip{
+      border-top: 11px solid #272727;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      height: 0;
+      width: 0;
+      top: 170px;
+      left: 38px;
+      z-index: -2;
+      transform: rotate(-12deg);
+    }
+  }
+}
+
+@keyframes up-down {
+  0% {margin-top: -4px}
+  100% {margin-top: 4px}
+}
+
+@keyframes ear-right {
+  0% {top: -12px; transform: rotate(57deg);}
+  100% {top: -17px; transform: rotate(47deg);}
+}

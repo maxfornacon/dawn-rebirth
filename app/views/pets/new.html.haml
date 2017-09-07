@@ -1,0 +1,30 @@
+= form_for @pet do |f| 
+	.form-group
+		= f.text_field :name, required: true, autocomplete: "off"
+		= f.label :name, "Name des Tieres"
+		%span.bar
+	= f.submit "Bestätigen", class: "btn"
+
+.petbox
+	.cat
+		%span.eyes.left
+		%span.eyes.right
+		%span.mouth
+		%span.feet.left
+		%span.feet.right
+		%span.tail
+
+.petbox
+	.kohle
+		%span.ears.left
+		%span.ears.right
+		%span.eyes.left
+		%span.eyes.right
+		%span.mouth
+		%span.leg.one
+		%span.leg.two
+		%span.leg.three
+		%span.tail.one
+		%span.tail.two
+		%span.tail.three
+		%span.tail.tip
