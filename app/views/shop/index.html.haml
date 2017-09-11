@@ -1,1 +1,37 @@
-= link_to "Neues Pet", new_pet_path
+.container
+	- if current_user.pet
+		= link_to new_pet_path, data: { confirm: "Wenn Du OK drückst ist dein aktueller Begleiter traurig und wird verschwinden, dann musst du dir einen neuen kaufen!"} do
+			.petbox
+				.kohle
+					%span.ears.left
+					%span.ears.right
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.leg.one
+					%span.leg.two
+					%span.leg.three
+					%span.leg.four
+					%span.tail.one
+					%span.tail.two
+					%span.tail.three
+					%span.tail.tip
+				%span.price Begleitershop
+	- else
+		= link_to new_pet_path do
+			.petbox
+				.kohle
+					%span.ears.left
+					%span.ears.right
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.leg.one
+					%span.leg.two
+					%span.leg.three
+					%span.leg.four
+					%span.tail.one
+					%span.tail.two
+					%span.tail.three
+					%span.tail.tip
+				%span.price Begleitershop

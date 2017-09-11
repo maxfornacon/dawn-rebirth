@@ -117,8 +117,9 @@
 	%hr
 
 	
-	#pet
-		- if @pet
+	
+	- if @pet
+		#pet
 			%span.banner= @pet.name
 			- if @pet.pettype == "kohle"
 				.kohle
