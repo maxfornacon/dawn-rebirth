@@ -29,7 +29,7 @@ class User < ApplicationRecord
   
   acts_as_voter
 
-  has_one :pet
+  has_one :pet, dependent: :destroy
 
   def online?
     !Redis.new.get("user_#{self.id}_online").nil?

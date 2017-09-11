@@ -1,30 +1,78 @@
-= form_for @pet do |f| 
-	.form-group
-		= f.text_field :name, required: true, autocomplete: "off"
-		= f.label :name, "Name des Tieres"
-		%span.bar
-	= f.submit "Bestätigen", class: "btn"
+.container
+	.forms
+		= form_for @pet do |f| 
+			%br
+			%h1 Wähle deinen Begleiter
+			%br
+			.petbox.scaled
+				.cat
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.feet.left
+					%span.feet.right
+					%span.tail
+						%span.tip
+				%span.price 500
 
-.petbox
-	.cat
-		%span.eyes.left
-		%span.eyes.right
-		%span.mouth
-		%span.feet.left
-		%span.feet.right
-		%span.tail
+			.petbox.scaled
+				.kohle
+					%span.ears.left
+					%span.ears.right
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.leg.one
+					%span.leg.two
+					%span.leg.three
+					%span.leg.four
+					%span.tail.one
+					%span.tail.two
+					%span.tail.three
+					%span.tail.tip
+				%span.price 10000
+			.petbox.scaled
+				.spider
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.legs.one
+					%span.legs.two
+					%span.legs.three
+					%span.legs.four
+					%span.legs.five
+					%span.legs.six
+					%span.legs.seven
+					%span.legs.eight
+				%span.price 1000
+				
+			.petbox.scaled
+				.kohle
+					%span.ears.left
+					%span.ears.right
+					%span.eyes.left
+					%span.eyes.right
+					%span.mouth
+					%span.leg.one
+					%span.leg.two
+					%span.leg.three
+					%span.leg.four
+					%span.tail.one
+					%span.tail.two
+					%span.tail.three
+					%span.tail.tip
+				%span.price 10000
 
-.petbox
-	.kohle
-		%span.ears.left
-		%span.ears.right
-		%span.eyes.left
-		%span.eyes.right
-		%span.mouth
-		%span.leg.one
-		%span.leg.two
-		%span.leg.three
-		%span.tail.one
-		%span.tail.two
-		%span.tail.three
-		%span.tail.tip
+			%br
+			%br
+			.form-group
+				= f.text_field :name, required: true, autocomplete: "off"
+				= f.label :name, "Gib deinem Begleiter einen Namen"
+				%span.bar
+			
+			= f.text_field :pettype, required: true, class: "hidden", id: "pettype"
+			%label.hidden#score= current_user.score
+			%label#error
+
+			.form-group
+				= f.submit "Bestätigen", class: "btn" 
