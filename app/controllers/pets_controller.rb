@@ -9,7 +9,13 @@ class PetsController < ApplicationController
 		@pet = current_user.build_pet(pet_params)
 
 		if @pet.save
-
+			if @pet.pettype == "cat"
+				current_user.decrement!(:score, by = 500)
+			elsif @pet.pettype == "spider"
+				current_user.decrement!(:score, by = 1000)
+			elsif @pet.pettype == "kohle"
+				current_user.decrement!(:score, by = 10000)
+			end
 			redirect_to current_user, notice: "erfolgreich gekauft"
 		else
 			render 'new'
