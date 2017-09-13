@@ -15,7 +15,7 @@
 	.info
 		%h1.name= @user.name
 		= online_status @user
-	%a.popup-btn3{:href => "#"}
+	%a.popup-btn{:href => ""}
 		.box
 			- if @user.score < 1000
 				%span= @user.score.round
@@ -23,11 +23,11 @@
 				%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
 			%p Score
 	
-	%a.popup-btn1{:href => "#"}
+	%a.popup-btn{:href => "#"}
 		.box
 			%span= @user.inverse_friends.count
 			%p Follower
-	%a.popup-btn2{:href => "#"}
+	%a.popup-btn{:href => "#"}
 		.box
 			%span= @user.friendships.count
 			%p Folgt
@@ -158,47 +158,3 @@
 					%span.feet.right
 					%span.tail
 						%span.tip
-
-
-:javascript
-	$(document).ready(function() {
-		$("a[href*='" + location.pathname + "'] > li").addClass("active");
-
-	  $('.popup-btn1').click(function(e) {
-	    $('.popup-wrap1').fadeIn(250);
-	    $('.popup-box1').removeClass('transform-out').addClass('transform-in');
-
-	    e.preventDefault();
-	  });
-	  $('.popup-btn2').click(function(e) {
-	    $('.popup-wrap2').fadeIn(250);
-	    $('.popup-box2').removeClass('transform-out').addClass('transform-in');
-
-	    e.preventDefault();
-	  });
-	  $('.popup-btn3').click(function(e) {
-	    $('.popup-wrap3').fadeIn(250);
-	    $('.popup-box3').removeClass('transform-out').addClass('transform-in');
-
-	    e.preventDefault();
-	  });
-
-	  $('.popup-close1').click(function(e) {
-	    $('.popup-wrap1').fadeOut(250);
-	    $('.popup-box1').removeClass('transform-in').addClass('transform-out');
-
-	    e.preventDefault();
-	  });
-	  $('.popup-close2').click(function(e) {
-	    $('.popup-wrap2').fadeOut(250);
-	    $('.popup-box2').removeClass('transform-in').addClass('transform-out');
-
-	    e.preventDefault();
-	  });
-	  $('.popup-close3').click(function(e) {
-	    $('.popup-wrap3').fadeOut(250);
-	    $('.popup-box3').removeClass('transform-in').addClass('transform-out');
-
-	    e.preventDefault();
-	  });
-	});
