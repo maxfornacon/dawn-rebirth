@@ -21,7 +21,12 @@
 			= image_tag("mod_shield.ico", width:"16px", class:"shield")
 		%time
 			%i.icon-clock
-			= msg.created_at.strftime('%H:%M:%S')
+			- if msg.created_at.to_date == Date.current
+				= msg.created_at.strftime('%H:%M:%S')
+			- elsif msg.created_at.to_date == Date.yesterday
+				= msg.created_at.strftime('gestern - %H:%M:%S')
+			- else
+				= msg.created_at.strftime('%e. %b. - %H:%M:%S')
 			= link_to '[x]', msg, method: :delete, remote: true, class: "del-link admin-only"
 
 		= raw(msg.content_html)
