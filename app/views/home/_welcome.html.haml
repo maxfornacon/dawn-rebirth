@@ -27,7 +27,7 @@
 							%label Passwort
 							%span.bar
 
-						.field
+						.field#save-data
 							= f.check_box :remember_me, class: 'checkbox'
 							= f.label :remember_me, "Daten speichern", class: 'label'
 						.form-group
@@ -61,4 +61,4 @@
 						.form-group
 							%label.label Hiermit erkläre ich mich mit den Nutzungsbedingungen einverstanden!
 						.form-group
-							= f.submit "Registrieren", class: "btn"
+							= f.submit "Registrieren", class: "btn regbtn"

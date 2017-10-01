@@ -1,0 +1,11 @@
+.container
+	%h1 Mein Team
+
+	%h2 Alle Charaktere
+	- @chars.each do |c|
+		= link_to char_to_team_path(c.id), :remote => true, class: 'to_team' do
+			.char
+				%span= c.name
+
+	= link_to "neuen Charakter erwerben", new_rpg_char_path
+		

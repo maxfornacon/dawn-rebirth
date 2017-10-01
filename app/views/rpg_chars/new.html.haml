@@ -1,0 +1,20 @@
+.container
+	.forms
+		= form_for @rpg_char do |f| 
+			.char-wrapper
+				.char
+					%span Naruto
+				.char
+					%span Sakura
+				.char
+					%span Kakashi
+				.char
+					%span Yamato
+			= f.text_field :name, required: true, class: "hidden", id: "charname"
+			%label#error
+
+			.form-group
+				= f.submit "Bestätigen", class: "btn" 
+	
+	
+

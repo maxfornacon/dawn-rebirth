@@ -52,6 +52,8 @@ Rails.application.routes.draw do
   resources :shop, only: [:index]
   resources :pets
 
+  resources :rpg_chars
+  get 'rpg_chars/to_team/:id', to: 'rpg_chars#to_team', as: 'char_to_team'
 	root "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -31,6 +31,8 @@ class User < ApplicationRecord
 
   has_one :pet, dependent: :destroy
 
+  has_many :rpg_chars
+
   def online?
     !Redis.new.get("user_#{self.id}_online").nil?
   end
