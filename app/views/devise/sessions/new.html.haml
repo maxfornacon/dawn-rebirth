@@ -4,7 +4,7 @@
       %br
       %br
       .form-group
-        = f.email_field :email, autofocus: true, required: true
+        = f.text_field :email, required: true
         = f.label :email
         %span.bar
 
@@ -14,7 +14,7 @@
         %span.bar
 
       - if devise_mapping.rememberable?
-        .field
+        .field#save-data
           = f.check_box :remember_me, class: 'checkbox light'
           = f.label :remember_me, "Daten speichern", class: 'label'
 

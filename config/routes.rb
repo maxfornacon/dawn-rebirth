@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get 'admin/users'
   get 'admin/index'
   get 'admin/flags'
+  get 'admin/miner'
 
   resources :msgs
   get 'chat', to: 'msgs#index'

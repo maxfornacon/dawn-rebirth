@@ -13,7 +13,10 @@ class AdminController < ApplicationController
 		@pins = Pin.all.includes(:user)
 	end
 
+	def miner
 
+	end
+	
 	private
 		def check_admin
 			unless current_user.admin?
