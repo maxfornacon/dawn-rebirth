@@ -1,11 +1,18 @@
 .container
 	%h1 Mein Team
-
+	.char-wrapper
+		- @team.each do |t|
+			= link_to char_team_path(t.id), class: 'to_team' do
+				.char
+					%span= t.name
+					= t.team
 	%h2 Alle Charaktere
-	- @chars.each do |c|
-		= link_to char_to_team_path(c.id), :remote => true, class: 'to_team' do
-			.char
-				%span= c.name
+	.char-wrapper
+		- @chars.each do |c|
+			= link_to train_path(c.id), class: 'to_team' do
+				.char
+					%span= c.name
+					= c.team
 
 	= link_to "neuen Charakter erwerben", new_rpg_char_path
 		

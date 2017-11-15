@@ -54,7 +54,8 @@ Rails.application.routes.draw do
   resources :pets
 
   resources :rpg_chars
-  get 'rpg_chars/to_team/:id', to: 'rpg_chars#to_team', as: 'char_to_team'
+  get 'rpg_chars/team/:id', to: 'rpg_chars#team', as: 'char_team'
+  get 'rpg_chars/train/:id', to: 'rpg_chars#train', as: 'train'
 	root "home#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
