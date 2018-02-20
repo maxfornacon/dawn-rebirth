@@ -131,10 +131,10 @@ ActiveRecord::Schema.define(version: 20171002220322) do
 
   create_table "rpg_chars", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "team"
-    t.integer  "xp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "team",       default: false
+    t.integer  "xp",         default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.integer  "level"
     t.integer  "needed_xp"
