@@ -24,7 +24,7 @@ group :development do
 	gem 'seed_dump'
 end
 group :production do
-	gem 'pg'
+	gem 'pg', '~> 1.0'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'coffee-script-source', '1.8.0'
