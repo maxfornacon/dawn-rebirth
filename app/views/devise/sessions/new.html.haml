@@ -18,7 +18,7 @@
           = f.check_box :remember_me, class: 'checkbox light'
           = f.label :remember_me, "Daten speichern", class: 'label'
 
-      .actions
+      .form-group
         = f.submit "Log in", class: "btn"
-
-      = render "devise/shared/links"
+        %br
+        = render "devise/shared/links"
