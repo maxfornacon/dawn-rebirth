@@ -1,0 +1,16 @@
+.container
+  .forms
+    %br
+    %h2 Passwort vergessen?
+    %br
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+      = devise_error_messages!
+      .form-group
+        = f.email_field :email, autofocus: true, required: true
+        = f.label :email, "Bitte gib deine Email an:"
+        %spar.bar
+
+      .form-group
+        = f.submit "Absenden", class: "btn"
+        %br
+        = render "devise/shared/links"
