@@ -5,12 +5,12 @@ $(document).on "turbolinks:load", ->
 	$('.chat p img').each ->
 		$this = $(this)
 		$this.addClass 'fancybox'
-		
+
 	$('#pins').imagesLoaded ->
 		$('#pins').masonry
 			itemSelector: '.pin'
 			isFitWidth: true
-			
+
 	$('.signin-cont').show()
 	$('.tabs .tab').click ->
 		if $(this).hasClass('signin')
@@ -24,3 +24,16 @@ $(document).on "turbolinks:load", ->
 			$('.cont').hide()
 			$('.signup-cont').show()
 		return
+
+$(document).on 'ajax:success', 'a.votelink', (status,data,xhr)->
+	$(".likes[data-id=#{data.id}]").text data.upvotes
+	$(".downvotes[data-id=#{data.id}]").text data.downvotes
+	$(".icon-heart[data-id=#{data.id}]").removeClass 'red-icon'
+	$(".icon-trash[data-id=#{data.id}]").removeClass 'red-icon'
+
+	if data.liked == true
+		$(".icon-heart[data-id=#{data.id}]").addClass 'red-icon'
+	else
+		$(".icon-trash[data-id=#{data.id}]").addClass 'red-icon'
+
+	return
