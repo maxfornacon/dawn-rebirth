@@ -1,6 +1,8 @@
 class Pin < ApplicationRecord
 	belongs_to :user
-	validates :description, presence: true, length: {maximum: 222}
+	validates :description, presence: true, length: {maximum: 222}, unless: ->(pin){pin.heading.present? or pin.subheading.present?}
+	validates :heading, presence: true, length: {maximum: 33}, unless: ->(pin){pin.description.present? or pin.subheading.present?}
+	validates :subheading, presence: true, length: {maximum: 33},unless: ->(pin){pin.description.present? or pin.heading.present?}
 
 	has_attached_file :image, styles: { crop: "325x"}
 	validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/

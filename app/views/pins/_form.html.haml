@@ -9,14 +9,14 @@
 					%li= msg
 	%br
 	.form-group
-		= f.file_field :image	
+		= f.file_field :image
 	.form-group
-		= f.text_field :heading, required: true
+		= f.text_field :heading, maxlength: 33, required: true
 		= f.label :heading, "Überschrift"
 		%span.bar
 
 	.form-group
-		= f.text_field :subheading, required: true
+		= f.text_field :subheading, maxlength: 33, required: true
 		= f.label :subheading, "Untertitel"
 		%span.bar
 
@@ -27,4 +27,4 @@
 
 	= f.button :submit
 	oder
-	= link_to "Abbrechen", current_user 
+	= link_to "Abbrechen", current_user
