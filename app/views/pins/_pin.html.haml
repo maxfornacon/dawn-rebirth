@@ -41,18 +41,20 @@
 %i.icon-back-in-time.time
 %span.time-span= distance_of_time_in_words(pin.created_at, Time.now + 3600, false, :locale => :de, :highest_measure_only => true)
 .votes
-	- if current_user.voted_up_on? pin
-		%i.icon-heart.icon-heart-red
-	- else
-		= link_to like_pin_path(pin), method: :put, class: "votelink up" do
-			%i.icon-heart
-	%span.likes= pin.get_upvotes.size
-	- if current_user.voted_down_on? pin
-		%i.icon-trash.icon-trash-red
-	- else
-		= link_to unlike_pin_path(pin), method: :put, class: "votelink down" do
-			%i.icon-trash
-	%span= pin.get_downvotes.size
+	= link_to like_pin_path(pin), method: :put, remote: true, class: "votelink up"do
+		- if current_user.voted_up_on? pin
+			%i.icon-heart.red-icon{"data-id"=>"#{pin.id}"}
+		- else
+			%i.icon-heart{"data-id"=>"#{pin.id}"}
+	%span.likes{"data-id" => "#{pin.id}"}
+		= pin.get_upvotes.size
+	= link_to unlike_pin_path(pin), method: :put, remote: true, class: "votelink down" do
+		- if current_user.voted_down_on? pin
+			%i.icon-trash.red-icon{"data-id"=>"#{pin.id}"}
+		- else
+			%i.icon-trash{"data-id"=>"#{pin.id}"}
+	%span.downvotes{"data-id" => "#{pin.id}"}
+		= pin.get_downvotes.size
 	-# begin
 		-#%span= pin.popularity
 	-# rescue

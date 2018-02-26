@@ -1,7 +1,7 @@
 class PinsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :find_pin, only: [:show, :edit, :update, :destroy, :upvote, :downvote, :flag]
-	
+
   def index
 		@pins = Pin.all.order("created_at DESC")
   end
@@ -44,17 +44,17 @@ class PinsController < ApplicationController
 	def upvote
 		@user = User.find(@pin.user)
 		@pin.upvote_by current_user
-		@user.increment!(:score, by = 1)
+		#@user.increment!(:score, by = 1)
 		if @pin.get_upvotes.size > @pin.get_downvotes.size
 			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_upvotes.size
 			@pin.save
 		end
-		respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { head :no_content }
-      format.js   { render :layout => false }
-    end
 
+		if request.xhr?
+			render json: { liked: true, upvotes: @pin.get_upvotes.size, downvotes: @pin.get_downvotes.size, id: params[:id] }
+		else
+			redirect_to :back
+		end
 	end
 
 	def downvote
@@ -65,7 +65,11 @@ class PinsController < ApplicationController
 			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_downvotes.size
 			@pin.save
 		end
-		redirect_to :back
+		if request.xhr?
+			render json: { disliked: true, upvotes: @pin.get_upvotes.size, downvotes: @pin.get_downvotes.size, id: params[:id] }
+		else
+			redirect_to :back
+		end
 	end
 
 	def flag
@@ -80,6 +84,6 @@ class PinsController < ApplicationController
 		end
 
 		def find_pin
-			@pin = Pin.find(params[:id]) 
+			@pin = Pin.find(params[:id])
 		end
 end
