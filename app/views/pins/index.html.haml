@@ -1,7 +1,22 @@
 .container
-	#pins.transitions-enabled
-		- @pins.each do |pin|
-			- for friendship in current_user.friendships
-				- if friendship.friend.name == pin.user.name
-					.pin
-						= render 'pin', pin: pin
+	#good
+		%br
+		%h1 Serious
+		#pins.transitions-enabled
+			- @pins.each do |pin|
+				- for friendship in current_user.friendships
+					- if friendship.friend.name == pin.user.name
+						- if pin.get_upvotes.size >= pin.get_downvotes.size
+							.pin
+								= render 'pin', pin: pin
+
+	#bad
+		%br
+		%h1 Weebshit
+		#pins.transitions-enabled
+			- @pins.each do |pin|
+				- for friendship in current_user.friendships
+					- if friendship.friend.name == pin.user.name
+						- if pin.get_upvotes.size < pin.get_downvotes.size
+							.pin
+								= render 'pin', pin: pin
