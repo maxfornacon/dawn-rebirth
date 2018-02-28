@@ -15,6 +15,7 @@
 //= require cookies_eu
 //= require masonry/jquery.masonry
 //= require cable
+//= require chat
 //= require emojionearea
 
 //= require turbolinks
