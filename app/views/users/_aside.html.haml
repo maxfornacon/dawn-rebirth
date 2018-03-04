@@ -22,7 +22,7 @@
 			- else
 				%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
 			%p Score
-	
+
 	%a.popup-btn{:href => "#"}
 		.box
 			%span= @user.inverse_friends.count
@@ -65,7 +65,7 @@
 	%br
 	%br
 	%br
-	
+
 	.sozial-media
 		- if @user.twitter?
 			= link_to "https://twitter.com/" + @user.twitter do
@@ -83,7 +83,7 @@
 			.snapchat
 				= image_tag("snap.png", width:"17px", height: "17px")
 				%p.snap= @user.snapchat
-				
+
 	-#- if @user.owner?
 	-#	%b
 	-#		Meister der Gilde
@@ -93,17 +93,6 @@
 	-#	%b
 	-#		Mitglied der Gilde
 	-#		= link_to @guild.name, guild_path(@guild.id)
-
-	- unless current_user.id == @user.id
-		- for friendship in current_user.friendships
-			- if friendship.friend.name == @user.name
-				- friend = 1
-				- break
-		- if friend == 1
-			= link_to "entfolgen", friendship, :method => :delete
-		- else
-			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post
-
 
 
 	%hr
@@ -116,8 +105,17 @@
 			%li Anime
 	%hr
 
-	
-	
+	- unless current_user.id == @user.id
+		- for friendship in current_user.friendships
+			- if friendship.friend.name == @user.name
+				- friend = 1
+				- break
+		- if friend == 1
+			= link_to "entfolgen", friendship, :method => :delete, class: 'btn follow'
+		- else
+			= link_to "folgen", friendships_path(:friend_id => @user), :method => :post, class:'btn follow'
+
+
 	- if @pet
 		#pet
 			%span.banner= @pet.name
