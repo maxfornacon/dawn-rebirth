@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-# Include default devise modules. Others available are:
+  # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_many :posts
 
   has_many :updates
-  
+
   acts_as_voter
 
   has_one :pet, dependent: :destroy
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def self.search(search)
-    where("name ILIKE ?", "%#{search}%") 
+    where("name ILIKE ?", "%#{search}%")
   end
 
 end

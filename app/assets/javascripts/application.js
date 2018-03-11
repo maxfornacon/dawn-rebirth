@@ -15,9 +15,7 @@
 //= require cookies_eu
 //= require masonry/jquery.masonry
 //= require cable
-//= require chat
 //= require emojionearea
-
 //= require turbolinks
 //= require jquery.turbolinks
 //= require_tree .
@@ -26,13 +24,23 @@
 $(document).ready(function() {
 	setTimeout(function(){
 		$('#notice_wrapper').fadeOut("slow", function(){
-		$(this).remove();
+			$(this).remove();
 		});
 	}, 1500);
 	setTimeout(function(){
 		$('#alert_wrapper').fadeOut("slow", function(){
-		$(this).remove();
+			$(this).remove();
 		});
 	}, 4500);
 
+	$('#notice_wrapper').on( "click", function() {
+		$('#notice_wrapper').fadeOut("slow", function(){
+			$(this).remove();
+		});
+	});
+	$('#alert_wrapper').on( "click", function(){
+		$('#alert_wrapper').fadeOut("slow", function(){
+			$(this).remove();
+		});
+	});
 });
