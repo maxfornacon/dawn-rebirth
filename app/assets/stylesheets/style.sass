@@ -13,34 +13,36 @@ html, body
 	height: 100%
 
 body
-	#notice_wrapper
+	#notice_wrapper, #alert_wrapper
 		position: absolute
 		top: 0
-		width: 100%
-		z-index: 999
-		background-color: #69BF8F
+		width: 80%
+		left: 10%
+		z-index: 99
+		cursor: pointer
 
 		p
-			padding: 1.45rem 0
+			padding: 1rem 0
 			text-align: center
 			margin: 0
 			font-size: 1.25rem
 			font-weight: 700
+
+		i
+			position: absolute
+			right: 10px
+			top: 20px
+
+	#notice_wrapper
+		background-color: #69BF8F
+
+		p, i
 			color: #2C503C
 
 	#alert_wrapper
-		position: absolute
-		top: 0
-		width: 100%
-		z-index: 999
 		background-color: #BF6969
 
-		p
-			padding: 1.45rem 0
-			text-align: center
-			margin: 0
-			font-size: 1.25rem
-			font-weight: 700
+		p, i
 			color: #502C2C
 
 	main
@@ -271,8 +273,6 @@ nav
 		margin: 0 auto
 		font-size: 25px
 
-
-
 /*Cookies*/
 
 .cookies-eu
@@ -282,7 +282,6 @@ nav
 			color: #3D3D3D
 /* END */
 
-
 input:-webkit-autofill
 	-webkit-box-shadow: 0 0 0 500px #373F41 inset
 
@@ -291,17 +290,12 @@ input:-webkit-autofill
 		max-width: 200px
 		max-height: 200px
 
-
-
 .serious, .shit
 	width: 335px
 	float: left
 
 	.zentriert
 		text-align: center
-
-
-
 
 a.fancybox img
 	border: none
