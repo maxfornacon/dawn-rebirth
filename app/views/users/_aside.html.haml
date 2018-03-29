@@ -32,8 +32,8 @@
 			%span= @user.friendships.count
 			%p Folgt
 
-	.popup-wrap1
-		.popup-box1
+	.popup-wrap 
+		.popup-box
 			%h2 Follower
 			%ul
 				- for user in @user.inverse_friends
@@ -41,8 +41,8 @@
 			%a.close-btn.popup-close1{:href => "#"}
 				%i.material-icons close
 
-	.popup-wrap2
-		.popup-box2
+	.popup-wrap
+		.popup-box
 			%h2
 				= @user.name
 				folgt
@@ -55,8 +55,8 @@
 			%a.close-btn.popup-close2{:href => "#"}
 				%i.material-icons close
 
-	.popup-wrap3
-		.popup-box3
+	.popup-wrap
+		.popup-box
 			%h2 Score
 			%h3= @user.score.round
 			%a.close-btn.popup-close3{:href => "#"}
