@@ -3,7 +3,7 @@ Aws.config.update(
   endpoint: "http://176.9.106.52:9000",
   force_path_style: true,
   credentials: Aws::Credentials.new(
-    "L7QG0NXV8NR5QRWE2THV",
-    "jtzOJezlwY7KqVNJ+BauPkI+t6Wcx1GfYOLBf5O2"
+    "Z7RZPYZQS7Z9AWI0E6NU",
+    "gHBEKZPtXnAFXSS/83DoQRBYq1kxg4VkF3czGYCB"
   )
 )

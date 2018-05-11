@@ -80,10 +80,10 @@ Rails.application.configure do
   end
 
   config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_region => 'us-east-1',
-    :s3_host_name => '176.9.106.52:9000',
-    :bucket => 'devdawnrebirth'
+    storage: :s3,
+    s3_region: 'us-east-1',
+    s3_host_name: 'win.pakass.de:9000',
+    bucket: 'devdawnrebirth'
   }
 
 end
