@@ -1,3 +1,4 @@
 $(document).on "turbolinks:load", ->
   $('.popup-btn').click ->
-    $(this).find('.popupwrap').display
+    console.log("lol")
+    $(this).find('.popup-wrap').css("display", "block")

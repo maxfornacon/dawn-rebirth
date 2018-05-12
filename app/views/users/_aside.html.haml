@@ -15,7 +15,7 @@
 	.info
 		%h1.name= @user.name
 		= online_status @user
-	%a.popup-btn{:href => ""}
+	.popup-btn
 		.box
 			- if @user.score < 1000
 				%span= @user.score.round
@@ -23,16 +23,18 @@
 				%span= number_to_human(@user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
 			%p Score
 
-	%a.popup-btn{:href => "#"}
-		.box
-			%span= @user.inverse_friends.count
-			%p Follower
 		.popup-wrap
 			.popup-box
 				%h2 Score
 				%h3= @user.score.round
 				%a.close-btn.popup-close3{:href => "#"}
 					%i.material-icons close
+
+	.popup-btn
+		.box
+			%span= @user.inverse_friends.count
+			%p Follower
+
 
 		.popup-wrap
 			.popup-box
@@ -43,7 +45,7 @@
 				%a.close-btn.popup-close1{:href => "#"}
 					%i.material-icons close
 
-	%a.popup-btn{:href => "#"}
+	.popup-btn
 		.box
 			%span= @user.friendships.count
 			%p Folgt
