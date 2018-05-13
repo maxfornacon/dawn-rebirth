@@ -27,7 +27,7 @@
 			.popup-box
 				%h2 Score
 				%h3= @user.score.round
-				%a.close-btn.popup-close3{:href => "#"}
+				.close-btn
 					%i.material-icons close
 
 	.popup-btn
@@ -42,7 +42,7 @@
 				%ul
 					- for user in @user.inverse_friends
 						%li= user.name
-				%a.close-btn.popup-close1{:href => "#"}
+				.close-btn
 					%i.material-icons close
 
 	.popup-btn
@@ -61,7 +61,7 @@
 							= friendship.friend.name
 							- if current_user.id == @user.id
 								#{link_to "[x]", friendship, :method => :delete}
-				%a.close-btn.popup-close2{:href => "#"}
+				.close-btn
 					%i.material-icons close
 
 
