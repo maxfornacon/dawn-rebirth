@@ -20,16 +20,18 @@ table {
 }
 
 #adminribbon, #modribbon {
-	width: 200px;
-  background: #de6565;
+	border-bottom: 50px solid #de6565;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	height: 0;
+	width: 92px;
   position: absolute;
   top: 25px;
   left: -50px;
   text-align: center;
-  line-height: 50px;
+	line-height: 50px;
   letter-spacing: 1px;
   color: #f0f0f0;
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
-	
