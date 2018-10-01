@@ -4,6 +4,7 @@ class PinsController < ApplicationController
 
   def index
 		@pins = Pin.all.order("created_at DESC")
+		
   end
 
   def show
@@ -46,7 +47,7 @@ class PinsController < ApplicationController
 		@pin.upvote_by current_user
 		#@user.increment!(:score, by = 1)
 		if @pin.get_upvotes.size > @pin.get_downvotes.size
-			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_upvotes.size
+			@pin.popularity = (@pin.get_upvotes.size - 1)/((Time.now - @pin.created_at).to_i + 2)**1.5
 			@pin.save
 		end
 
@@ -62,7 +63,7 @@ class PinsController < ApplicationController
 		@pin.downvote_by current_user
 
 		if @pin.get_downvotes.size > @pin.get_upvotes.size
-			@pin.popularity = ((Time.now - @pin.created_at)).to_i / @pin.get_downvotes.size
+			@pin.popularity = (@pin.get_upvotes.size - 1)/((Time.now - @pin.created_at).to_i + 2)**1.5
 			@pin.save
 		end
 		if request.xhr?

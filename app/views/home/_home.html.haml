@@ -2,10 +2,10 @@
 	.top-bar
 		.bar-section
 		.bar-section
-			= link_to chat_path do 
+			= link_to chat_path do
 				%i.icon-chat
 				%span=Redis.new.llen("online_list")
-		.bar-section	                  
+		.bar-section
 			%form{:action => "https://www.paypal.com/cgi-bin/webscr", :method => "post", :target => "_top"}
 				%input{:name => "cmd", :type => "hidden", :value => "_s-xclick"}/
 				%input{:name => "hosted_button_id", :type => "hidden", :value => "LD963DSDCQQR2"}/
@@ -18,6 +18,11 @@
 			= link_to "Neuer Post", new_post_path
 		- @posts.each do |p|
 			= render "posts/post", p: p
+
+	-#.posts
+		-#- @pins.each do |pin|
+			-#.pin
+			-#	= render 'pins/pin', pin: pin
 
 	.update-box
 		%span Letzte Änderungen
@@ -44,7 +49,7 @@
 
 
 
-						
+
 .side-box
 	%h2 Neuste Otakus
 	- @users = User.all.order("created_at DESC").limit(9)
