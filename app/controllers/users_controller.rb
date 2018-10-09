@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 	    @users = User.search(params[:search]).order("created_at DESC")
 	  else
 	    @users = User.all.order("created_at DESC")
+			@score = User.all.order("score DESC").limit(10)
+			@follower = User.all.order("inverse_friendships_count DESC").limit(10)
+			@posts =  User.all.order("pins_count DESC").limit(10)
 	  end
 	end
 
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
 			else
 				redirect_to guilds_members_path(@guild), alert: "nicht möglich"
 			end
-		end		
+		end
 	end
 	def rank_down
 		if current_user.owner? and current_user.guild_id == @guild.id
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
 			else
 				redirect_to guilds_members_path(@guild), alert: "nicht möglich"
 			end
-		end		
+		end
 	end
 	def kick
 		if current_user.owner? and current_user.guild_id == @guild.id

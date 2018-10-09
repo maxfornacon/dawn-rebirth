@@ -1,7 +1,86 @@
 .container
-	- @users.each do |user|
+	- if @score
+		#topscore.topbox
+			%h2 Highscore
+			- counter = 0
+			- @score.each do |user|
+				= link_to user do
+					- if counter == 0
+						= image_tag user.avatar.url(:small)
+						%span
+							= user.name
+						- if user.score < 1000
+							%span= user.score.round
+						- else
+							%span= number_to_human(user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
+					- elsif counter == 1 || counter == 2
+						%div
+							= image_tag user.avatar.url(:extrasmall)
+							%span
+								= user.name
+							- if user.score < 1000
+								%span= user.score.round
+							- else
+								%span= number_to_human(user.score, :format => '%n%u', :units => { :thousand => 'K', :million => 'M' }, precision: 1)
+					- else
+						%hr
+						.row
+							= user.name
+
+				- counter = counter + 1
+	- if @follower
+		#topfollower.topbox
+			%h2 Meiste Follower
+			- counter = 0
+			- @follower.each do |user|
+				= link_to user do
+					- if counter == 0
+						= image_tag user.avatar.url(:small)
+						%span
+							= user.name
+							\-
+							= user.inverse_friendships_count
+					- elsif counter == 1 || counter == 2
+						%div
+							= image_tag user.avatar.url(:extrasmall)
+							%span
+								= user.name
+								\-
+								= user.inverse_friendships_count
+					- else
+						%hr
+						.row
+							= user.name
+
+				- counter = counter + 1
+	- if @posts
+		#topposts.topbox
+			%h2 Meiste Posts
+			- counter = 0
+			- @posts.each do |user|
+				= link_to user do
+					- if counter == 0
+						= image_tag user.avatar.url(:small)
+						%span
+							= user.name
+							\-
+							= user.pins_count
+					- elsif counter == 1 || counter == 2
+						%div
+							= image_tag user.avatar.url(:extrasmall)
+							%span
+								= user.name
+								\-
+								= user.pins_count
+					- else
+						%hr
+						.row
+							= user.name
+
+				- counter = counter + 1
+
+	-#- @users.each do |user|
 		= link_to user do
 			.searchbox
 				= image_tag user.avatar.url(:medium)
 				= link_to user.name, user
-
